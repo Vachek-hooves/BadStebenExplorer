@@ -7,11 +7,11 @@ import {IntroductionScreen, WelcomeScreen} from './screen';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const TabNav = () => {
-  <Tab.Navigator screenOptions={{}}>
+const TabNav = () => (
+  <Tab.Navigator screenOptions={{headerShown: false}}>
     <Tab.Screen name="IntroductionScreen" component={IntroductionScreen} />
-  </Tab.Navigator>;
-};
+  </Tab.Navigator>
+);
 
 function App() {
   return (
