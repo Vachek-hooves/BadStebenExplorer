@@ -1872,7 +1872,7 @@ export const STEBEN_QUIZ2 = [
   },
 ];
 
-export const CITY_HISTORY = [
+export const NEWSPAPER = [
   {
     id: '1',
     title: 'History of Bad Steben',
@@ -1894,5 +1894,160 @@ export const CITY_HISTORY = [
       },
     ],
     image: '',
-  }
+  },
+  {
+    id: '2',
+    title: 'Attractions',
+    content: [
+      {
+        header: 'Spielbank Bad Steben',
+        article:
+          "Spielbank Bad Steben is an important historical and cultural site in Bad Steben, attracting both locals and visitors from around the world. Located in the heart of the town, this establishment has become a symbol of elegance and tradition, blending rich history with a modern spirit. The history of Spielbank Bad Steben dates back to the mid-20th century. From the very beginning, it drew people in with its unique atmosphere and architecture. The building housing the Spielbank is an example of classical style with elements of modern design, making it one of the architectural gems of the town. The importance of Spielbank Bad Steben lies not only in its architectural value but also in its role in the cultural life of the region. Various events are regularly held here, including concerts, exhibitions, theater performances, and other cultural activities. This place has become a cultural hub for those who appreciate art, music, and history. Additionally, Spielbank Bad Steben is an integral part of the town's infrastructure, contributing to the development of tourism and the economic prosperity of the region. It attracts tourists interested not only in its history but also in the town's vibrant cultural life. With its unique features, Spielbank Bad Steben has become a true symbol of Bad Steben, reflecting its rich history and cultural heritage. A visit to Spielbank Bad Steben is an opportunity to immerse yourself in the atmosphere of the past, feel the spirit of the times, and enjoy the sophistication and beauty of this unique place. Here, everyone can find something of interest, whether it's a fascination with history, a love for art, or simply the desire to spend time in one of Bavaria's most beautiful corners.",
+      },
+      {
+        header: 'The Thermal Springs of Bad Steben',
+        article:
+          "The thermal springs of Bad Steben are the heart and soul of the town, attracting visitors with their healing properties and excellent conditions for relaxation. Known since the Middle Ages, these springs are famous for their mineral-rich waters that aid in treating various ailments and maintaining overall health. The water from Bad Steben's thermal springs contains a high concentration of minerals such as sodium, calcium, and magnesium, making it ideal for wellness treatments. Guests can enjoy a variety of programs, including mineral baths, hydro-massage treatments, inhalations, and wraps. The water from the springs helps treat rheumatism, arthritis, skin conditions, and also promotes general relaxation and stress relief. In addition to wellness treatments, the thermal springs of Bad Steben offer complete relaxation and recreation. Guests can enjoy indoor and outdoor pools, saunas, spa complexes, and relaxation areas. The beautiful views of the surrounding forests and hills create an atmosphere of peace and harmony, making Bad Steben the perfect place for those seeking rejuvenation and rest in nature.",
+      },
+      {
+        header: 'The Rose Garden of Bad Steben',
+        article:
+          "The Rose Garden of Bad Steben is one of the town's most picturesque spots, delighting residents and visitors with its beauty and variety of flowers. This garden is a source of pride for the town, where everyone can enjoy the magnificence of roses and spend time in a serene, peaceful environment. The Rose Garden was established in the mid-20th century and has since become a favorite place for walks and relaxation for both locals and tourists. It features numerous varieties of roses that bloom from spring to autumn, filling the air with a delightful fragrance. The garden also hosts various events, such as open-air concerts, flower exhibitions, and festivals. A stroll through the Rose Garden is a true delight for the eyes and soul. Here, you can see roses of all shades and forms, well-maintained flowerbeds and alleys, as well as cozy benches where you can rest and enjoy the beauty of nature. The Rose Garden of Bad Steben is a place where everyone can feel part of this beauty and harmony, escape the hustle and bustle, and savor the moment.",
+      },
+      {
+        header: 'Kurpark',
+        article:
+          "Kurpark, the spa park of Bad Steben, is a magnificent park located in the town's center. This park is where nature and culture meet, creating ideal conditions for relaxation and recreation. Kurpark is not only a place for walks but also an important part of the town's spa life. Kurpark was established in the early 20th century and has since become a favorite place for relaxation for the residents and guests of Bad Steben. The park is known for its well-maintained lawns, majestic trees, and blooming flowerbeds. It also features fountains, ponds, and sculptures, adding to the park's atmosphere of elegance and tranquility. Kurpark is the perfect place for morning jogs, leisurely walks, and picnics in nature. During the warmer months, various cultural events such as concerts, theater performances, and festivals are held here. A walk through the park is an opportunity to enjoy the peace and beauty of nature, forget about daily worries, and simply relax.",
+      },
+      {
+        header: 'Heimatmuseum',
+        article:
+          "Heimatmuseum, the Museum of Regional History, is a unique place where you can learn about the rich history and culture of Bad Steben and its surroundings. The museum is housed in a historic building and offers visitors a fascinating journey through the region's past. Heimatmuseum was founded in the mid-20th century and has since become an important cultural center for the town. The museum's collection spans a wide period, from ancient times to the present day. It features archaeological finds, household items, historical documents, and works of art related to the region's history. One of the most interesting sections of the museum is dedicated to the development of Bad Steben as a spa town. Here, you can learn about the first thermal springs, the development of sanatoriums, and the town's significance for the region. Heimatmuseum also tells the story of the town's cultural and political life and its role in various historical events. A visit to Heimatmuseum is an opportunity to immerse yourself in the region's history, learn more about the lives and traditions of its inhabitants, and feel part of this remarkable history. The museum offers not only interesting exhibits but also various educational programs and activities for children and adults.",
+      },
+    ],
+    image: '',
+  },
+  {
+    id: '3',
+    title: 'Spa and Wellness',
+    content: [
+      {
+        header: "The Bad Steben's Thermal Springs",
+        article:
+          'The thermal springs of Bad Steben are not just a natural resource but a true historical and cultural treasure of the region. The history of their use spans centuries, beginning in ancient times when people first discovered the healing properties of the local mineral waters. The first mentions of the thermal springs in Bad Steben date back to the Middle Ages when mineral waters were used to treat various ailments. In those times, it was believed that the waters possessed mystical properties and were often used in rituals for purification and healing. As medicine advanced, the real therapeutic properties of these waters became known, and Bad Steben began to gain a reputation as a spa town. In the 19th century, during the golden age of the spa industry, the thermal springs of Bad Steben became a popular destination for rest and rejuvenation among aristocrats and members of high society. People came not only for treatment but also for socializing, cultural exchange, and relaxation in the beautiful natural surroundings. During this period, the town saw the construction of numerous sanatoriums, baths, and hotels, with mineral waters becoming the central element of all wellness treatments. Today, the thermal springs of Bad Steben continue to attract tourists from around the world. They are an important part of the local economy and culture, preserving their traditions while combining them with modern technologies and treatment methods.',
+      },
+      {
+        header: 'Wellness Treatments and Their Benefits',
+        article:
+          'Wellness treatments based on the thermal waters of Bad Steben offer unique opportunities for health restoration and vitality enhancement. Thanks to the high mineral content, such as calcium, magnesium, and sodium, these waters positively affect the body, helping to address various ailments and improve overall well-being. The main types of treatments include mineral baths, hydrotherapy, inhalations, and wraps. Mineral baths help relax muscles, improve circulation, and relieve stress. Hydrotherapy targets deep tissue layers, aiding in pain relief and recovery after physical exertion. Inhalations with mineral water cleanse the respiratory tract and enhance lung function, while wraps using mud and salts help eliminate toxins and nourish the skin with beneficial substances. Thermal water treatments are recommended for joint and spine disorders, skin conditions, metabolic disorders, as well as for stress and chronic fatigue prevention. Regular visits to spa centers based on thermal springs help strengthen the immune system, boost productivity, and improve mood.',
+      },
+      {
+        header: 'Special Wellness Programs for Guests',
+        article:
+          'Bad Steben offers numerous special wellness programs that allow guests to choose the most suitable treatments depending on their needs and goals. These programs provide a comprehensive approach to health improvement, combining both traditional and modern treatment and relaxation methods. Popular wellness programs include anti-stress programs aimed at relieving tension and restoring the nervous system, programs for skin and body improvement, as well as detox programs that help cleanse the body of toxins and waste. Each program includes a personalized treatment plan, consultations with doctors and nutritionists, as well as recommendations for physical activity and nutrition. Particular attention is given to wellness programs for people with chronic conditions such as arthritis, rheumatism, bronchitis, and others. These programs offer specialized treatments that help improve overall health and maintain well-being at a high level.',
+      },
+      {
+        header: 'Selection of spa treatments',
+        article:
+          'When choosing spa treatments in Bad Steben, it is important to consider the individual characteristics of your body and specific needs. To maximize the benefits of the treatments, it is recommended to consult with a doctor or wellness specialist who can help create an optimal plan for treatment and relaxation. For those suffering from chronic joint or spine conditions, treatments involving mineral baths and hydrotherapy are ideal. If the primary goal is relaxation and stress relief, then aromatherapy, saunas, and steam baths can help you relax and restore inner balance. For those who want to improve skin condition and detoxify the body, treatments using mud and salts, as well as special wraps, are recommended. To enhance overall vitality and strengthen the immune system, contrast showers, swimming in thermal pools, and inhalations with mineral water are beneficial. It is important to remember that spa treatments are most effective when done in courses, allowing you to achieve lasting positive effects and improve overall well-being.',
+      },
+      {
+        header: 'The Health Benefits of Mineral Waters',
+        article:
+          "The mineral waters of Bad Steben possess unique properties that have a beneficial effect on health. The high content of minerals such as calcium, magnesium, sodium, and bicarbonates makes these waters ideal for the treatment and prevention of numerous conditions. Mineral waters help improve metabolism, normalize the functioning of the gastrointestinal tract, strengthen bones and joints, and reduce stress and tension. Due to their anti-inflammatory properties, the waters of Bad Steben are especially beneficial for joint and spine disorders such as arthritis, osteochondrosis, and rheumatism. Additionally, mineral waters have a positive effect on the skin, helping to hydrate, nourish, and cleanse it. They help to address issues such as eczema, psoriasis, acne, and other skin conditions. Regular use of Bad Steben's mineral waters in wellness treatments not only improves physical condition but also helps achieve mental balance, increase energy levels, and enhance vitality.",
+      },
+    ],
+    image: '',
+  },
+  {
+    id: '4',
+    title: 'Culture and events',
+    content: [
+      {
+        header: 'Overview of Cultural Events in Bad Steben',
+        article:
+          "Bad Steben is not only a resort town known for its thermal springs but also a place where various cultural events are regularly held. Each season, the town delights residents and visitors with a wide range of interesting events that cover all aspects of cultural life—from music and theater to art and traditional celebrations. Special attention in Bad Steben's cultural program is given to classical music. Concerts featuring both local and international performers are regularly held in the town's concert halls. Music festivals, such as the summer classical music festival, attract many lovers of the genre. In addition to classical music, jazz and rock concerts are also held, making the town's cultural life truly multifaceted. Theatrical performances also play an important role. Throughout the year, you can enjoy both classic plays and contemporary productions in Bad Steben. The theatrical performances involve both professional actors and amateur groups, creating a unique atmosphere for the audience. The town is also known for its art exhibitions, which are held in local galleries and museums. Here you can see works by both well-known artists and emerging talents, offering a variety of styles and genres. Some exhibitions are dedicated to the history and culture of the region, providing a deeper understanding of its heritage.",
+      },
+      {
+        header: 'Festivals and Traditional Celebrations',
+        article:
+          "Festivals and traditional celebrations are an integral part of Bad Steben's cultural life. They not only reflect the town's rich cultural heritage but also bring together locals and tourists for joint festivities. One of the most vibrant events is the annual \"Sommerfest\" (Summer Festival), held in July. This celebration is accompanied by colorful parades, musical performances, dances, and fairs featuring traditional foods and drinks. The Sommerfest is a time when the town comes alive, filled with joy and merriment. Another important event is the Christmas market, held in December. During this time, Bad Steben transforms into a real winter wonderland, where you can enjoy the aroma of spiced drinks, taste traditional Christmas treats, and buy unique handmade souvenirs. The market also hosts Christmas music concerts and theatrical performances for children. Traditional holidays, such as St. John's Day (Johannistag), also hold a special place in the town's calendar. This holiday is celebrated with folk festivities, fire shows, and special ceremonies rooted in ancient rites and traditions of the region.",
+      },
+      {
+        header: 'Concerts and Theatrical Performances',
+        article:
+          "Concerts and theatrical performances in Bad Steben are not just cultural events but also essential elements of the town's social life. Here, everyone can find an event to their liking, whether it's an evening of classical music, a jazz concert, or an exciting theatrical performance. The town's concert program is diverse and covers various musical genres. The concert halls often feature the works of great composers, performed by local orchestras and guest soloists. Summer concerts held outdoors are especially popular among residents and visitors, creating a unique atmosphere under the open sky. Theatrical productions in Bad Steben offer audiences both classic and modern plays. You can enjoy well-known works of world literature as well as original productions by local authors. Throughout the year, there are performances for children, family musicals, and dramas, making the theater accessible to all ages. The town also hosts tours by renowned theater companies and orchestras, which further highlight Bad Steben's cultural life. These events become significant cultural milestones that are not to be missed.",
+      },
+      {
+        header: 'Traditions and Customs of the Region',
+        article:
+          "The traditions and customs of Bad Steben are deeply rooted in history and remain an essential part of the town's life. They reflect the rich cultural and historical heritage of the region and serve as a link between generations. One of the town's key traditions is the celebration of folk festivals and holidays, accompanied by customs and rituals characteristic of the region. For example, during the Johannistag (St. John's Day) celebration, bonfires are traditionally lit around which people dance. This custom symbolizes protection from evil spirits and the attraction of good fortune for the coming year. In Bad Steben, old crafts such as woodworking, textiles, and ceramics are still practiced. These crafts are passed down from generation to generation and remain an important part of the town's cultural heritage. Annual craft fairs and folk art festivals offer the opportunity to learn more about these crafts and purchase unique handmade items. One of the region's most well-known customs is the harvest celebration. In the autumn, the town's residents organize fairs and street parties to celebrate a successful harvest. This custom is accompanied by traditional dishes and drinks, as well as songs and dances.",
+      },
+      {
+        header: 'Development of Cultural Events',
+        article:
+          "The history of cultural events in Bad Steben dates back to the Middle Ages when the town was just beginning to develop as a resort center. Since then, the town's cultural life has greatly enriched and diversified, becoming an integral part of its identity. In the 19th century, during the heyday of the spa industry, Bad Steben became a venue for numerous music and theater events that attracted aristocrats and wealthy travelers from all over Europe. During this period, regular classical music concerts, theatrical performances, and balls became a tradition that continues to this day. In the 20th century, the town's cultural life expanded significantly with the emergence of new art genres and mass culture. Bad Steben began hosting modern art festivals, film festivals, and various exhibitions, attracting a new generation of tourists and art lovers. Today, the cultural events of Bad Steben continue to evolve, maintaining respect for tradition and historical heritage. The town offers its guests a rich and diverse program of events for all tastes, combining a rich history with modernity.",
+      },
+    ],
+    image: '',
+  },
+  {
+    id: '5',
+    title: 'Nature and active recreation',
+    content: [
+      {
+        header: 'Overview of Recreation Areas',
+        article:
+          "Bad Steben, nestled in a picturesque part of Germany, offers a range of unique natural trails and recreation areas for all nature and outdoor enthusiasts. From charming forest paths to peaceful parks, there is a route for everyone. 1. Forest Trails of Bad Steben — These trails, winding through dense forests, are perfect for hiking and leisurely walks. They vary in length and difficulty, from easy routes for beginners to more challenging paths for experienced hikers. Many trails feature informational signs about the local flora and fauna. 2. Surroundings of the Thermal Springs — Nearby the thermal springs, well-maintained recreation areas allow visitors to enjoy nature and unwind after a long walk. These spots are ideal for picnics and gentle strolls. 3. Panoramic Trails — For those seeking breathtaking views, trails that traverse hills and elevations offer spectacular vistas of the surrounding landscape and natural beauty. 4. Recreation Areas — The city's surrounding recreation areas are designed for relaxation and enjoying the tranquility of nature. Equipped with benches, picnic tables, and relaxation spots, these areas provide a serene environment for spending time outdoors.",
+      },
+      {
+        header: 'Hiking and Cycling in the Surroundings',
+        article:
+          'Bad Steben provides excellent opportunities for hiking and cycling through its scenic surroundings. These routes are varied and suitable for all fitness levels. 1. Hiking Routes — The area around the city features well-marked hiking routes that allow you to explore beautiful landscapes. Routes vary in length and difficulty, catering to both leisurely walks and more intense hikes. Some routes pass through historical sites, offering a blend of outdoor activity and cultural exploration. 2. Cycling Routes — For those who prefer two-wheel adventures, various cycling routes are available. These paths traverse picturesque landscapes, forest trails, and rural roads. Cycling routes also include sections with notable natural landmarks and panoramic views. 3. Combined Routes — Some trails combine hiking and cycling sections, allowing travelers to switch activities and enjoy a diverse range of natural settings.',
+      },
+      {
+        header: 'Best Spots for Winter Sports',
+        article:
+          'Winter sports in Bad Steben are a crucial part of the winter experience, offering numerous opportunities for active recreation. 1. Ski Slopes — Several ski slopes are located near the city, ideal for skiing and snowboarding. The slopes vary in difficulty, catering to both beginners and advanced skiers. 2. Cross-Country Skiing Trails — For cross-country skiing enthusiasts, specially prepared trails wind through scenic forests and fields. These trails offer excellent conditions for both training and leisure. 3. Snow Tubing and Sledding — For families with children and those who prefer less extreme winter activities, designated areas for snow tubing and sledding are available. 4. Ice Rinks — During winter, ice rinks open for ice skating. These rinks often feature areas for relaxation and socializing with family and friends.',
+      },
+      {
+        header: 'Nature Reserves and Parks',
+        article:
+          'Bad Steben is surrounded by several nature reserves and parks, offering unique opportunities to explore nature and enjoy outdoor activities. 1. Bad Steben Nature Reserve — This reserve covers a significant portion of forested area and is an ideal spot for wildlife observation and walking. The reserve is home to various animal and plant species and often hosts guided tours. 2. Kurpark — One of the most famous parks in the city, Kurpark is perfect for walks, relaxation, and picnics. The park is well-maintained and offers numerous amenities for visitors, including walking paths and relaxation areas. 3. Rose Garden Nature Park — Located in a picturesque setting, this park is known for its floral displays and well-kept paths. It is a great place for relaxing walks and enjoying natural beauty.',
+      },
+      {
+        header: 'Impact of Nature on Health',
+        article:
+          'Nature has a significant impact on health and overall well-being, and Bad Steben is no exception. Being outdoors and engaging in nature-based activities contribute to improved physical and mental health. 1. Physical Activity — Walking nature trails, engaging in outdoor sports, and active recreation enhance physical fitness and strengthen the cardiovascular system. 2. Psychological Well-Being — Nature helps reduce stress and anxiety levels. Relaxing walks and outdoor time contribute to relaxation and improved mood. 3. Therapeutic Procedures — Natural springs and minerals in the water have beneficial effects on health. They help improve skin condition, alleviate chronic ailments, and contribute to overall wellness. 4. Improved Sleep Quality — Spending time outdoors and regular physical activity contribute to better sleep quality and help combat insomnia. The natural environment of Bad Steben plays a crucial role in promoting health and offers numerous opportunities for maintaining well-being and enhancing overall quality of life.',
+      },
+    ],
+    image: '',
+  },
+  {
+    id: '6',
+    title: 'Accommodation',
+    content: [
+      {
+        header: 'Hotel Müller - Die lila Loge',
+        article:
+          'This charming establishment is known for its vibrant décor and modern amenities. Located in the heart of Bad Steben, it provides convenient access to local attractions and thermal springs. The hotel offers a variety of room types, including single and double rooms, each equipped with modern conveniences such as free Wi-Fi, flat-screen TVs, and minibars. Guests enjoy a complimentary buffet breakfast with a selection of fresh and local products, as well as a wellness area with a sauna and steam room. Its proximity to major attractions like Kurpark and the thermal springs makes it a convenient choice for tourists.',
+      },
+      {
+        header: 'Pension am Kurpark',
+        article:
+          'Pension am Kurpark — A cozy guesthouse located in a picturesque part of Bad Steben, perfect for those who want to enjoy tranquility and comfort. The guesthouse offers stylish and comfortable rooms, creating a homely atmosphere. Guests can enjoy beautiful views of the Kurpark and the proximity to the thermal springs. The breakfast included in the stay features a selection of fresh and delicious dishes.',
+      },
+      {
+        header: 'Wellnesshotel Klosterbräu',
+        article:
+          'Wellnesshotel Klosterbräu — An exceptional place for those seeking luxury and top-notch service. The hotel offers a wide range of spa services and amenities, providing a relaxing and rejuvenating stay. Spacious rooms with magnificent interiors and high-class amenities create a sense of comfort and luxury. The extensive spa area includes various treatments and pools, while the elegant restaurant delights with a menu featuring local and international dishes.',
+      },
+      {
+        header: 'Gasthof zur Post',
+        article:
+          'Gasthof zur Post — A traditional guesthouse offering comfortable accommodation in a style that preserves local traditions and ambiance. The guesthouse is ideal for those looking for a friendly and cozy place to stay. The traditional interior and atmospheric rooms create a unique atmosphere, and the restaurant with homemade cuisine and local dishes provides guests with a delightful dining experience. Its convenient location near the city center and major attractions makes this guesthouse a convenient choice for tourists.',
+      },
+    ],
+    image: '',
+  },
 ];
