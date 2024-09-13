@@ -1,3 +1,476 @@
+export const STEBEN_TRUE_FALSE = [
+    {
+      id: '1',
+      active: true,
+      topic: 'History of Bad Steben',
+      statements: [
+        {
+          statement: 'Bad Steben was founded in 1356.',
+          isTrue: false
+        },
+        {
+          statement: 'The city was founded by Duke Ludwig.',
+          isTrue: true
+        },
+        {
+          statement: 'The first thermal complex was built in Gothic style.',
+          isTrue: false
+        },
+        {
+          statement: 'An important building constructed in the 19th century was a thermal complex.',
+          isTrue: true
+        },
+        {
+          statement: 'Frederick the Great visited the city in the 19th century.',
+          isTrue: true
+        },
+        {
+          statement: 'The development of the city is described in charters.',
+          isTrue: true
+        },
+        {
+          statement: 'The Great Depression affected tourism in the 20th century.',
+          isTrue: true
+        },
+        {
+          statement: 'Gustave Flaubert wrote about Bad Steben.',
+          isTrue: true
+        },
+        {
+          statement: 'A thermal water festival was launched in recent years.',
+          isTrue: true
+        },
+        {
+          statement: 'Thermal resorts became popular in the 18th century.',
+          isTrue: true
+        }
+      ]
+    },
+    {
+      id: '2',
+      active: true,
+      topic: 'Thermal Springs of Bad Steben',
+      statements: [
+        {
+          statement: 'Sulfur in the water helps with relaxation.',
+          isTrue: true
+        },
+        {
+          statement: 'A traditional spa treatment is mineral baths.',
+          isTrue: true
+        },
+        {
+          statement: 'The effect of thermal springs on circulation is heat exposure.',
+          isTrue: true
+        },
+        {
+          statement: 'Mineral wraps are a popular spa treatment.',
+          isTrue: true
+        },
+        {
+          statement: 'Yoga is an additional service offered at spas.',
+          isTrue: true
+        },
+        {
+          statement: 'Sulfur has an effect on joints.',
+          isTrue: true
+        },
+        {
+          statement: 'The effect of the water on the skin is moisturizing.',
+          isTrue: true
+        },
+        {
+          statement: 'The temperature range for baths is 30-40°C.',
+          isTrue: true
+        },
+        {
+          statement: 'It is recommended to visit the springs regularly with rest.',
+          isTrue: true
+        },
+        {
+          statement: 'Thermal pavilions are available year-round.',
+          isTrue: true
+        }
+      ]
+    },
+    {
+      id: '3',
+      active: true,
+      topic: 'Rose Garden of Bad Steben',
+      statements: [
+        {
+          statement: 'The Rose Garden was founded in the 20th century.',
+          isTrue: true
+        },
+        {
+          statement: 'There are 100 varieties of roses in the garden.',
+          isTrue: true
+        },
+        {
+          statement: 'Exhibitions are held in the garden during summer.',
+          isTrue: true
+        },
+        {
+          statement: 'Plants are updated every 5 years.',
+          isTrue: true
+        },
+        {
+          statement: 'Fountains are a feature of the garden landscape.',
+          isTrue: true
+        },
+        {
+          statement: 'Hybrid roses are popular in the garden.',
+          isTrue: true
+        },
+        {
+          statement: 'A café is available for visitors.',
+          isTrue: true
+        },
+        {
+          statement: 'Festivals are special events in the Rose Garden.',
+          isTrue: true
+        },
+        {
+          statement: 'Public transport is the best way to access the garden.',
+          isTrue: true
+        },
+        {
+          statement: 'Summer is the best time to visit the Rose Garden.',
+          isTrue: true
+        }
+      ]
+    },
+    {
+      id: '4',
+      active: true,
+      topic: 'Kurpark (Resort Park)',
+      statements: [
+        {
+          statement: 'The purpose of Kurpark is relaxation.',
+          isTrue: true
+        },
+        {
+          statement: 'Concerts are held in the park.',
+          isTrue: true
+        },
+        {
+          statement: 'The main covering of the park is lawn.',
+          isTrue: true
+        },
+        {
+          statement: 'Walking paths are a feature of the park\'s landscape.',
+          isTrue: true
+        },
+        {
+          statement: 'Fountains are a key element of the park\'s interior.',
+          isTrue: true
+        },
+        {
+          statement: 'Rest areas are available for visitors.',
+          isTrue: true
+        },
+        {
+          statement: 'Events are held weekly in the park.',
+          isTrue: true
+        },
+        {
+          statement: 'Lakes are a natural feature of the park.',
+          isTrue: true
+        },
+        {
+          statement: 'Walking is a common activity in the park.',
+          isTrue: true
+        },
+        {
+          statement: 'Gardens are popular areas of the park.',
+          isTrue: true
+        }
+      ]
+    },
+    {
+      id: '5',
+      active: true,
+      topic: 'Heimatmuseum (Local History Museum)',
+      statements: [
+        {
+          statement: 'The museum was founded in 1921.',
+          isTrue: true
+        },
+        {
+          statement: 'The museum features historical exhibits.',
+          isTrue: true
+        },
+        {
+          statement: 'Historical events are the focus of the museum\'s exhibitions.',
+          isTrue: true
+        },
+        {
+          statement: 'Retro artifacts are part of the museum\'s collection.',
+          isTrue: true
+        },
+        {
+          statement: 'The main theme of the museum is regional history.',
+          isTrue: true
+        },
+        {
+          statement: 'Guided tours are an additional service provided by the museum.',
+          isTrue: true
+        },
+        {
+          statement: 'Exhibitions are updated every quarter.',
+          isTrue: true
+        },
+        {
+          statement: 'Historians are interested in the museum.',
+          isTrue: true
+        },
+        {
+          statement: 'The museum archives contain documents and photographs.',
+          isTrue: true
+        },
+        {
+          statement: 'Historical celebrations and reconstructions are the most visited events in the museum.',
+          isTrue: true
+        }
+      ]
+    },
+    {
+      id: '6',
+      active: true,
+      topic: 'Architecture of Bad Steben',
+      statements: [
+        {
+          statement: 'Rococo is the predominant style in the city\'s architecture.',
+          isTrue: true
+        },
+        {
+          statement: 'The Old Thermal Complex is a historic monument.',
+          isTrue: true
+        },
+        {
+          statement: 'Original details were added in the renovation of historic buildings.',
+          isTrue: true
+        },
+        {
+          statement: 'Rococo style was popular in the 19th century.',
+          isTrue: true
+        },
+        {
+          statement: 'Historical buildings and thermal complexes are major landmarks in the city.',
+          isTrue: true
+        },
+        {
+          statement: 'Classic columns are used in the restoration of old buildings.',
+          isTrue: true
+        },
+        {
+          statement: 'Modern style prevails in new buildings.',
+          isTrue: true
+        },
+        {
+          statement: 'Thermal complexes and historic buildings are characteristic types of buildings in the city.',
+          isTrue: true
+        },
+        {
+          statement: 'Historical facades attract tourists.',
+          isTrue: true
+        },
+        {
+          statement: 'Energy-saving technologies have been added to modern buildings in the city.',
+          isTrue: true
+        }
+      ]
+    },
+    {
+      id: '7',
+      active: true,
+      topic: 'Local Cuisine of Bad Steben',
+      statements: [
+        {
+          statement: 'Strudel is a popular traditional dish in Bad Steben.',
+          isTrue: true
+        },
+        {
+          statement: 'Wine is a common drink served in local restaurants.',
+          isTrue: true
+        },
+        {
+          statement: 'Meat and potatoes are ingredients used in local dishes.',
+          isTrue: true
+        },
+        {
+          statement: 'A cake with nuts is a local dessert specialty.',
+          isTrue: true
+        },
+        {
+          statement: 'Rye bread is traditional for the region.',
+          isTrue: true
+        },
+        {
+          statement: 'Emmental cheese is popular in Bad Steben.',
+          isTrue: true
+        },
+        {
+          statement: 'Baking is the method used for traditional dishes.',
+          isTrue: true
+        },
+        {
+          statement: 'Apples are widely used in local cuisine.',
+          isTrue: true
+        },
+        {
+          statement: 'German cuisine is offered in local restaurants.',
+          isTrue: true
+        },
+        {
+          statement: 'Traditional German restaurants are the most popular.',
+          isTrue: true
+        }
+      ]
+    },
+    {
+      id: '8',
+      active: true,
+      topic: 'Nature and Walks',
+      statements: [
+        {
+          statement: 'Kurpark is popular for walks in Bad Steben.',
+          isTrue: true
+        },
+        {
+          statement: 'Forests and meadows are the predominant types of vegetation in the park.',
+          isTrue: true
+        },
+        {
+          statement: 'The most scenic walking route is along the river.',
+          isTrue: true
+        },
+        {
+          statement: 'Hiking is an active recreation available in the park.',
+          isTrue: true
+        },
+        {
+          statement: 'Forest animals can be seen in the park.',
+          isTrue: true
+        },
+        {
+          statement: 'Festivals and concerts are held outdoors in the park.',
+          isTrue: true
+        },
+        {
+          statement: 'Summer is the best season for walks.',
+          isTrue: true
+        },
+        {
+          statement: 'A park with playgrounds is best for family walks.',
+          isTrue: true
+        },
+        {
+          statement: 'Benches and tables are available for rest in the park.',
+          isTrue: true
+        },
+        {
+          statement: 'Flower beds make the park especially beautiful.',
+          isTrue: true
+        }
+      ]
+    },
+    {
+      id: '9',
+      active: true,
+      topic: 'Arts and Culture',
+      statements: [
+        {
+          statement: 'Bad Steben hosts a thermal water festival as its main cultural event.',
+          isTrue: true
+        },
+        {
+          statement: 'Concerts and exhibitions are common types of events in the city.',
+          isTrue: true
+        },
+        {
+          statement: 'The Rose Festival attracts tourists in the summer.',
+          isTrue: true
+        },
+        {
+          statement: 'Historical reconstructions are events related to the city\'s history.',
+          isTrue: true
+        },
+        {
+          statement: 'Christmas markets are held in the winter.',
+          isTrue: true
+        },
+        {
+          statement: 'Cultural events occur every week in the city.',
+          isTrue: true
+        },
+        {
+          statement: 'Exhibitions and concerts are popular among locals.',
+          isTrue: true
+        },
+        {
+          statement: 'The thermal water festival includes open-air events and shows.',
+          isTrue: true
+        },
+        {
+          statement: 'Traditional arts are a highlighted element at festivals.',
+          isTrue: true
+        },
+        {
+          statement: 'City Day is celebrated in a special way.',
+          isTrue: true
+        }
+      ]
+    },
+    {
+      id: '10',
+      active: true,
+      topic: 'Education and Science',
+      statements: [
+        {
+          statement: 'There is no university in Bad Steben specializing in engineering sciences.',
+          isTrue: true
+        },
+        {
+          statement: 'Local schools offer courses on ecology and the environment.',
+          isTrue: true
+        },
+        {
+          statement: 'Scientific conferences are actively held in the city.',
+          isTrue: true
+        },
+        {
+          statement: 'There are no research institutes in Bad Steben.',
+          isTrue: false
+        },
+        {
+          statement: 'Local schools focus a lot on traditional crafts.',
+          isTrue: true
+        },
+        {
+          statement: 'Libraries in the city offer a wide selection of scientific literature.',
+          isTrue: true
+        },
+        {
+          statement: 'The city has laboratories for scientific research.',
+          isTrue: true
+        },
+        {
+          statement: 'There is no art college in the city.',
+          isTrue: true
+        },
+        {
+          statement: 'Schools in the city have STEM programs.',
+          isTrue: true
+        },
+        {
+          statement: 'The city hosts annual science and technology festivals.',
+          isTrue: true
+        }
+      ]
+    }
+  ];
+
 export const STEBEN_QUIZ = [
   {
     id: '1',
@@ -1164,475 +1637,4 @@ export const STEBEN_QUIZ2 = [
 ];
 
 
-export const STEBEN_TRUE_FALSE = [
-    {
-      id: '1',
-      active: true,
-      topic: 'History of Bad Steben',
-      statements: [
-        {
-          statement: 'Bad Steben was founded in 1356.',
-          isTrue: false
-        },
-        {
-          statement: 'The city was founded by Duke Ludwig.',
-          isTrue: true
-        },
-        {
-          statement: 'The first thermal complex was built in Gothic style.',
-          isTrue: false
-        },
-        {
-          statement: 'An important building constructed in the 19th century was a thermal complex.',
-          isTrue: true
-        },
-        {
-          statement: 'Frederick the Great visited the city in the 19th century.',
-          isTrue: true
-        },
-        {
-          statement: 'The development of the city is described in charters.',
-          isTrue: true
-        },
-        {
-          statement: 'The Great Depression affected tourism in the 20th century.',
-          isTrue: true
-        },
-        {
-          statement: 'Gustave Flaubert wrote about Bad Steben.',
-          isTrue: true
-        },
-        {
-          statement: 'A thermal water festival was launched in recent years.',
-          isTrue: true
-        },
-        {
-          statement: 'Thermal resorts became popular in the 18th century.',
-          isTrue: true
-        }
-      ]
-    },
-    {
-      id: '2',
-      active: true,
-      topic: 'Thermal Springs of Bad Steben',
-      statements: [
-        {
-          statement: 'Sulfur in the water helps with relaxation.',
-          isTrue: true
-        },
-        {
-          statement: 'A traditional spa treatment is mineral baths.',
-          isTrue: true
-        },
-        {
-          statement: 'The effect of thermal springs on circulation is heat exposure.',
-          isTrue: true
-        },
-        {
-          statement: 'Mineral wraps are a popular spa treatment.',
-          isTrue: true
-        },
-        {
-          statement: 'Yoga is an additional service offered at spas.',
-          isTrue: true
-        },
-        {
-          statement: 'Sulfur has an effect on joints.',
-          isTrue: true
-        },
-        {
-          statement: 'The effect of the water on the skin is moisturizing.',
-          isTrue: true
-        },
-        {
-          statement: 'The temperature range for baths is 30-40°C.',
-          isTrue: true
-        },
-        {
-          statement: 'It is recommended to visit the springs regularly with rest.',
-          isTrue: true
-        },
-        {
-          statement: 'Thermal pavilions are available year-round.',
-          isTrue: true
-        }
-      ]
-    },
-    {
-      id: '3',
-      active: true,
-      topic: 'Rose Garden of Bad Steben',
-      statements: [
-        {
-          statement: 'The Rose Garden was founded in the 20th century.',
-          isTrue: true
-        },
-        {
-          statement: 'There are 100 varieties of roses in the garden.',
-          isTrue: true
-        },
-        {
-          statement: 'Exhibitions are held in the garden during summer.',
-          isTrue: true
-        },
-        {
-          statement: 'Plants are updated every 5 years.',
-          isTrue: true
-        },
-        {
-          statement: 'Fountains are a feature of the garden landscape.',
-          isTrue: true
-        },
-        {
-          statement: 'Hybrid roses are popular in the garden.',
-          isTrue: true
-        },
-        {
-          statement: 'A café is available for visitors.',
-          isTrue: true
-        },
-        {
-          statement: 'Festivals are special events in the Rose Garden.',
-          isTrue: true
-        },
-        {
-          statement: 'Public transport is the best way to access the garden.',
-          isTrue: true
-        },
-        {
-          statement: 'Summer is the best time to visit the Rose Garden.',
-          isTrue: true
-        }
-      ]
-    },
-    {
-      id: '4',
-      active: true,
-      topic: 'Kurpark (Resort Park)',
-      statements: [
-        {
-          statement: 'The purpose of Kurpark is relaxation.',
-          isTrue: true
-        },
-        {
-          statement: 'Concerts are held in the park.',
-          isTrue: true
-        },
-        {
-          statement: 'The main covering of the park is lawn.',
-          isTrue: true
-        },
-        {
-          statement: 'Walking paths are a feature of the park\'s landscape.',
-          isTrue: true
-        },
-        {
-          statement: 'Fountains are a key element of the park\'s interior.',
-          isTrue: true
-        },
-        {
-          statement: 'Rest areas are available for visitors.',
-          isTrue: true
-        },
-        {
-          statement: 'Events are held weekly in the park.',
-          isTrue: true
-        },
-        {
-          statement: 'Lakes are a natural feature of the park.',
-          isTrue: true
-        },
-        {
-          statement: 'Walking is a common activity in the park.',
-          isTrue: true
-        },
-        {
-          statement: 'Gardens are popular areas of the park.',
-          isTrue: true
-        }
-      ]
-    },
-    {
-      id: '5',
-      active: true,
-      topic: 'Heimatmuseum (Local History Museum)',
-      statements: [
-        {
-          statement: 'The museum was founded in 1921.',
-          isTrue: true
-        },
-        {
-          statement: 'The museum features historical exhibits.',
-          isTrue: true
-        },
-        {
-          statement: 'Historical events are the focus of the museum\'s exhibitions.',
-          isTrue: true
-        },
-        {
-          statement: 'Retro artifacts are part of the museum\'s collection.',
-          isTrue: true
-        },
-        {
-          statement: 'The main theme of the museum is regional history.',
-          isTrue: true
-        },
-        {
-          statement: 'Guided tours are an additional service provided by the museum.',
-          isTrue: true
-        },
-        {
-          statement: 'Exhibitions are updated every quarter.',
-          isTrue: true
-        },
-        {
-          statement: 'Historians are interested in the museum.',
-          isTrue: true
-        },
-        {
-          statement: 'The museum archives contain documents and photographs.',
-          isTrue: true
-        },
-        {
-          statement: 'Historical celebrations and reconstructions are the most visited events in the museum.',
-          isTrue: true
-        }
-      ]
-    },
-    {
-      id: '6',
-      active: true,
-      topic: 'Architecture of Bad Steben',
-      statements: [
-        {
-          statement: 'Rococo is the predominant style in the city\'s architecture.',
-          isTrue: true
-        },
-        {
-          statement: 'The Old Thermal Complex is a historic monument.',
-          isTrue: true
-        },
-        {
-          statement: 'Original details were added in the renovation of historic buildings.',
-          isTrue: true
-        },
-        {
-          statement: 'Rococo style was popular in the 19th century.',
-          isTrue: true
-        },
-        {
-          statement: 'Historical buildings and thermal complexes are major landmarks in the city.',
-          isTrue: true
-        },
-        {
-          statement: 'Classic columns are used in the restoration of old buildings.',
-          isTrue: true
-        },
-        {
-          statement: 'Modern style prevails in new buildings.',
-          isTrue: true
-        },
-        {
-          statement: 'Thermal complexes and historic buildings are characteristic types of buildings in the city.',
-          isTrue: true
-        },
-        {
-          statement: 'Historical facades attract tourists.',
-          isTrue: true
-        },
-        {
-          statement: 'Energy-saving technologies have been added to modern buildings in the city.',
-          isTrue: true
-        }
-      ]
-    },
-    {
-      id: '7',
-      active: true,
-      topic: 'Local Cuisine of Bad Steben',
-      statements: [
-        {
-          statement: 'Strudel is a popular traditional dish in Bad Steben.',
-          isTrue: true
-        },
-        {
-          statement: 'Wine is a common drink served in local restaurants.',
-          isTrue: true
-        },
-        {
-          statement: 'Meat and potatoes are ingredients used in local dishes.',
-          isTrue: true
-        },
-        {
-          statement: 'A cake with nuts is a local dessert specialty.',
-          isTrue: true
-        },
-        {
-          statement: 'Rye bread is traditional for the region.',
-          isTrue: true
-        },
-        {
-          statement: 'Emmental cheese is popular in Bad Steben.',
-          isTrue: true
-        },
-        {
-          statement: 'Baking is the method used for traditional dishes.',
-          isTrue: true
-        },
-        {
-          statement: 'Apples are widely used in local cuisine.',
-          isTrue: true
-        },
-        {
-          statement: 'German cuisine is offered in local restaurants.',
-          isTrue: true
-        },
-        {
-          statement: 'Traditional German restaurants are the most popular.',
-          isTrue: true
-        }
-      ]
-    },
-    {
-      id: '8',
-      active: true,
-      topic: 'Nature and Walks',
-      statements: [
-        {
-          statement: 'Kurpark is popular for walks in Bad Steben.',
-          isTrue: true
-        },
-        {
-          statement: 'Forests and meadows are the predominant types of vegetation in the park.',
-          isTrue: true
-        },
-        {
-          statement: 'The most scenic walking route is along the river.',
-          isTrue: true
-        },
-        {
-          statement: 'Hiking is an active recreation available in the park.',
-          isTrue: true
-        },
-        {
-          statement: 'Forest animals can be seen in the park.',
-          isTrue: true
-        },
-        {
-          statement: 'Festivals and concerts are held outdoors in the park.',
-          isTrue: true
-        },
-        {
-          statement: 'Summer is the best season for walks.',
-          isTrue: true
-        },
-        {
-          statement: 'A park with playgrounds is best for family walks.',
-          isTrue: true
-        },
-        {
-          statement: 'Benches and tables are available for rest in the park.',
-          isTrue: true
-        },
-        {
-          statement: 'Flower beds make the park especially beautiful.',
-          isTrue: true
-        }
-      ]
-    },
-    {
-      id: '9',
-      active: true,
-      topic: 'Arts and Culture',
-      statements: [
-        {
-          statement: 'Bad Steben hosts a thermal water festival as its main cultural event.',
-          isTrue: true
-        },
-        {
-          statement: 'Concerts and exhibitions are common types of events in the city.',
-          isTrue: true
-        },
-        {
-          statement: 'The Rose Festival attracts tourists in the summer.',
-          isTrue: true
-        },
-        {
-          statement: 'Historical reconstructions are events related to the city\'s history.',
-          isTrue: true
-        },
-        {
-          statement: 'Christmas markets are held in the winter.',
-          isTrue: true
-        },
-        {
-          statement: 'Cultural events occur every week in the city.',
-          isTrue: true
-        },
-        {
-          statement: 'Exhibitions and concerts are popular among locals.',
-          isTrue: true
-        },
-        {
-          statement: 'The thermal water festival includes open-air events and shows.',
-          isTrue: true
-        },
-        {
-          statement: 'Traditional arts are a highlighted element at festivals.',
-          isTrue: true
-        },
-        {
-          statement: 'City Day is celebrated in a special way.',
-          isTrue: true
-        }
-      ]
-    },
-    {
-      id: '10',
-      active: true,
-      topic: 'Education and Science',
-      statements: [
-        {
-          statement: 'There is no university in Bad Steben specializing in engineering sciences.',
-          isTrue: true
-        },
-        {
-          statement: 'Local schools offer courses on ecology and the environment.',
-          isTrue: true
-        },
-        {
-          statement: 'Scientific conferences are actively held in the city.',
-          isTrue: true
-        },
-        {
-          statement: 'There are no research institutes in Bad Steben.',
-          isTrue: false
-        },
-        {
-          statement: 'Local schools focus a lot on traditional crafts.',
-          isTrue: true
-        },
-        {
-          statement: 'Libraries in the city offer a wide selection of scientific literature.',
-          isTrue: true
-        },
-        {
-          statement: 'The city has laboratories for scientific research.',
-          isTrue: true
-        },
-        {
-          statement: 'There is no art college in the city.',
-          isTrue: true
-        },
-        {
-          statement: 'Schools in the city have STEM programs.',
-          isTrue: true
-        },
-        {
-          statement: 'The city hosts annual science and technology festivals.',
-          isTrue: true
-        }
-      ]
-    }
-  ];
+
