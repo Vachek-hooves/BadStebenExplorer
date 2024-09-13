@@ -3,7 +3,7 @@ import {StyleSheet, Text, View, Animated} from 'react-native';
 import LayoutImage from '../components/Layout/LayoutImage';
 import {COLOR} from '../const/customColors';
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({navigation}) => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const scaleAnim = useRef(new Animated.Value(0.4)).current;
 
@@ -11,7 +11,7 @@ const WelcomeScreen = () => {
     Animated.parallel([
       Animated.timing(fadeAnim, {
         toValue: 1,
-        duration: 1500,
+        duration: 2000,
         useNativeDriver: true,
       }),
       Animated.spring(scaleAnim, {
@@ -19,7 +19,7 @@ const WelcomeScreen = () => {
         friction: 4,
         useNativeDriver: true,
       }),
-    ]).start();
+    ]).start(() => navigation.navigate('InitialTabScreen'));
   }, []);
 
   return (

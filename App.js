@@ -24,6 +24,7 @@ function App() {
             animationDuration: 800,
           }}>
           <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+          <Stack.Screen name="InitialTabScreen" component={TabNav} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppProvider>
