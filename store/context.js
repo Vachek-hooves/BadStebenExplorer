@@ -7,7 +7,7 @@ export const AppProvider = ({children}) => {
   const [trueFalse, setTrueFalse] = useState([]);
   const value = {};
 
-  return <AppContext.Provider value={value}></AppContext.Provider>;
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
 
 export const useAppContext = () => {
