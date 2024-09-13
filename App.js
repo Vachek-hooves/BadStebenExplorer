@@ -11,6 +11,7 @@ import {
 import {IconTabCity} from './components/icon';
 import IconTabQuiz from './components/icon/IconTabQuiz';
 import IconTabTF from './components/icon/IconTabTF';
+import {COLOR} from './const/customColors';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -20,7 +21,14 @@ const TabNav = () => (
     screenOptions={{
       headerShown: false,
       title: '',
-      tabBarStyle: {height: 95, paddingTop: 40},
+      tabBarStyle: {
+        height: 95,
+        paddingTop: 40,
+        backgroundColor: COLOR.blue + 90,
+        borderRadius: 16,
+        position: 'absolute',
+        marginHorizontal: 10,
+      },
     }}>
     <Tab.Screen
       name="IntroductionScreen"
