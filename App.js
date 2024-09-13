@@ -8,7 +8,7 @@ const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const TabNav = () => {
-  <Tab.Navigator>
+  <Tab.Navigator screenOptions={{}}>
     <Tab.Screen name="IntroductionScreen" component={IntroductionScreen} />
   </Tab.Navigator>;
 };

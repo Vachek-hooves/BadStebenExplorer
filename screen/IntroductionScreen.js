@@ -1,11 +1,12 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import LayoutImage from '../components/Layout/LayoutImage';
 
 const IntroductionScreen = () => {
   return (
-    <View>
-      <Text>IntroductionScreen</Text>
-    </View>
+    <LayoutImage>
+      
+    </LayoutImage>
   );
 };
 
