@@ -1871,3 +1871,28 @@ export const STEBEN_QUIZ2 = [
     ],
   },
 ];
+
+export const CITY_HISTORY = [
+  {
+    id: '1',
+    title: 'History of Bad Steben',
+    content: [
+      {
+        header: 'The Foundation of Bad Steben',
+        article:
+          "Bad Steben, a cozy spa town in Bavaria, surrounded by lush forests and picturesque hills, attracts tourists not only with its thermal springs and fresh air but also with its rich history that stretches back through the centuries. Like many ancient German towns, Bad Steben is surrounded by legends and myths, creating a unique atmosphere and giving the place a special charm. According to local legend, long ago, on the site of present-day Bad Steben, there was nothing but wilderness and abandoned lands. However, one day, local hunters discovered a strange phenomenon: a hot spring gushing from the ground, surrounded by thick mist and unusually bright flowers not found elsewhere in the region. People began to believe that this place possessed healing properties, and soon pilgrims and those seeking healing started to gather here. Gradually, the first buildings were erected around the spring, and thus, the settlement that would become Bad Steben was born. Historical records confirm that the first mentions of Bad Steben date back to the 13th century. The town was founded around the healing springs, which attracted not only local residents but also people from distant regions. Thanks to its natural wealth, the settlement began to grow and develop rapidly. By the Middle Ages, Bad Steben had gained the status of a spa town, which ensured its continued prosperity. Today, Bad Steben preserves its historical heritage, proudly maintaining the memory of its foundation. The town's legends continue to live among the locals, and many tourists come here not only for the healing waters but also to touch the history hidden in every stone of the ancient buildings. ",
+      },
+      {
+        header: 'From the Middle Ages to the Present',
+        article:
+          'The development of Bad Steben is a fascinating story of the transformation of a small medieval settlement into a modern spa town. Over the centuries, the town has undergone numerous changes that have shaped its appearance and character.          In the Middle Ages, Bad Steben was a small but important town due to its thermal springs. It was the healing waters that drew people here who needed treatment and recovery. The town gradually grew with new buildings: inns, baths, and churches. The development of the town was closely linked to its geographical location—it was situated at the crossroads of trade routes, which contributed to the influx of merchants and artisans.Over time, Bad Steben became an increasingly popular spa destination. In the 18th century, the town underwent significant expansion and modernization. New spa complexes, hotels, and a park, which became the true jewel of the town, were built. During this period, Bad Steben became a pilgrimage site not only for the sick but also for the aristocracy seeking tranquility and seclusion.The 19th century brought new challenges and opportunities. The development of rail connections made the town more accessible to tourists from large cities. During this time, luxurious villas and sanatoriums were built in Bad Steben, attracting even more visitors. The town became known for its cultural events, concerts, and theatrical performances, making it a cultural hub of the region.In the 20th century, Bad Steben continued to evolve, adapting to modern conditions. New treatment methods were introduced, spa complexes were modernized, and the tourist infrastructure was developed. Today, Bad Steben combines the charm of an ancient town with the comfort and conveniences of a modern resort, attracting thousands of tourists every year. ',
+      },
+      {
+        header: 'Town’s Development',
+        article:
+          "The spa industry has played a crucial role in the formation and development of Bad Steben, making it one of the most renowned spa towns in Germany. The healing springs that formed the basis for the creation of the spa transformed a small settlement into a thriving town that attracts people from all over Europe.  From the very beginning, the spa industry provided Bad Steben with a steady flow of funds and resources. The construction of sanatoriums, hotels, and medical facilities contributed to the development of the town's infrastructure. The demand for treatment and relaxation in Bad Steben spurred the growth of trade, crafts, and services, which in turn created jobs and increased the town's income.  The spa industry also contributed to the cultural and social development of Bad Steben. The town became a venue for various cultural events, such as concerts, theatrical performances, and art exhibitions. Spa complexes attracted not only the sick but also wealthy people, which fostered the town's cultural life.     Additionally, the spa industry influenced the architectural appearance of Bad Steben. City authorities and private investors invested in the construction of new buildings and the improvement of public spaces. This led to the emergence of many architectural monuments in the town, which today are an integral part of its historical and cultural heritage.  ",
+      },
+    ],
+    image: '',
+  }
+];
