@@ -9,3 +9,11 @@ export const AppProvider = ({children}) => {
 
   return <AppContext.Provider value={value}></AppContext.Provider>;
 };
+
+export const useAppContext = () => {
+  const appContext = useContext(AppContext);
+  if (!appContext) {
+    throw new Error('Context using error');
+  }
+  return appContext;
+};
