@@ -9,7 +9,7 @@ const Tab = createBottomTabNavigator();
 
 const TabNav = () => {
   <Tab.Navigator>
-    <Tab.Screen name="IntroductionScreen" component={IntroductionScreen} />{' '}
+    <Tab.Screen name="IntroductionScreen" component={IntroductionScreen} />
   </Tab.Navigator>;
 };
 

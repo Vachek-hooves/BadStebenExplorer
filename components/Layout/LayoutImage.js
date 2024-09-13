@@ -1,11 +1,12 @@
 import {StyleSheet, Text, View, ImageBackground} from 'react-native';
 
-
-const LayoutImage = () => {
+const LayoutImage = ({children, style}) => {
   return (
-    <View>
-      <Text>LayoutImage</Text>
-    </View>
+    <ImageBackground
+      style={[{flex: 1}, style]}
+      source={require('../../assets/img/bg/city.jpg')}>
+      {children}
+    </ImageBackground>
   );
 };
 
