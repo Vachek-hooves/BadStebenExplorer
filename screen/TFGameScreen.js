@@ -9,10 +9,11 @@ import {
 } from 'react-native';
 import LayoutImage from '../components/Layout/LayoutImage';
 import {useAppContext} from '../store/context';
-import {useRoute, useNavigation} from '@react-navigation/native';
+import {useRoute, useNavigation,} from '@react-navigation/native';
 import {COLOR} from '../const/customColors';
 import {IconReturn} from '../components/icon';
-
+import {Animated} from 'react-native';
+import {useRef} from 'react';
 const TFGameScreen = () => {
   const {trueFalseData, updateNextLevelStatus} = useAppContext();
   const route = useRoute();
@@ -27,12 +28,32 @@ const TFGameScreen = () => {
   const [isCorrect, setIsCorrect] = useState(null);
   const [lastAnsweredQuestion, setLastAnsweredQuestion] = useState(null);
 
+  const trueButtonScale = useRef(new Animated.Value(1)).current;
+  const falseButtonScale = useRef(new Animated.Value(1)).current;
+
+  const animateButton = (button) => {
+    Animated.sequence([
+      Animated.timing(button, {
+        toValue: 0.75,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.spring(button, {
+        toValue: 1,
+        friction: 3,
+        tension: 40,
+        useNativeDriver: true,
+      }),
+    ]).start();
+  };
+
   useEffect(() => {
     const selectedTopic = trueFalseData.find(topic => topic.id === topicId);
     setCurrentTopic(selectedTopic);
   }, [topicId, trueFalseData]);
 
   const handleAnswer = isTrue => {
+    animateButton(isTrue ? trueButtonScale : falseButtonScale);
     const currentQuestion = currentTopic.statements[currentQuestionIndex];
     const correct = currentQuestion.isTrue === isTrue;
     setSelectedAnswer(isTrue);
@@ -90,32 +111,36 @@ const TFGameScreen = () => {
               <Text style={styles.topic}>{currentTopic.topic}</Text>
               <Text style={styles.question}>{currentQuestion.statement}</Text>
               <View style={styles.buttonContainer}>
-                <TouchableOpacity
-                  style={[
-                    styles.button,
-                    styles.trueButton,
-                    selectedAnswer !== null &&
-                      (currentQuestion.isTrue
-                        ? styles.correctAnswer
-                        : styles.wrongAnswer),
-                  ]}
-                  onPress={() => handleAnswer(true)}
-                  disabled={selectedAnswer !== null}>
-                  <Text style={styles.buttonText}>True</Text>
-                </TouchableOpacity>
-                <TouchableOpacity
-                  style={[
-                    styles.button,
-                    styles.falseButton,
-                    selectedAnswer !== null &&
-                      (!currentQuestion.isTrue
-                        ? styles.correctAnswer
-                        : styles.wrongAnswer),
-                  ]}
-                  onPress={() => handleAnswer(false)}
-                  disabled={selectedAnswer !== null}>
-                  <Text style={styles.buttonText}>False</Text>
-                </TouchableOpacity>
+                <Animated.View style={{transform: [{scale: trueButtonScale}]}}>
+                  <TouchableOpacity
+                    style={[
+                      styles.button,
+                      styles.trueButton,
+                      selectedAnswer !== null &&
+                        (currentQuestion.isTrue
+                          ? styles.correctAnswer
+                          : styles.wrongAnswer),
+                    ]}
+                    onPress={() => handleAnswer(true)}
+                    disabled={selectedAnswer !== null}>
+                    <Text style={styles.buttonText}>True</Text>
+                  </TouchableOpacity>
+                </Animated.View>
+                <Animated.View style={{transform: [{scale: falseButtonScale}]}}>
+                  <TouchableOpacity
+                    style={[
+                      styles.button,
+                      styles.falseButton,
+                      selectedAnswer !== null &&
+                        (!currentQuestion.isTrue
+                          ? styles.correctAnswer
+                          : styles.wrongAnswer),
+                    ]}
+                    onPress={() => handleAnswer(false)}
+                    disabled={selectedAnswer !== null}>
+                    <Text style={styles.buttonText}>False</Text>
+                  </TouchableOpacity>
+                </Animated.View>
               </View>
               <View style={styles.feedbackContainer}>
                 {selectedAnswer !== null ? (
@@ -220,15 +245,17 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     width: '100%',
+    paddingHorizontal: 20,
   },
   button: {
     padding: 15,
     borderRadius: 10,
-    width: '40%',
-    borderWidth: 2,
-    borderColor: COLOR.white,
+    width: 120,
+    height: 80,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   trueButton: {
     backgroundColor: COLOR.green,
