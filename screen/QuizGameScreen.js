@@ -1,19 +1,39 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Animated } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import React, {useState, useEffect, useRef} from 'react';
+import {StyleSheet, Text, View, TouchableOpacity, Animated} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import LayoutImage from '../components/Layout/LayoutImage';
 import LinearGradient from 'react-native-linear-gradient';
 
-const QuizGameScreen = ({ route }) => {
-  const { quiz } = route.params;
+const QuizGameScreen = ({route}) => {
+  const {quiz} = route.params;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [feedback, setFeedback] = useState(null);
   const [feedbackOpacity] = useState(new Animated.Value(0));
   const navigation = useNavigation();
+  const optionAnimations = useRef(
+    quiz.questions[0].options.map(() => new Animated.Value(0)),
+  ).current;
 
-  const handleAnswer = (selectedAnswer) => {
+  useEffect(() => {
+    animateOptions();
+  }, [currentQuestionIndex]);
+
+  const animateOptions = () => {
+    optionAnimations.forEach((anim, index) => {
+      anim.setValue(0);
+      Animated.spring(anim, {
+        toValue: 1,
+        tension: 50,
+        friction: 7,
+        useNativeDriver: true,
+        delay: index * 200, // Stagger the animations
+      }).start();
+    });
+  };
+
+  const handleAnswer = selectedAnswer => {
     const currentQuestion = quiz.questions[currentQuestionIndex];
     const isCorrect = selectedAnswer === currentQuestion.answer;
 
@@ -58,10 +78,10 @@ const QuizGameScreen = ({ route }) => {
     navigation.navigate('QuizLaunchScreen');
   };
 
-  const ProgressBar = ({ progress }) => {
+  const ProgressBar = ({progress}) => {
     return (
       <View style={styles.progressBarContainer}>
-        <View style={[styles.progressBar, { width: `${progress}%` }]} />
+        <View style={[styles.progressBar, {width: `${progress}%`}]} />
       </View>
     );
   };
@@ -71,7 +91,9 @@ const QuizGameScreen = ({ route }) => {
       <LayoutImage blur={40}>
         <View style={styles.container}>
           <Text style={styles.resultText}>Quiz Completed!</Text>
-          <Text style={styles.resultText}>Your Score: {score}/{quiz.questions.length}</Text>
+          <Text style={styles.resultText}>
+            Your Score: {score}/{quiz.questions.length}
+          </Text>
           <TouchableOpacity style={styles.button} onPress={restartQuiz}>
             <Text style={styles.buttonText}>Restart Quiz</Text>
           </TouchableOpacity>
@@ -92,29 +114,42 @@ const QuizGameScreen = ({ route }) => {
         <ProgressBar progress={progress} />
         <Text style={styles.questionText}>{currentQuestion.question}</Text>
         {currentQuestion.options.map((option, index) => (
-          <TouchableOpacity
+          <Animated.View
             key={index}
-            style={styles.optionButton}
-            onPress={() => handleAnswer(option)}
-            disabled={feedback !== null}
-          >
-            <LinearGradient
-              colors={['#4c669f', '#3b5998', '#192f6a']}
-              style={styles.optionGradient}
-            >
-              <Text style={styles.optionText}>{option}</Text>
-            </LinearGradient>
-          </TouchableOpacity>
+            style={{
+              transform: [
+                {
+                  scale: optionAnimations[index].interpolate({
+                    inputRange: [0, 1],
+                    outputRange: [0.5, 1],
+                  }),
+                },
+              ],
+              opacity: optionAnimations[index],
+            }}>
+            <TouchableOpacity
+              style={styles.optionButton}
+              onPress={() => handleAnswer(option)}
+              disabled={feedback !== null}>
+              <LinearGradient
+                colors={['#4c669f', '#3b5998', '#192f6a']}
+                style={styles.optionGradient}>
+                <Text style={styles.optionText}>{option}</Text>
+              </LinearGradient>
+            </TouchableOpacity>
+          </Animated.View>
         ))}
-        <Animated.View 
+        <Animated.View
           style={[
-            styles.feedbackContainer, 
-            { 
+            styles.feedbackContainer,
+            {
               opacity: feedbackOpacity,
-              backgroundColor: feedback && feedback.includes('Correct') ? '#4CAF50' : '#f44336' 
-            }
-          ]}
-        >
+              backgroundColor:
+                feedback && feedback.includes('Correct')
+                  ? '#4CAF50'
+                  : '#f44336',
+            },
+          ]}>
           <Text style={styles.feedbackText}>{feedback}</Text>
         </Animated.View>
         <Text style={styles.progressText}>
@@ -129,7 +164,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    justifyContent: 'center',
+    marginTop: 100,
+    // justifyContent: 'center',
   },
   progressBarContainer: {
     height: 10,
