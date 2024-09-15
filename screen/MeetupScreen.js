@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import LayoutImage from '../components/Layout/LayoutImage';
 import {useAppContext} from '../store/context';
+import {IconReturn} from '../components/icon';
 
 const MeetupScreen = () => {
   const {meetups, addMeetup, deleteMeetup} = useAppContext();
@@ -145,6 +146,7 @@ const MeetupScreen = () => {
           </View>
         </View>
       </Modal>
+      <IconReturn />
     </LayoutImage>
   );
 };
