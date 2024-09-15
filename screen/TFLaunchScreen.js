@@ -1,12 +1,11 @@
 import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+import LayoutImage from '../components/Layout/LayoutImage';
 
 const TFLaunchScreen = () => {
-  return (
-    <View>
-      <Text>TFLaunchScreen</Text>
-    </View>
-  );
+  return <LayoutImage>
+    
+  </LayoutImage>;
 };
 
 export default TFLaunchScreen;

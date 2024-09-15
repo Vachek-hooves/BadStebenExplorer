@@ -16,7 +16,7 @@ import {IconReturn} from '../components/icon';
 import {CustomImagePicker} from '../components/Interface';
 
 const MeetupScreen = () => {
-  const {meetups, addMeetup, deleteMeetup} = useAppContext();
+  const {meetups, addMeetup, deleteMeetup, updateMeetup} = useAppContext();
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);
   const [isDetailModalVisible, setIsDetailModalVisible] = useState(false);
   const [selectedMeetup, setSelectedMeetup] = useState(null);
@@ -24,21 +24,46 @@ const MeetupScreen = () => {
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 
   const handleAddMeetup = () => {
-    if (name && description && selectedImage) {
+    if (name && description) {
       const newMeetup = {
         id: Date.now().toString(),
         name,
         description,
-        imageUrl: selectedImage.uri,
+        imageUrl: selectedImage ? selectedImage.uri : null,
       };
       addMeetup(newMeetup);
       setName('');
       setDescription('');
-      setImageUrl('');
       setSelectedImage(null);
       setIsAddModalVisible(false);
+    }
+  };
+  const openEditModal = (meetup) => {
+    setSelectedMeetup(meetup);
+    setName(meetup.name);
+    setDescription(meetup.description);
+    setSelectedImage(meetup.imageUrl ? { uri: meetup.imageUrl } : null);
+    setIsEditModalVisible(true);
+  };
+
+  const handleUpdateMeetup = () => {
+    if (selectedMeetup && (name || description || selectedImage)) {
+      const updatedMeetup = {
+        ...selectedMeetup,
+        name: name || selectedMeetup.name,
+        description: description || selectedMeetup.description,
+        imageUrl: selectedImage ? selectedImage.uri : selectedMeetup.imageUrl,
+      };
+      updateMeetup(updatedMeetup);
+      setIsEditModalVisible(false);
+      setIsDetailModalVisible(false);
+      setSelectedMeetup(null);
+      setName('');
+      setDescription('');
+      setSelectedImage(null);
     }
   };
 
@@ -84,6 +109,53 @@ const MeetupScreen = () => {
         </View>
       </ScrollView>
 
+       {/* Edit Meetup Modal */}
+       <Modal
+        visible={isEditModalVisible}
+        animationType="slide"
+        transparent={true}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <Text style={styles.modalTitle}>Edit Meetup</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Meetup Name"
+              value={name}
+              onChangeText={setName}
+            />
+            <TextInput
+              style={styles.input}
+              placeholder="Description"
+              value={description}
+              onChangeText={setDescription}
+              multiline
+            />
+            <CustomImagePicker
+              onImagePicked={handleImagePicked}
+              buttonText="Update Meetup Image"
+              buttonStyle={styles.imagePickerButton}
+            />
+            {selectedImage && (
+              <Image
+                source={{uri: selectedImage.uri}}
+                style={styles.previewImage}
+              />
+            )}
+            <Button title="Update Meetup" onPress={handleUpdateMeetup} />
+            <Button
+              title="Cancel"
+              onPress={() => {
+                setIsEditModalVisible(false);
+                setSelectedMeetup(null);
+                setName('');
+                setDescription('');
+                setSelectedImage(null);
+              }}
+            />
+          </View>
+        </View>
+      </Modal>
+
       {/* Add Meetup Modal */}
       <Modal
         visible={isAddModalVisible}
@@ -107,7 +179,7 @@ const MeetupScreen = () => {
             />
             <CustomImagePicker
               onImagePicked={handleImagePicked}
-              buttonText="Choose Meetup Image"
+              buttonText="Choose Meetup Image (Optional)"
               buttonStyle={styles.imagePickerButton}
             />
             {selectedImage && (
@@ -138,13 +210,22 @@ const MeetupScreen = () => {
             {selectedMeetup && (
               <>
                 <Text style={styles.modalTitle}>{selectedMeetup.name}</Text>
-                <Image
-                  source={{uri: selectedMeetup.imageUrl}}
-                  style={styles.detailImage}
-                />
+                {selectedMeetup.imageUrl && (
+                  <Image
+                    source={{uri: selectedMeetup.imageUrl}}
+                    style={styles.detailImage}
+                  />
+                )}
                 <Text style={styles.detailDescription}>
                   {selectedMeetup.description}
                 </Text>
+                <Button
+                  title="Edit"
+                  onPress={() => {
+                    setIsDetailModalVisible(false);
+                    openEditModal(selectedMeetup);
+                  }}
+                />
                 <Button
                   title="Close"
                   onPress={() => setIsDetailModalVisible(false)}

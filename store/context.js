@@ -8,6 +8,7 @@ export const AppContext = createContext({
   meetups: [],
   addMeetup: () => {},
   deleteMeetup: () => {},
+  updateMeetup: () => {},
 });
 
 export const AppProvider = ({children}) => {
@@ -70,12 +71,25 @@ export const AppProvider = ({children}) => {
     }
   };
 
+  const updateMeetup = async updatedMeetup => {
+    try {
+      const updatedMeetups = meetups.map(meetup =>
+        meetup.id === updatedMeetup.id ? updatedMeetup : meetup,
+      );
+      await AsyncStorage.setItem('meetups', JSON.stringify(updatedMeetups));
+      setMeetups(updatedMeetups);
+    } catch (error) {
+      console.error('Error updating meetup:', error);
+    }
+  };
+
   const value = {
     quizData,
     trueFalseData,
     meetups,
     addMeetup,
     deleteMeetup,
+    updateMeetup,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
