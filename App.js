@@ -24,26 +24,29 @@ const TabNav = () => (
       tabBarStyle: {
         height: 95,
         paddingTop: 40,
-        backgroundColor: COLOR.blue + 90,
+        backgroundColor: 'transparent',
         borderRadius: 16,
         position: 'absolute',
         marginHorizontal: 10,
+        bottom: 5,
+        shadowOpacity: 0, // Remove shadow on iOS
+        borderTopWidth: 0,
       },
     }}>
     <Tab.Screen
       name="IntroductionScreen"
       component={IntroductionScreen}
-      options={{tabBarIcon: () => <IconTabCity />}}
+      options={{tabBarIcon: ({focused}) => <IconTabCity focused={focused} />}}
     />
     <Tab.Screen
       name="QuizScreen"
       component={QuizLaunchScreen}
-      options={{tabBarIcon: () => <IconTabQuiz />}}
+      options={{tabBarIcon: ({focused}) => <IconTabQuiz focused={focused} />}}
     />
     <Tab.Screen
       name="TFScreen"
       component={TFLaunchScreen}
-      options={{tabBarIcon: () => <IconTabTF />}}
+      options={{tabBarIcon: ({focused}) => <IconTabTF focused={focused} />}}
     />
   </Tab.Navigator>
 );
