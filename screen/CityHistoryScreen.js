@@ -13,7 +13,7 @@ import {IconReturn} from '../components/icon';
 
 const CityHistoryScreen = ({navigation}) => {
   return (
-    <LayoutImage blur={10}>
+    <LayoutImage blur={200}>
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         {CITY_HISTORY.map(section => (
           <TouchableOpacity

@@ -52,7 +52,7 @@ const MeetupScreen = () => {
   };
 
   return (
-    <LayoutImage blur={10}>
+    <LayoutImage blur={200}>
       <ScrollView style={styles.container}>
         {/* <Button
           title="Add New Meetup"
