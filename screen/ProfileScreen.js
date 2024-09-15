@@ -66,7 +66,14 @@ const ProfileScreen = () => {
           placeholderTextColor="#999"
         />
       </View>
-      {!image && (
+      {image ? (
+        <View style={styles.imagePreviewContainer}>
+          <Image source={{ uri: image.uri }} style={styles.imagePreview} />
+          <TouchableOpacity onPress={() => setImage(null)} style={styles.removeImageButton}>
+            <Text style={styles.removeImageText}>Remove</Text>
+          </TouchableOpacity>
+        </View>
+      ) : (
         <CustomImagePicker
           onImagePicked={handleImagePicked}
           buttonText="Choose Profile Picture"
@@ -81,6 +88,7 @@ const ProfileScreen = () => {
 
   const renderProfileView = () => (
     <View style={styles.profileContainer}>
+      <Image source={{ uri: image.uri }} style={styles.profileImage} />
       <Text style={styles.nameText}>{name}</Text>
       <TouchableOpacity style={styles.editButton} onPress={editProfile}>
         <Text style={styles.editButtonText}>Edit Profile</Text>
@@ -89,19 +97,14 @@ const ProfileScreen = () => {
   );
 
   return (
-    <View style={styles.container}>
-      <LinearGradient
-        colors={['#4c669f', '#3b5998', '#192f6a']}
-        style={styles.gradientContainer}
-      >
-        {image ? (
-          <Image source={{ uri: image.uri }} style={styles.imagePreview} />
-        ) : (
-          <View style={styles.placeholderImage} />
-        )}
-      </LinearGradient>
+    <LinearGradient
+      colors={['#ff9a9e', '#fad0c4', '#ffecd2']}
+      start={{x: 0, y: 0}}
+      end={{x: 1, y: 1}}
+      style={styles.container}
+    >
       {isProfileCreated ? renderProfileView() : renderProfileCreation()}
-    </View>
+    </LinearGradient>
   );
 };
 
@@ -110,51 +113,32 @@ export default ProfileScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f0f0',
-  },
-  gradientContainer: {
-    height: height * 0.6,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  imagePreview: {
-    width: width * 0.8,
-    height: width * 0.8,
-    borderRadius: width * 0.4,
-    borderWidth: 5,
-    borderColor: 'white',
-  },
-  placeholderImage: {
-    width: width * 0.8,
-    height: width * 0.8,
-    borderRadius: width * 0.4,
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    borderWidth: 5,
-    borderColor: 'white',
-  },
   formContainer: {
-    flex: 1,
-    padding: 20,
-    justifyContent: 'center',
+    width: '80%',
+    alignItems: 'center',
   },
   profileContainer: {
-    flex: 1,
-    padding: 20,
-    justifyContent: 'center',
     alignItems: 'center',
   },
   title: {
-    fontSize: 28,
+    fontSize: 32,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#fff',
     marginBottom: 30,
+    textShadowColor: 'rgba(0, 0, 0, 0.1)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 5,
   },
   inputContainer: {
+    width: '100%',
     marginBottom: 20,
   },
   input: {
-    backgroundColor: 'white',
-    borderRadius: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    borderRadius: 25,
     padding: 15,
     fontSize: 16,
     shadowColor: '#000',
@@ -163,20 +147,48 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 3,
   },
+  imagePreviewContainer: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  imagePreview: {
+    width: width * 0.6,
+    height: width * 0.6,
+    borderRadius: width * 0.3,
+    marginBottom: 10,
+    borderWidth: 3,
+    borderColor: '#fff',
+  },
+  profileImage: {
+    width: width * 0.7,
+    height: width * 0.7,
+    borderRadius: width * 0.35,
+    marginBottom: 20,
+    borderWidth: 5,
+    borderColor: '#fff',
+  },
+  removeImageButton: {
+    backgroundColor: 'rgba(231, 76, 60, 0.8)',
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    borderRadius: 20,
+  },
+  removeImageText: {
+    color: '#fff',
+    fontSize: 14,
+  },
   imagePickerButton: {
-    backgroundColor: '#3498db',
+    backgroundColor: 'rgba(52, 152, 219, 0.8)',
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 25,
     marginBottom: 20,
-    alignSelf: 'center',
   },
   saveButton: {
-    backgroundColor: '#2ecc71',
+    backgroundColor: 'rgba(46, 204, 113, 0.8)',
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 25,
-    alignSelf: 'center',
   },
   saveButtonText: {
     color: '#fff',
@@ -184,13 +196,16 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   nameText: {
-    fontSize: 32,
+    fontSize: 36,
     fontWeight: 'bold',
-    color: '#333',
+    color: '#fff',
     marginBottom: 20,
+    textShadowColor: 'rgba(0, 0, 0, 0.1)',
+    textShadowOffset: { width: 1, height: 1 },
+    textShadowRadius: 5,
   },
   editButton: {
-    backgroundColor: '#3498db',
+    backgroundColor: 'rgba(52, 152, 219, 0.8)',
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 25,
