@@ -1893,7 +1893,7 @@ export const CITY_HISTORY = [
           "The spa industry has played a crucial role in the formation and development of Bad Steben, making it one of the most renowned spa towns in Germany. The healing springs that formed the basis for the creation of the spa transformed a small settlement into a thriving town that attracts people from all over Europe.  From the very beginning, the spa industry provided Bad Steben with a steady flow of funds and resources. The construction of sanatoriums, hotels, and medical facilities contributed to the development of the town's infrastructure. The demand for treatment and relaxation in Bad Steben spurred the growth of trade, crafts, and services, which in turn created jobs and increased the town's income.  The spa industry also contributed to the cultural and social development of Bad Steben. The town became a venue for various cultural events, such as concerts, theatrical performances, and art exhibitions. Spa complexes attracted not only the sick but also wealthy people, which fostered the town's cultural life.     Additionally, the spa industry influenced the architectural appearance of Bad Steben. City authorities and private investors invested in the construction of new buildings and the improvement of public spaces. This led to the emergence of many architectural monuments in the town, which today are an integral part of its historical and cultural heritage.  ",
       },
     ],
-    image: '',
+    image: 'https://museen.de/imgbstr-9932565.jpg',
   },
   {
     id: '2',
@@ -1925,7 +1925,7 @@ export const CITY_HISTORY = [
           "Heimatmuseum, the Museum of Regional History, is a unique place where you can learn about the rich history and culture of Bad Steben and its surroundings. The museum is housed in a historic building and offers visitors a fascinating journey through the region's past. Heimatmuseum was founded in the mid-20th century and has since become an important cultural center for the town. The museum's collection spans a wide period, from ancient times to the present day. It features archaeological finds, household items, historical documents, and works of art related to the region's history. One of the most interesting sections of the museum is dedicated to the development of Bad Steben as a spa town. Here, you can learn about the first thermal springs, the development of sanatoriums, and the town's significance for the region. Heimatmuseum also tells the story of the town's cultural and political life and its role in various historical events. A visit to Heimatmuseum is an opportunity to immerse yourself in the region's history, learn more about the lives and traditions of its inhabitants, and feel part of this remarkable history. The museum offers not only interesting exhibits but also various educational programs and activities for children and adults.",
       },
     ],
-    image: '',
+    image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/08/db/55/21/therme-bad-steben.jpg?w=500&h=500&s=1',
   },
   {
     id: '3',
@@ -1957,7 +1957,7 @@ export const CITY_HISTORY = [
           "The mineral waters of Bad Steben possess unique properties that have a beneficial effect on health. The high content of minerals such as calcium, magnesium, sodium, and bicarbonates makes these waters ideal for the treatment and prevention of numerous conditions. Mineral waters help improve metabolism, normalize the functioning of the gastrointestinal tract, strengthen bones and joints, and reduce stress and tension. Due to their anti-inflammatory properties, the waters of Bad Steben are especially beneficial for joint and spine disorders such as arthritis, osteochondrosis, and rheumatism. Additionally, mineral waters have a positive effect on the skin, helping to hydrate, nourish, and cleanse it. They help to address issues such as eczema, psoriasis, acne, and other skin conditions. Regular use of Bad Steben's mineral waters in wellness treatments not only improves physical condition but also helps achieve mental balance, increase energy levels, and enhance vitality.",
       },
     ],
-    image: '',
+    image: 'https://www.bayerische-staatsbaeder.de/cdn/uploads/therme-bad-steben-6-thcontentgalleryresponsive.jpg',
   },
   {
     id: '4',
@@ -1989,7 +1989,7 @@ export const CITY_HISTORY = [
           "The history of cultural events in Bad Steben dates back to the Middle Ages when the town was just beginning to develop as a resort center. Since then, the town's cultural life has greatly enriched and diversified, becoming an integral part of its identity. In the 19th century, during the heyday of the spa industry, Bad Steben became a venue for numerous music and theater events that attracted aristocrats and wealthy travelers from all over Europe. During this period, regular classical music concerts, theatrical performances, and balls became a tradition that continues to this day. In the 20th century, the town's cultural life expanded significantly with the emergence of new art genres and mass culture. Bad Steben began hosting modern art festivals, film festivals, and various exhibitions, attracting a new generation of tourists and art lovers. Today, the cultural events of Bad Steben continue to evolve, maintaining respect for tradition and historical heritage. The town offers its guests a rich and diverse program of events for all tastes, combining a rich history with modernity.",
       },
     ],
-    image: '',
+    image: 'https://www.bayerische-staatsbaeder.de/cdn/uploads/biedermeierfest-bad-steben-thteaserimagesmall.jpg',
   },
   {
     id: '5',
@@ -2021,7 +2021,7 @@ export const CITY_HISTORY = [
           'Nature has a significant impact on health and overall well-being, and Bad Steben is no exception. Being outdoors and engaging in nature-based activities contribute to improved physical and mental health. 1. Physical Activity — Walking nature trails, engaging in outdoor sports, and active recreation enhance physical fitness and strengthen the cardiovascular system. 2. Psychological Well-Being — Nature helps reduce stress and anxiety levels. Relaxing walks and outdoor time contribute to relaxation and improved mood. 3. Therapeutic Procedures — Natural springs and minerals in the water have beneficial effects on health. They help improve skin condition, alleviate chronic ailments, and contribute to overall wellness. 4. Improved Sleep Quality — Spending time outdoors and regular physical activity contribute to better sleep quality and help combat insomnia. The natural environment of Bad Steben plays a crucial role in promoting health and offers numerous opportunities for maintaining well-being and enhancing overall quality of life.',
       },
     ],
-    image: '',
+    image: 'https://merkelhotel.de/assets/imgs/msp_0908_4385.jpg',
   },
   {
     id: '6',
@@ -2048,6 +2048,6 @@ export const CITY_HISTORY = [
           'Gasthof zur Post — A traditional guesthouse offering comfortable accommodation in a style that preserves local traditions and ambiance. The guesthouse is ideal for those looking for a friendly and cozy place to stay. The traditional interior and atmospheric rooms create a unique atmosphere, and the restaurant with homemade cuisine and local dishes provides guests with a delightful dining experience. Its convenient location near the city center and major attractions makes this guesthouse a convenient choice for tourists.',
       },
     ],
-    image: '',
+    image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0b/0a/0c/28/aussenansicht.jpg?w=700&h=-1&s=1',
   },
 ];
