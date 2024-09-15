@@ -198,7 +198,7 @@ const TFGameScreen = () => {
             </View>
           </View>
         )}
-        {/* <IconReturn /> */}
+        <IconReturn />
       </ScrollView>
     </LayoutImage>
   );
@@ -210,6 +210,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    borderRadius:10
   },
   currentQuestionContainer: {
     padding: 20,
