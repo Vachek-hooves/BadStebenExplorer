@@ -4,4 +4,6 @@ export const COLOR = {
   btnBg: 'rgba(255, 255, 255, 0.8)',
   black: '',
   grey: '#3C3D37',
+  green: '#387F39',
+  red: '#FF6969',
 };
