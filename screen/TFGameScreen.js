@@ -1,15 +1,22 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image, ScrollView } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+} from 'react-native';
 import LayoutImage from '../components/Layout/LayoutImage';
-import { useAppContext } from '../store/context';
-import { useRoute, useNavigation } from '@react-navigation/native';
-import { COLOR } from '../const/customColors';
+import {useAppContext} from '../store/context';
+import {useRoute, useNavigation} from '@react-navigation/native';
+import {COLOR} from '../const/customColors';
 
 const TFGameScreen = () => {
-  const { trueFalseData } = useAppContext();
+  const {trueFalseData} = useAppContext();
   const route = useRoute();
   const navigation = useNavigation();
-  const { topicId } = route.params;
+  const {topicId} = route.params;
 
   const [currentTopic, setCurrentTopic] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -24,7 +31,7 @@ const TFGameScreen = () => {
     setCurrentTopic(selectedTopic);
   }, [topicId, trueFalseData]);
 
-  const handleAnswer = (isTrue) => {
+  const handleAnswer = isTrue => {
     const currentQuestion = currentTopic.statements[currentQuestionIndex];
     const correct = currentQuestion.isTrue === isTrue;
     setSelectedAnswer(isTrue);
@@ -72,7 +79,10 @@ const TFGameScreen = () => {
         {!showResult ? (
           <>
             <View style={styles.currentQuestionContainer}>
-              <Image source={{ uri: currentTopic.image }} style={styles.image} />
+              <Text style={styles.progress}>
+                {currentQuestionIndex + 1} / {currentTopic.statements.length}
+              </Text>
+              <Image source={{uri: currentTopic.image}} style={styles.image} />
               <Text style={styles.topic}>{currentTopic.topic}</Text>
               <Text style={styles.question}>{currentQuestion.statement}</Text>
               <View style={styles.buttonContainer}>
@@ -80,42 +90,52 @@ const TFGameScreen = () => {
                   style={[
                     styles.button,
                     styles.trueButton,
-                    selectedAnswer !== null && (currentQuestion.isTrue ? styles.correctAnswer : styles.wrongAnswer)
+                    selectedAnswer !== null &&
+                      (currentQuestion.isTrue
+                        ? styles.correctAnswer
+                        : styles.wrongAnswer),
                   ]}
                   onPress={() => handleAnswer(true)}
-                  disabled={selectedAnswer !== null}
-                >
+                  disabled={selectedAnswer !== null}>
                   <Text style={styles.buttonText}>True</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
                   style={[
                     styles.button,
                     styles.falseButton,
-                    selectedAnswer !== null && (!currentQuestion.isTrue ? styles.correctAnswer : styles.wrongAnswer)
+                    selectedAnswer !== null &&
+                      (!currentQuestion.isTrue
+                        ? styles.correctAnswer
+                        : styles.wrongAnswer),
                   ]}
                   onPress={() => handleAnswer(false)}
-                  disabled={selectedAnswer !== null}
-                >
+                  disabled={selectedAnswer !== null}>
                   <Text style={styles.buttonText}>False</Text>
                 </TouchableOpacity>
               </View>
               <View style={styles.feedbackContainer}>
                 {selectedAnswer !== null ? (
-                  <Text style={[styles.feedbackText, isCorrect ? styles.correctText : styles.incorrectText]}>
-                    {isCorrect ? 'Correct!' : 'Incorrect!'} The statement is {currentQuestion.isTrue ? 'True' : 'False'}.
+                  <Text
+                    style={[
+                      styles.feedbackText,
+                      isCorrect ? styles.correctText : styles.incorrectText,
+                    ]}>
+                    {isCorrect ? 'Correct!' : 'Incorrect!'} The statement is{' '}
+                    {currentQuestion.isTrue ? 'True' : 'False'}.
                   </Text>
                 ) : (
                   <Text style={styles.placeholderText}>{'\u00A0'}</Text>
                 )}
               </View>
-              <Text style={styles.progress}>
-                {currentQuestionIndex + 1} / {currentTopic.statements.length}
-              </Text>
             </View>
             {lastAnsweredQuestion && (
               <View style={styles.answeredQuestionsContainer}>
-                <Text style={styles.answeredQuestionsTitle}>Correctly Answered Question:</Text>
-                <Text style={styles.answeredQuestion}>{lastAnsweredQuestion.statement}</Text>
+                <Text style={styles.answeredQuestionsTitle}>
+                  Correctly Answered Question:
+                </Text>
+                <Text style={styles.answeredQuestion}>
+                  {lastAnsweredQuestion.statement}
+                </Text>
               </View>
             )}
           </>
@@ -126,10 +146,14 @@ const TFGameScreen = () => {
               Your score: {score} / {currentTopic.statements.length}
             </Text>
             <View style={styles.endGameButtonContainer}>
-              <TouchableOpacity style={styles.endGameButton} onPress={restartLevel}>
+              <TouchableOpacity
+                style={styles.endGameButton}
+                onPress={restartLevel}>
                 <Text style={styles.endGameButtonText}>Restart Level</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.endGameButton} onPress={goToLaunchScreen}>
+              <TouchableOpacity
+                style={styles.endGameButton}
+                onPress={goToLaunchScreen}>
                 <Text style={styles.endGameButtonText}>Back to Levels</Text>
               </TouchableOpacity>
             </View>
@@ -149,7 +173,7 @@ const styles = StyleSheet.create({
   },
   currentQuestionContainer: {
     padding: 20,
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    // backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 10,
     marginBottom: 20,
   },
@@ -157,6 +181,7 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 10,
+    alignItems: 'center',
   },
   answeredQuestionsTitle: {
     fontSize: 18,
@@ -213,9 +238,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   progress: {
-    marginTop: 10,
-    fontSize: 16,
+    marginVertical: 10,
+    fontSize: 22,
     color: COLOR.white,
+    fontWeight: '900',
+    textAlign: 'center',
   },
   resultContainer: {
     alignItems: 'center',
