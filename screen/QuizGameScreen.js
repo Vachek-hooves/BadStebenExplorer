@@ -148,13 +148,21 @@ const QuizGameScreen = ({route}) => {
                 Your Score: {score}/{quiz.questions.length}
               </Text>
               <View style={styles.resultBar}>
-                <View style={[styles.resultBarFill, {width: `${scorePercentage}%`}]} />
+                <View
+                  style={[styles.resultBarFill, {width: `${scorePercentage}%`}]}
+                />
               </View>
-              <Text style={styles.resultPercentage}>{scorePercentage.toFixed(0)}%</Text>
-              <TouchableOpacity style={styles.resultButton} onPress={restartQuiz}>
+              <Text style={styles.resultPercentage}>
+                {scorePercentage.toFixed(0)}%
+              </Text>
+              <TouchableOpacity
+                style={styles.resultButton}
+                onPress={restartQuiz}>
                 <Text style={styles.resultButtonText}>Restart Quiz</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.resultButton} onPress={navigateToHome}>
+              <TouchableOpacity
+                style={styles.resultButton}
+                onPress={navigateToHome}>
                 <Text style={styles.resultButtonText}>Back to Home</Text>
               </TouchableOpacity>
             </LinearGradient>
@@ -173,7 +181,7 @@ const QuizGameScreen = ({route}) => {
         <ProgressBar progress={progress} />
         <View style={styles.progressTextContainer}>
           <LinearGradient
-            colors={['rgba(76, 102, 159, 0.7)', 'rgba(25, 47, 106, 0.7)']}
+            colors={['rgba(76, 102, 159, 0.7)', 'rgba(25, 47, 106, 0.8)']}
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}
             style={styles.progressTextGradient}>
@@ -182,7 +190,9 @@ const QuizGameScreen = ({route}) => {
             </Text>
           </LinearGradient>
         </View>
-        <Text style={styles.questionText}>{currentQuestion.question}</Text>
+        <View style={styles.questionContainer}>
+          <Text style={styles.questionText}>{currentQuestion.question}</Text>
+        </View>
         {currentQuestion.options.map((option, index) => (
           <Animated.View
             key={index}
@@ -234,16 +244,15 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   progressBarContainer: {
-    height: 15,
+    height: 25,
     backgroundColor: 'rgba(255,255,255,0.1)',
     borderRadius: 5,
-    marginBottom: 10,
+    marginBottom: 20,
   },
   progressBar: {
     height: '100%',
-    backgroundColor: '#4c669f',
-    borderRadius: 5,
-
+    backgroundColor: '#4c679f',
+    borderRadius: 12,
   },
   progressTextContainer: {
     marginBottom: 20,
@@ -264,26 +273,32 @@ const styles = StyleSheet.create({
     textShadowOffset: {width: -1, height: 1},
     textShadowRadius: 10,
   },
+  questionContainer: {
+    height: 180,
+    alignContent: 'center',
+    alignItems:'center'
+  },
   questionText: {
     fontSize: 30,
     color: 'white',
-    marginBottom: 20,
+    marginBottom: 30,
     textAlign: 'center',
   },
   optionButton: {
     marginBottom: 25,
     borderRadius: 25,
     overflow: 'hidden',
-
   },
   optionGradient: {
-    padding: 15,
+    padding: 20,
     alignItems: 'center',
   },
   optionText: {
     fontSize: 22,
     color: 'white',
     textAlign: 'center',
+    fontWeight: '600',
+    letterSpacing: 1,
   },
   feedbackContainer: {
     padding: 15,
@@ -352,11 +367,11 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 30,
     borderRadius: 25,
-    marginBottom: 10,
+    marginBottom: 15,
     width: '100%',
   },
   resultButtonText: {
-    fontSize: 16,
+    fontSize: 18,
     color: 'white',
     textAlign: 'center',
     fontWeight: 'bold',
