@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     // justifyContent: 'center',
-    marginTop: 100,
+    marginTop: 80,
   },
   progressBarContainer: {
     height: 10,
@@ -200,7 +200,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   questionText: {
-    fontSize: 18,
+    fontSize:30,
     color: 'white',
     marginBottom: 20,
     textAlign: 'center',
@@ -215,7 +215,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   optionText: {
-    fontSize: 16,
+    fontSize: 22,
     color: 'white',
     textAlign: 'center',
   },
