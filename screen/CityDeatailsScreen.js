@@ -44,8 +44,9 @@ const styles = StyleSheet.create({
     marginBottom: 8,
   },
   article: {
-    fontSize: 16,
+    fontSize: 18,
     lineHeight: 24,
     color: '#555',
+    lineHeight:26
   },
 });
