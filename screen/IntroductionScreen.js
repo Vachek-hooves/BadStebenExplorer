@@ -1,15 +1,56 @@
-import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import LayoutImage from '../components/Layout/LayoutImage';
+import {COLOR} from '../const/customColors';
 
-const IntroductionScreen = () => {
+const IntroductionScreen = ({navigation}) => {
   return (
-    <LayoutImage>
-      
+    <LayoutImage
+      style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <CustomButton
+        title={'News Paper'}
+        onPress={() => navigation.navigate('NewsPaperScreen')}
+      />
+      <CustomButton
+        title={'Meetup'}
+        onPress={() => navigation.navigate('MeetupScreen')}
+      />
+      <CustomButton
+        title={'City History'}
+        onPress={() => navigation.navigate('CityHistoryScreen')}
+      />
     </LayoutImage>
   );
 };
 
 export default IntroductionScreen;
 
-const styles = StyleSheet.create({});
+const CustomButton = ({title, onPress}) => {
+  return (
+    <TouchableOpacity style={styles.button} onPress={onPress}>
+      <Text style={styles.buttonText}>{title}</Text>
+    </TouchableOpacity>
+  );
+};
+
+const styles = StyleSheet.create({
+  button: {
+    backgroundColor: COLOR.btnBg,
+    paddingVertical: 25,
+    paddingHorizontal: 30,
+    borderRadius: 25,
+    marginVertical: 10,
+    width: '80%',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {width: 0, height: 2},
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  buttonText: {
+    fontSize: 26,
+    fontWeight: 'bold',
+    color: '#333',
+    letterSpacing: 1,
+  },
+});

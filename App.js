@@ -3,7 +3,10 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {AppProvider} from './store/context';
 import {
+  CityHistoryScreen,
   IntroductionScreen,
+  MeetupScreen,
+  NewsPaperScreen,
   QuizLaunchScreen,
   TFLaunchScreen,
   WelcomeScreen,
@@ -63,6 +66,12 @@ function App() {
           }}>
           <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
           <Stack.Screen name="InitialTabScreen" component={TabNav} />
+          <Stack.Screen name="NewsPaperScreen" component={NewsPaperScreen} />
+          <Stack.Screen
+            name="CityHistoryScreen"
+            component={CityHistoryScreen}
+          />
+          <Stack.Screen name="MeetupScreen" component={MeetupScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppProvider>
