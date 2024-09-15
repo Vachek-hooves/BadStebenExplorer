@@ -8,6 +8,7 @@ import NewsPaperScreen from './NewsPaperScreen';
 import CityDeatailsScreen from './CityDeatailsScreen';
 import TFGameScreen from './TFGameScreen';
 import QuizGameScreen from './QuizGameScreen';
+import ProfileScreen from './ProfileScreen';
 
 export {
   WelcomeScreen,
@@ -20,4 +21,5 @@ export {
   CityDeatailsScreen,
   TFGameScreen,
   QuizGameScreen,
+  ProfileScreen,
 };

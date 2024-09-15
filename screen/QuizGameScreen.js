@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, TouchableOpacity, Animated} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import LayoutImage from '../components/Layout/LayoutImage';
 import LinearGradient from 'react-native-linear-gradient';
+// import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const QuizGameScreen = ({route}) => {
   const {quiz} = route.params;
@@ -18,10 +19,21 @@ const QuizGameScreen = ({route}) => {
   const bounceAnimations = useRef(
     quiz.questions[0].options.map(() => new Animated.Value(1)),
   ).current;
+  const [resultAnimation] = useState(new Animated.Value(0));
 
   useEffect(() => {
     animateOptions();
   }, [currentQuestionIndex]);
+
+  useEffect(() => {
+    if (showResult) {
+      Animated.timing(resultAnimation, {
+        toValue: 1,
+        duration: 1000,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [showResult]);
 
   const animateOptions = () => {
     optionAnimations.forEach((anim, index) => {
@@ -96,7 +108,7 @@ const QuizGameScreen = ({route}) => {
   };
 
   const navigateToHome = () => {
-    navigation.navigate('QuizLaunchScreen');
+    navigation.navigate('QuizScreen');
   };
 
   const ProgressBar = ({progress}) => {
@@ -108,19 +120,45 @@ const QuizGameScreen = ({route}) => {
   };
 
   if (showResult) {
+    const scorePercentage = (score / quiz.questions.length) * 100;
     return (
       <LayoutImage blur={40}>
-        <View style={styles.container}>
-          <Text style={styles.resultText}>Quiz Completed!</Text>
-          <Text style={styles.resultText}>
-            Your Score: {score}/{quiz.questions.length}
-          </Text>
-          <TouchableOpacity style={styles.button} onPress={restartQuiz}>
-            <Text style={styles.buttonText}>Restart Quiz</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={navigateToHome}>
-            <Text style={styles.buttonText}>Back to Home</Text>
-          </TouchableOpacity>
+        <View style={styles.resultContainer}>
+          <Animated.View
+            style={[
+              styles.resultCard,
+              {
+                opacity: resultAnimation,
+                transform: [
+                  {
+                    translateY: resultAnimation.interpolate({
+                      inputRange: [0, 1],
+                      outputRange: [50, 0],
+                    }),
+                  },
+                ],
+              },
+            ]}>
+            <LinearGradient
+              colors={['rgba(76, 102, 159, 0.9)', 'rgba(25, 47, 106, 0.9)']}
+              style={styles.resultGradient}>
+              {/* <Icon name="trophy" size={50} color="gold" style={styles.resultIcon} /> */}
+              <Text style={styles.resultTitle}>Quiz Completed!</Text>
+              <Text style={styles.resultScore}>
+                Your Score: {score}/{quiz.questions.length}
+              </Text>
+              <View style={styles.resultBar}>
+                <View style={[styles.resultBarFill, {width: `${scorePercentage}%`}]} />
+              </View>
+              <Text style={styles.resultPercentage}>{scorePercentage.toFixed(0)}%</Text>
+              <TouchableOpacity style={styles.resultButton} onPress={restartQuiz}>
+                <Text style={styles.resultButtonText}>Restart Quiz</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.resultButton} onPress={navigateToHome}>
+                <Text style={styles.resultButtonText}>Back to Home</Text>
+              </TouchableOpacity>
+            </LinearGradient>
+          </Animated.View>
         </View>
       </LayoutImage>
     );
@@ -193,21 +231,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    marginTop: 40, // Adjusted to accommodate the progress text at the top
+    marginTop: 40,
   },
   progressBarContainer: {
-    height: 10,
+    height: 15,
     backgroundColor: 'rgba(255,255,255,0.1)',
     borderRadius: 5,
-    marginBottom: 10, // Reduced margin to bring progress text closer
+    marginBottom: 10,
   },
   progressBar: {
     height: '100%',
     backgroundColor: '#4c669f',
     borderRadius: 5,
+
   },
   progressTextContainer: {
-    marginBottom: 20, // Added margin to separate from the question
+    marginBottom: 20,
   },
   progressTextGradient: {
     paddingVertical: 8,
@@ -217,7 +256,7 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(255, 255, 255, 0.3)',
   },
   progressText: {
-    fontSize: 14,
+    fontSize: 18,
     color: 'white',
     textAlign: 'center',
     fontWeight: 'bold',
@@ -232,9 +271,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   optionButton: {
-    marginBottom: 10,
+    marginBottom: 25,
     borderRadius: 25,
     overflow: 'hidden',
+
   },
   optionGradient: {
     padding: 15,
@@ -242,23 +282,6 @@ const styles = StyleSheet.create({
   },
   optionText: {
     fontSize: 22,
-    color: 'white',
-    textAlign: 'center',
-  },
-  resultText: {
-    fontSize: 24,
-    color: 'white',
-    marginBottom: 20,
-    textAlign: 'center',
-  },
-  button: {
-    backgroundColor: 'rgba(255, 255, 255, 0.3)',
-    padding: 15,
-    borderRadius: 8,
-    marginBottom: 10,
-  },
-  buttonText: {
-    fontSize: 16,
     color: 'white',
     textAlign: 'center',
   },
@@ -273,6 +296,70 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'white',
     textAlign: 'center',
+  },
+  resultContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 20,
+  },
+  resultCard: {
+    width: '100%',
+    maxWidth: 350,
+    borderRadius: 20,
+    overflow: 'hidden',
+    elevation: 5,
+  },
+  resultGradient: {
+    padding: 30,
+    alignItems: 'center',
+  },
+  resultIcon: {
+    marginBottom: 20,
+  },
+  resultTitle: {
+    fontSize: 28,
+    color: 'white',
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  resultScore: {
+    fontSize: 22,
+    color: 'white',
+    marginBottom: 20,
+    textAlign: 'center',
+  },
+  resultBar: {
+    width: '100%',
+    height: 10,
+    backgroundColor: 'rgba(255,255,255,0.3)',
+    borderRadius: 5,
+    marginBottom: 10,
+  },
+  resultBarFill: {
+    height: '100%',
+    backgroundColor: '#4CAF50',
+    borderRadius: 5,
+  },
+  resultPercentage: {
+    fontSize: 18,
+    color: 'white',
+    marginBottom: 30,
+  },
+  resultButton: {
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    paddingVertical: 12,
+    paddingHorizontal: 30,
+    borderRadius: 25,
+    marginBottom: 10,
+    width: '100%',
+  },
+  resultButtonText: {
+    fontSize: 16,
+    color: 'white',
+    textAlign: 'center',
+    fontWeight: 'bold',
   },
 });
 

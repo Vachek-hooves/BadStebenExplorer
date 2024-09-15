@@ -18,6 +18,10 @@ const IntroductionScreen = ({navigation}) => {
         title={'Meetup'}
         onPress={() => navigation.navigate('MeetupScreen')}
       />
+      <CustomButton
+        title={'Profile'}
+        onPress={() => navigation.navigate('ProfileScreen')}
+      />
     </LayoutImage>
   );
 };

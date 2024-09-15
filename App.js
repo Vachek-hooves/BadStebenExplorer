@@ -8,6 +8,7 @@ import {
   IntroductionScreen,
   MeetupScreen,
   NewsPaperScreen,
+  ProfileScreen,
   QuizGameScreen,
   QuizLaunchScreen,
   TFGameScreen,
@@ -81,6 +82,7 @@ function App() {
           />
           <Stack.Screen name="TFGameScreen" component={TFGameScreen} />
           <Stack.Screen name="QuizGameScreen" component={QuizGameScreen} />
+          <Stack.Screen name="ProfileScreen" component={ProfileScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppProvider>
