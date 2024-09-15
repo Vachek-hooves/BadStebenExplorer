@@ -1,15 +1,71 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import LayoutImage from '../components/Layout/LayoutImage';
 import CustomImagePicker from '../components/Interface/CustomImagePicker';
 
 const ProfileScreen = () => {
   const [name, setName] = useState('');
   const [image, setImage] = useState(null);
+  const [isProfileCreated, setIsProfileCreated] = useState(false);
+
+  useEffect(() => {
+    loadProfile();
+  }, []);
+
+  const loadProfile = async () => {
+    try {
+      const storedName = await AsyncStorage.getItem('userName');
+      const storedImage = await AsyncStorage.getItem('userImage');
+      if (storedName !== null && storedImage !== null) {
+        setName(storedName);
+        setImage(JSON.parse(storedImage));
+        setIsProfileCreated(true);
+      }
+    } catch (error) {
+      console.error('Error loading profile:', error);
+    }
+  };
 
   const handleImagePicked = (imageData) => {
     setImage(imageData);
   };
+
+  const saveProfile = async () => {
+    if (!name.trim() || !image) {
+      Alert.alert('Error', 'Please enter your name and choose a profile picture.');
+      return;
+    }
+
+    try {
+      await AsyncStorage.setItem('userName', name);
+      await AsyncStorage.setItem('userImage', JSON.stringify(image));
+      setIsProfileCreated(true);
+      Alert.alert('Success', 'Profile saved successfully!');
+    } catch (error) {
+      console.error('Error saving profile:', error);
+      Alert.alert('Error', 'Failed to save profile. Please try again.');
+    }
+  };
+
+  const editProfile = () => {
+    setIsProfileCreated(false);
+  };
+
+  if (isProfileCreated) {
+    return (
+      <LayoutImage blur={50}>
+        <View style={styles.container}>
+          <Text style={styles.title}>Your Profile</Text>
+          <Image source={{ uri: image.uri }} style={styles.imagePreview} />
+          <Text style={styles.nameText}>{name}</Text>
+          <TouchableOpacity style={styles.editButton} onPress={editProfile}>
+            <Text style={styles.editButtonText}>Edit Profile</Text>
+          </TouchableOpacity>
+        </View>
+      </LayoutImage>
+    );
+  }
 
   return (
     <LayoutImage blur={50}>
@@ -38,8 +94,8 @@ const ProfileScreen = () => {
             buttonStyle={styles.imagePickerButton}
           />
         )}
-        <TouchableOpacity style={styles.registerButton}>
-          <Text style={styles.registerButtonText}>Register</Text>
+        <TouchableOpacity style={styles.registerButton} onPress={saveProfile}>
+          <Text style={styles.registerButtonText}>Save Profile</Text>
         </TouchableOpacity>
       </View>
     </LayoutImage>
@@ -110,6 +166,24 @@ const styles = StyleSheet.create({
   registerButtonText: {
     color: '#fff',
     fontSize: 18,
+    fontWeight: 'bold',
+  },
+  nameText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
+    marginTop: 20,
+    marginBottom: 30,
+  },
+  editButton: {
+    backgroundColor: '#3498db',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 25,
+  },
+  editButtonText: {
+    color: '#fff',
+    fontSize: 16,
     fontWeight: 'bold',
   },
 });
