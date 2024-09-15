@@ -7,16 +7,16 @@ const IntroductionScreen = ({navigation}) => {
     <LayoutImage
       style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
       <CustomButton
+        title={'City History'}
+        onPress={() => navigation.navigate('CityHistoryScreen')}
+      />
+      <CustomButton
         title={'News Paper'}
         onPress={() => navigation.navigate('NewsPaperScreen')}
       />
       <CustomButton
         title={'Meetup'}
         onPress={() => navigation.navigate('MeetupScreen')}
-      />
-      <CustomButton
-        title={'City History'}
-        onPress={() => navigation.navigate('CityHistoryScreen')}
       />
     </LayoutImage>
   );

@@ -1872,7 +1872,7 @@ export const STEBEN_QUIZ2 = [
   },
 ];
 
-export const NEWSPAPER = [
+export const CITY_HISTORY = [
   {
     id: '1',
     title: 'History of Bad Steben',
