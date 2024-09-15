@@ -39,7 +39,7 @@ const TFGameScreen = () => {
   const animateButton = button => {
     Animated.sequence([
       Animated.timing(button, {
-        toValue: 0.75,
+        toValue: 0.7,
         duration: 100,
         useNativeDriver: true,
       }),
@@ -111,7 +111,7 @@ const TFGameScreen = () => {
             <View style={styles.currentQuestionContainer}>
               <View style={{flexDirection: 'row'}}>
                 <Text style={styles.progress}>
-                  <IconCorrect /> {currentQuestionIndex + 1} /{' '}
+                  <IconCorrect /> {score} /{' '}
                 </Text>
                 <Text style={styles.progress}>
                   {currentTopic.statements.length} <IconTotal />
@@ -264,8 +264,8 @@ const styles = StyleSheet.create({
   button: {
     padding: 15,
     borderRadius: 10,
-    width: 120,
-    height: 80,
+    width: 130,
+    height: 100,
     justifyContent: 'center',
     alignItems: 'center',
   },
