@@ -15,6 +15,9 @@ const QuizGameScreen = ({route}) => {
   const optionAnimations = useRef(
     quiz.questions[0].options.map(() => new Animated.Value(0)),
   ).current;
+  const bounceAnimations = useRef(
+    quiz.questions[0].options.map(() => new Animated.Value(1)),
+  ).current;
 
   useEffect(() => {
     animateOptions();
@@ -28,12 +31,29 @@ const QuizGameScreen = ({route}) => {
         tension: 50,
         friction: 7,
         useNativeDriver: true,
-        delay: index * 200, // Stagger the animations
+        delay: index * 100,
       }).start();
     });
   };
 
-  const handleAnswer = selectedAnswer => {
+  const handleAnswer = (selectedAnswer, index) => {
+    if (feedback !== null) return;
+
+    // Bounce animation for the selected option
+    Animated.sequence([
+      Animated.timing(bounceAnimations[index], {
+        toValue: 0.8,
+        duration: 100,
+        useNativeDriver: true,
+      }),
+      Animated.spring(bounceAnimations[index], {
+        toValue: 1,
+        friction: 3,
+        tension: 40,
+        useNativeDriver: true,
+      }),
+    ]).start();
+
     const currentQuestion = quiz.questions[currentQuestionIndex];
     const isCorrect = selectedAnswer === currentQuestion.answer;
 
@@ -72,6 +92,7 @@ const QuizGameScreen = ({route}) => {
     setShowResult(false);
     setFeedback(null);
     feedbackOpacity.setValue(0);
+    bounceAnimations.forEach(anim => anim.setValue(1));
   };
 
   const navigateToHome = () => {
@@ -119,17 +140,17 @@ const QuizGameScreen = ({route}) => {
             style={{
               transform: [
                 {
-                  scale: optionAnimations[index].interpolate({
-                    inputRange: [0, 1],
-                    outputRange: [0.5, 1],
-                  }),
+                  scale: Animated.multiply(
+                    optionAnimations[index],
+                    bounceAnimations[index],
+                  ),
                 },
               ],
               opacity: optionAnimations[index],
             }}>
             <TouchableOpacity
               style={styles.optionButton}
-              onPress={() => handleAnswer(option)}
+              onPress={() => handleAnswer(option, index)}
               disabled={feedback !== null}>
               <LinearGradient
                 colors={['#4c669f', '#3b5998', '#192f6a']}
@@ -164,8 +185,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    marginTop: 100,
     // justifyContent: 'center',
+    marginTop: 100,
   },
   progressBarContainer: {
     height: 10,
