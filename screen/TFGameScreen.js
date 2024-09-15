@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import LayoutImage from '../components/Layout/LayoutImage';
 import { useAppContext } from '../store/context';
-import { useRoute } from '@react-navigation/native';
+import { useRoute, } from '@react-navigation/native';
 import { COLOR } from '../const/customColors';
 
-const TFGameScreen = () => {
+const TFGameScreen = ({navigation}) => {
   const { trueFalseData } = useAppContext();
   const route = useRoute();
   const { topicId } = route.params;
@@ -41,6 +41,18 @@ const TFGameScreen = () => {
         setShowResult(true);
       }
     }, 2000);
+  };
+
+  const restartLevel = () => {
+    setCurrentQuestionIndex(0);
+    setScore(0);
+    setShowResult(false);
+    setSelectedAnswer(null);
+    setIsCorrect(null);
+  };
+
+  const goToLaunchScreen = () => {
+    navigation.navigate('TFScreen');
   };
 
   if (!currentTopic) return null;
@@ -98,6 +110,14 @@ const TFGameScreen = () => {
             <Text style={styles.scoreText}>
               Your score: {score} / {currentTopic.statements.length}
             </Text>
+            <View style={styles.endGameButtonContainer}>
+              <TouchableOpacity style={styles.endGameButton} onPress={restartLevel}>
+                <Text style={styles.endGameButtonText}>Restart Level</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.endGameButton} onPress={goToLaunchScreen}>
+                <Text style={styles.endGameButtonText}>Back to Levels</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         )}
       </View>
@@ -205,5 +225,23 @@ const styles = StyleSheet.create({
   },
   incorrectText: {
     color: COLOR.red,
+  },
+  endGameButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '100%',
+    marginTop: 20,
+  },
+  endGameButton: {
+    backgroundColor: COLOR.blue,
+    padding: 15,
+    borderRadius: 10,
+    width: '45%',
+  },
+  endGameButtonText: {
+    color: COLOR.white,
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
