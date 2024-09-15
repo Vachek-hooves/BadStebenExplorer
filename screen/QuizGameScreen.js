@@ -55,7 +55,7 @@ const QuizGameScreen = ({route}) => {
   };
 
   const navigateToHome = () => {
-    navigation.navigate('QuizLaunchScreen');
+    navigation.navigate('QuizScreen');
   };
 
   const ProgressBar = ({progress}) => {
@@ -86,12 +86,12 @@ const QuizGameScreen = ({route}) => {
           <Text style={styles.resultText}>
             Your Score: {score}/{quiz.questions.length}
           </Text>
-          <FontAwesome5
+          {/* <FontAwesome5
             name="trophy"
             size={50}
             color="gold"
             style={styles.icon}
-          />
+          /> */}
           <TouchableOpacity style={styles.button} onPress={restartQuiz}>
             <Text style={styles.buttonText}>Restart Quiz</Text>
           </TouchableOpacity>
