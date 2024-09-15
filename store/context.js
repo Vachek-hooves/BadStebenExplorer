@@ -5,11 +5,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 export const AppContext = createContext({
   quizData: [],
   trueFalseData: [],
+  meetups: [],
+  addMeetup: () => {},
+  deleteMeetup: () => {},
 });
 
 export const AppProvider = ({children}) => {
   const [quizData, setQuizData] = useState([]);
   const [trueFalseData, setTrueFalseData] = useState([]);
+  const [meetups, setMeetups] = useState([]);
 
   useEffect(() => {
     initializeData();
@@ -20,6 +24,10 @@ export const AppProvider = ({children}) => {
       // Check if data already exists in AsyncStorage
       const storedQuizData = await AsyncStorage.getItem('quizData');
       const storedTrueFalseData = await AsyncStorage.getItem('trueFalseData');
+      const storedMeetups = await AsyncStorage.getItem('meetups');
+      if (storedMeetups) {
+        setMeetups(JSON.parse(storedMeetups));
+      }
 
       if (!storedQuizData) {
         // If not, store the initial data
@@ -42,8 +50,33 @@ export const AppProvider = ({children}) => {
       console.error('Error initializing data:', error);
     }
   };
+  const addMeetup = async newMeetup => {
+    try {
+      const updatedMeetups = [...meetups, newMeetup];
+      await AsyncStorage.setItem('meetups', JSON.stringify(updatedMeetups));
+      setMeetups(updatedMeetups);
+    } catch (error) {
+      console.error('Error adding meetup:', error);
+    }
+  };
 
-  const value = {quizData, trueFalseData};
+  const deleteMeetup = async meetupId => {
+    try {
+      const updatedMeetups = meetups.filter(meetup => meetup.id !== meetupId);
+      await AsyncStorage.setItem('meetups', JSON.stringify(updatedMeetups));
+      setMeetups(updatedMeetups);
+    } catch (error) {
+      console.error('Error deleting meetup:', error);
+    }
+  };
+
+  const value = {
+    quizData,
+    trueFalseData,
+    meetups,
+    addMeetup,
+    deleteMeetup,
+  };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 };
