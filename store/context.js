@@ -60,7 +60,7 @@ export const AppProvider = ({children}) => {
   };
   const addMeetup = async newMeetup => {
     try {
-      const updatedMeetups = [...meetups, newMeetup];
+      const updatedMeetups = [newMeetup, ...meetups];
       await AsyncStorage.setItem('meetups', JSON.stringify(updatedMeetups));
       setMeetups(updatedMeetups);
     } catch (error) {
@@ -127,16 +127,25 @@ export const AppProvider = ({children}) => {
     [trueFalseData],
   );
 
-  const updateNextLevelStatus = async (currentTopicId, score, totalQuestions) => {
+  const updateNextLevelStatus = async (
+    currentTopicId,
+    score,
+    totalQuestions,
+  ) => {
     try {
       if (score >= 6) {
-        const updatedTrueFalseData = trueFalseData.map((topic, index, array) => {
-          if (topic.id === currentTopicId && index < array.length - 1) {
-            array[index + 1].active = true;
-          }
-          return topic;
-        });
-        await AsyncStorage.setItem('trueFalseData', JSON.stringify(updatedTrueFalseData));
+        const updatedTrueFalseData = trueFalseData.map(
+          (topic, index, array) => {
+            if (topic.id === currentTopicId && index < array.length - 1) {
+              array[index + 1].active = true;
+            }
+            return topic;
+          },
+        );
+        await AsyncStorage.setItem(
+          'trueFalseData',
+          JSON.stringify(updatedTrueFalseData),
+        );
         setTrueFalseData(updatedTrueFalseData);
       }
     } catch (error) {

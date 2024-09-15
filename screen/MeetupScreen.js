@@ -41,11 +41,11 @@ const MeetupScreen = () => {
       setIsAddModalVisible(false);
     }
   };
-  const openEditModal = (meetup) => {
+  const openEditModal = meetup => {
     setSelectedMeetup(meetup);
     setName(meetup.name);
     setDescription(meetup.description);
-    setSelectedImage(meetup.imageUrl ? { uri: meetup.imageUrl } : null);
+    setSelectedImage(meetup.imageUrl ? {uri: meetup.imageUrl} : null);
     setIsEditModalVisible(true);
   };
 
@@ -109,8 +109,8 @@ const MeetupScreen = () => {
         </View>
       </ScrollView>
 
-       {/* Edit Meetup Modal */}
-       <Modal
+      {/* Edit Meetup Modal */}
+      <Modal
         visible={isEditModalVisible}
         animationType="slide"
         transparent={true}>
@@ -141,7 +141,10 @@ const MeetupScreen = () => {
                 style={styles.previewImage}
               />
             )}
-            <Button title="Update Meetup" onPress={handleUpdateMeetup} />
+            <CustomButton onPress={handleUpdateMeetup}>
+              Update Meetup
+            </CustomButton>
+            {/* <Button title="Update Meetup" onPress={handleUpdateMeetup} /> */}
             <Button
               title="Cancel"
               onPress={() => {
@@ -188,14 +191,27 @@ const MeetupScreen = () => {
                 style={styles.previewImage}
               />
             )}
-            <Button title="Add Meetup" onPress={handleAddMeetup} />
-            <Button
+            {/* <Button title="Add Meetup" onPress={handleAddMeetup} /> */}
+            <CustomButton onPress={handleAddMeetup}>Add Meetup</CustomButton>
+            {/* <TouchableOpacity
+              onPress={handleAddMeetup}
+              style={styles.addButton}>
+              <Text style={styles.addButtonText}>Add Meetup</Text>
+            </TouchableOpacity> */}
+            <CustomButton
+              onPress={() => {
+                setIsAddModalVisible(false);
+                setSelectedImage(null);
+              }}>
+              Cancel
+            </CustomButton>
+            {/* <Button
               title="Cancel"
               onPress={() => {
                 setIsAddModalVisible(false);
                 setSelectedImage(null);
               }}
-            />
+            /> */}
           </View>
         </View>
       </Modal>
@@ -219,7 +235,24 @@ const MeetupScreen = () => {
                 <Text style={styles.detailDescription}>
                   {selectedMeetup.description}
                 </Text>
-                <Button
+                <CustomButton
+                  onPress={() => {
+                    setIsDetailModalVisible(false);
+                    openEditModal(selectedMeetup);
+                  }}>
+                  Edit
+                </CustomButton>
+                <CustomButton onPress={() => setIsDetailModalVisible(false)}>
+                  Close
+                </CustomButton>
+                <CustomButton
+                  onPress={() => {
+                    deleteMeetup(selectedMeetup.id);
+                    setIsDetailModalVisible(false);
+                  }}>
+                  Delete
+                </CustomButton>
+                {/* <Button
                   title="Edit"
                   onPress={() => {
                     setIsDetailModalVisible(false);
@@ -236,7 +269,7 @@ const MeetupScreen = () => {
                     deleteMeetup(selectedMeetup.id);
                     setIsDetailModalVisible(false);
                   }}
-                />
+                /> */}
               </>
             )}
           </View>
@@ -248,6 +281,14 @@ const MeetupScreen = () => {
 };
 
 export default MeetupScreen;
+
+const CustomButton = ({children, onPress}) => {
+  return (
+    <TouchableOpacity onPress={onPress} style={styles.addButton}>
+      <Text style={styles.addButtonText}>{children}</Text>
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -320,6 +361,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     marginBottom: 20,
+    marginTop: 15,
   },
   addButtonText: {
     color: 'white',
