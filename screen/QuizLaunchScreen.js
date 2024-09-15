@@ -1,12 +1,8 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import LayoutImage from '../components/Layout/LayoutImage';
 
 const QuizLaunchScreen = () => {
-  return (
-    <View>
-      <Text>QuizLaunchScreen</Text>
-    </View>
-  );
+  return <LayoutImage blur={40}></LayoutImage>;
 };
 
 export default QuizLaunchScreen;
