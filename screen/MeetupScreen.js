@@ -13,6 +13,7 @@ import {
 import LayoutImage from '../components/Layout/LayoutImage';
 import {useAppContext} from '../store/context';
 import {IconReturn} from '../components/icon';
+import {CustomImagePicker} from '../components/Interface';
 
 const MeetupScreen = () => {
   const {meetups, addMeetup, deleteMeetup} = useAppContext();
@@ -22,21 +23,27 @@ const MeetupScreen = () => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const handleAddMeetup = () => {
-    if (name && description && imageUrl) {
+    if (name && description && selectedImage) {
       const newMeetup = {
         id: Date.now().toString(),
         name,
         description,
-        imageUrl,
+        imageUrl: selectedImage.uri,
       };
       addMeetup(newMeetup);
       setName('');
       setDescription('');
       setImageUrl('');
+      setSelectedImage(null);
       setIsAddModalVisible(false);
     }
+  };
+
+  const handleImagePicked = imageData => {
+    setSelectedImage(imageData);
   };
 
   const openDetailModal = meetup => {
@@ -98,16 +105,24 @@ const MeetupScreen = () => {
               onChangeText={setDescription}
               multiline
             />
-            <TextInput
-              style={styles.input}
-              placeholder="Image URL"
-              value={imageUrl}
-              onChangeText={setImageUrl}
+            <CustomImagePicker
+              onImagePicked={handleImagePicked}
+              buttonText="Choose Meetup Image"
+              buttonStyle={styles.imagePickerButton}
             />
+            {selectedImage && (
+              <Image
+                source={{uri: selectedImage.uri}}
+                style={styles.previewImage}
+              />
+            )}
             <Button title="Add Meetup" onPress={handleAddMeetup} />
             <Button
               title="Cancel"
-              onPress={() => setIsAddModalVisible(false)}
+              onPress={() => {
+                setIsAddModalVisible(false);
+                setSelectedImage(null);
+              }}
             />
           </View>
         </View>
@@ -229,5 +244,15 @@ const styles = StyleSheet.create({
     color: 'white',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  imagePickerButton: {
+    backgroundColor: '#4CAF50',
+    marginBottom: 10,
+  },
+  previewImage: {
+    width: '100%',
+    height: 150,
+    borderRadius: 10,
+    marginBottom: 10,
   },
 });
