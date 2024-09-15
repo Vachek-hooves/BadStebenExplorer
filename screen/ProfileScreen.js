@@ -98,7 +98,7 @@ const ProfileScreen = () => {
 
   return (
     <LinearGradient
-      colors={['#ff9a9e', '#fad0c4', '#ffecd2']}
+      colors={['#D7CCC8', '#A1887F', '#795548']}
       start={{x: 0, y: 0}}
       end={{x: 1, y: 1}}
       style={styles.container}
@@ -126,11 +126,11 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#EFEBE9',
     marginBottom: 30,
-    textShadowColor: 'rgba(0, 0, 0, 0.1)',
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 5,
+    textShadowRadius: 3,
   },
   inputContainer: {
     width: '100%',
@@ -143,9 +143,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 3,
+    color: '#3E2723',
   },
   imagePreviewContainer: {
     alignItems: 'center',
@@ -157,7 +158,7 @@ const styles = StyleSheet.create({
     borderRadius: width * 0.3,
     marginBottom: 10,
     borderWidth: 3,
-    borderColor: '#fff',
+    borderColor: '#EFEBE9',
   },
   profileImage: {
     width: width * 0.7,
@@ -165,53 +166,53 @@ const styles = StyleSheet.create({
     borderRadius: width * 0.35,
     marginBottom: 20,
     borderWidth: 5,
-    borderColor: '#fff',
+    borderColor: '#EFEBE9',
   },
   removeImageButton: {
-    backgroundColor: 'rgba(231, 76, 60, 0.8)',
+    backgroundColor: 'rgba(121, 85, 72, 0.8)',
     paddingVertical: 8,
     paddingHorizontal: 15,
     borderRadius: 20,
   },
   removeImageText: {
-    color: '#fff',
+    color: '#EFEBE9',
     fontSize: 14,
   },
   imagePickerButton: {
-    backgroundColor: 'rgba(52, 152, 219, 0.8)',
+    backgroundColor: 'rgba(69, 90, 100, 0.8)',
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 25,
     marginBottom: 20,
   },
   saveButton: {
-    backgroundColor: 'rgba(46, 204, 113, 0.8)',
+    backgroundColor: 'rgba(56, 142, 60, 0.8)',
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 25,
   },
   saveButtonText: {
-    color: '#fff',
+    color: '#EFEBE9',
     fontSize: 18,
     fontWeight: 'bold',
   },
   nameText: {
     fontSize: 36,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#EFEBE9',
     marginBottom: 20,
-    textShadowColor: 'rgba(0, 0, 0, 0.1)',
+    textShadowColor: 'rgba(0, 0, 0, 0.3)',
     textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 5,
+    textShadowRadius: 3,
   },
   editButton: {
-    backgroundColor: 'rgba(52, 152, 219, 0.8)',
+    backgroundColor: 'rgba(69, 90, 100, 0.8)',
     paddingVertical: 12,
     paddingHorizontal: 20,
     borderRadius: 25,
   },
   editButtonText: {
-    color: '#fff',
+    color: '#EFEBE9',
     fontSize: 16,
     fontWeight: 'bold',
   },
