@@ -24,23 +24,19 @@ const TFGameScreen = () => {
 
   const handleAnswer = (isTrue) => {
     const currentQuestion = currentTopic.statements[currentQuestionIndex];
-    const correct = currentQuestion.isTrue === isTrue;
-    setSelectedAnswer(isTrue);
-    setIsCorrect(correct);
-
-    if (correct) {
+    if (currentQuestion.isTrue === isTrue) {
       setScore(score + 1);
+      setIsCorrect(true);
+    } else {
+      setIsCorrect(false);
     }
 
-    setTimeout(() => {
-      if (currentQuestionIndex < currentTopic.statements.length - 1) {
-        setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setSelectedAnswer(null);
-        setIsCorrect(null);
-      } else {
-        setShowResult(true);
-      }
-    }, 2000);
+    setSelectedAnswer(isTrue);
+    if (currentQuestionIndex < currentTopic.statements.length - 1) {
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    } else {
+      setShowResult(true);
+    }
   };
 
   if (!currentTopic) return null;
@@ -79,11 +75,15 @@ const TFGameScreen = () => {
                 <Text style={styles.buttonText}>False</Text>
               </TouchableOpacity>
             </View>
-            {selectedAnswer !== null && (
-              <Text style={[styles.feedbackText, isCorrect ? styles.correctText : styles.incorrectText]}>
-                {isCorrect ? 'Correct!' : 'Incorrect!'} The statement is {currentQuestion.isTrue ? 'True' : 'False'}.
-              </Text>
-            )}
+            <View style={styles.feedbackContainer}>
+              {selectedAnswer !== null ? (
+                <Text style={[styles.feedbackText, isCorrect ? styles.correctText : styles.incorrectText]}>
+                  {isCorrect ? 'Correct!' : 'Incorrect!'} The statement is {currentQuestion.isTrue ? 'True' : 'False'}.
+                </Text>
+              ) : (
+                <Text style={styles.placeholderText}>{'\u00A0'}</Text>
+              )}
+            </View>
             <Text style={styles.progress}>
               {currentQuestionIndex + 1} / {currentTopic.statements.length}
             </Text>
@@ -138,8 +138,6 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     width: '40%',
-    borderWidth: 2,
-    borderColor: COLOR.white,
   },
   trueButton: {
     backgroundColor: COLOR.green,
@@ -154,7 +152,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   progress: {
-    marginTop: 20,
+    marginTop: 10, // Reduced from 20 to compensate for feedbackContainer
     fontSize: 16,
     color: COLOR.white,
   },
@@ -171,21 +169,20 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: COLOR.white,
   },
-  correctAnswer: {
-    backgroundColor: COLOR.green,
-    borderColor: COLOR.white,
-    borderWidth: 4,
-  },
-  wrongAnswer: {
-    backgroundColor: COLOR.red,
-    borderColor: COLOR.white,
-    borderWidth: 4,
+  feedbackContainer: {
+    height: 60, // Adjust this value based on your needs
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
   },
   feedbackText: {
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: 'bold',
-    marginTop: 20,
     textAlign: 'center',
+  },
+  placeholderText: {
+    fontSize: 18,
+    opacity: 0,
   },
   correctText: {
     color: COLOR.green,
