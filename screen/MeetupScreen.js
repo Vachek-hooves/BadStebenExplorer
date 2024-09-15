@@ -190,8 +190,8 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   meetupImage: {
-    width: 50,
-    height: 50,
+    width: 130,
+    height: 100,
     borderRadius: 25,
     marginRight: 10,
   },
