@@ -9,11 +9,12 @@ import {
 import React from 'react';
 import LayoutImage from '../components/Layout/LayoutImage';
 import {CITY_HISTORY} from '../data/stabenData';
+import {IconReturn} from '../components/icon';
 
 const CityHistoryScreen = ({navigation}) => {
   return (
     <LayoutImage blur={10}>
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         {CITY_HISTORY.map(section => (
           <TouchableOpacity
             key={section.id}
@@ -30,6 +31,7 @@ const CityHistoryScreen = ({navigation}) => {
           </TouchableOpacity>
         ))}
       </ScrollView>
+      <IconReturn />
     </LayoutImage>
   );
 };

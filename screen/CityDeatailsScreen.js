@@ -1,11 +1,14 @@
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import LayoutImage from '../components/Layout/LayoutImage';
+import {IconReturn} from '../components/icon';
 
 const CityDeatailsScreen = ({route}) => {
   const {section} = route.params;
   return (
     <LayoutImage>
-      <ScrollView style={styles.container}>
+      <ScrollView
+        style={styles.container}
+        contentContainerStyle={{borderRadius: 12, overflow: 'hidden'}}>
         <Text style={styles.title}>{section.title}</Text>
         {section.content.map((item, index) => (
           <View key={index} style={styles.contentItem}>
@@ -14,6 +17,7 @@ const CityDeatailsScreen = ({route}) => {
           </View>
         ))}
       </ScrollView>
+      <IconReturn />
     </LayoutImage>
   );
 };
@@ -47,6 +51,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
     lineHeight: 24,
     color: '#555',
-    lineHeight:26
+    lineHeight: 26,
   },
 });
