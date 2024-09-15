@@ -40,7 +40,7 @@ const TFGameScreen = () => {
       } else {
         setShowResult(true);
       }
-    }, 1000);
+    }, 2000);
   };
 
   if (!currentTopic) return null;
@@ -48,7 +48,7 @@ const TFGameScreen = () => {
   const currentQuestion = currentTopic.statements[currentQuestionIndex];
 
   return (
-    <LayoutImage blur={200}>
+    <LayoutImage blur={40}>
       <View style={styles.container}>
         {!showResult ? (
           <>
@@ -79,6 +79,11 @@ const TFGameScreen = () => {
                 <Text style={styles.buttonText}>False</Text>
               </TouchableOpacity>
             </View>
+            {selectedAnswer !== null && (
+              <Text style={[styles.feedbackText, isCorrect ? styles.correctText : styles.incorrectText]}>
+                {isCorrect ? 'Correct!' : 'Incorrect!'}
+              </Text>
+            )}
             <Text style={styles.progress}>
               {currentQuestionIndex + 1} / {currentTopic.statements.length}
             </Text>
@@ -175,5 +180,16 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR.red,
     borderColor: COLOR.white,
     borderWidth: 4,
+  },
+  feedbackText: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginTop: 20,
+  },
+  correctText: {
+    color: COLOR.green,
+  },
+  incorrectText: {
+    color: COLOR.red,
   },
 });
