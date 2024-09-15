@@ -11,6 +11,7 @@ import LayoutImage from '../components/Layout/LayoutImage';
 import {useAppContext} from '../store/context';
 import {useRoute, useNavigation} from '@react-navigation/native';
 import {COLOR} from '../const/customColors';
+import {IconReturn} from '../components/icon';
 
 const TFGameScreen = () => {
   const {trueFalseData} = useAppContext();
@@ -159,6 +160,7 @@ const TFGameScreen = () => {
             </View>
           </View>
         )}
+        {/* <IconReturn /> */}
       </ScrollView>
     </LayoutImage>
   );

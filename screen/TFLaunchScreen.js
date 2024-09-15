@@ -19,17 +19,24 @@ const TFLaunchScreen = () => {
 
   const renderCard = ({item}) => {
     const isSelected = selectedCard === item.id;
+    const isActive = item.active !== false; // Consider the card active if the 'active' property is not explicitly set to false
 
     return (
       <TouchableOpacity
-        style={[styles.card, isSelected && styles.selectedCard]}
-        onPress={() => setSelectedCard(isSelected ? null : item.id)}>
+        style={[
+          styles.card,
+          isSelected && styles.selectedCard,
+          !isActive && styles.inactiveCard,
+        ]}
+        onPress={() => isActive && setSelectedCard(isSelected ? null : item.id)}
+        disabled={!isActive}>
         <ImageBackground
           source={{uri: item.image}}
           style={styles.cardBackground}
           imageStyle={[
             styles.cardBackgroundImage,
             isSelected && styles.selectedCardBackgroundImage,
+            !isActive && styles.inactiveCardBackgroundImage,
           ]}>
           <View
             style={[
@@ -37,20 +44,29 @@ const TFLaunchScreen = () => {
               {
                 backgroundColor: isSelected
                   ? 'rgba(255, 255, 255, 0.1)'
-                  : 'rgba(255, 255, 255, 0.7)',
+                  : isActive
+                  ? 'rgba(255, 255, 255, 0.7)'
+                  : 'rgba(128, 128, 128, 0.7)',
               },
             ]}>
             <Text
               style={[
                 styles.cardTitle,
-                {color: isSelected ? COLOR.blue : COLOR.grey},
+                {
+                  color: isSelected
+                    ? COLOR.blue
+                    : isActive
+                    ? COLOR.grey
+                    : COLOR.darkGrey,
+                },
               ]}>
               {item.topic}
             </Text>
-            <Text style={styles.cardSubtitle}>
+            <Text
+              style={[styles.cardSubtitle, !isActive && styles.inactiveText]}>
               {item.statements.length} questions
             </Text>
-            {isSelected && (
+            {isSelected && isActive && (
               <TouchableOpacity
                 style={styles.startButton}
                 onPress={() =>
@@ -148,5 +164,14 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 18,
+  },
+  inactiveCard: {
+    opacity: 0.7,
+  },
+  inactiveCardBackgroundImage: {
+    opacity: 0.5,
+  },
+  inactiveText: {
+    color: COLOR.darkGrey,
   },
 });

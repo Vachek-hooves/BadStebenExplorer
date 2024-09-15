@@ -53,7 +53,7 @@ export const STEBEN_TRUE_FALSE = [
     image:
       'https://www.bad-steben.de/wp-content/uploads/2016/09/Akutelles_Therme_01.jpg',
     id: '2',
-    active: true,
+    active: false,
     topic: 'Thermal Springs of Bad Steben',
     statements: [
       {
@@ -104,7 +104,7 @@ export const STEBEN_TRUE_FALSE = [
     image:
       'https://mein.toubiz.de/api/v1/media/ca325adc-f049-4822-80a7-fba27fa41ac9/view',
     id: '3',
-    active: true,
+    active: false,
     topic: 'Rose Garden of Bad Steben',
     statements: [
       {
@@ -152,7 +152,7 @@ export const STEBEN_TRUE_FALSE = [
   {
     image: 'https://www.bad-steben.de/wp-content/uploads/2016/09/imp_07.jpg',
     id: '4',
-    active: true,
+    active: false,
     topic: 'Kurpark (Resort Park)',
     statements: [
       {
@@ -201,7 +201,7 @@ export const STEBEN_TRUE_FALSE = [
     image:
       'https://api.tmb.pixelpoint.biz/api/asset/111632/thumbnail/858/570.jpg',
     id: '5',
-    active: true,
+    active: false,
     topic: 'Heimatmuseum (Local History Museum)',
     statements: [
       {
@@ -252,7 +252,7 @@ export const STEBEN_TRUE_FALSE = [
   {
     image: 'https://img2.oastatic.com/img2/55538523/max/variant.jpg',
     id: '6',
-    active: true,
+    active: false,
     topic: 'Architecture of Bad Steben',
     statements: [
       {
@@ -307,7 +307,7 @@ export const STEBEN_TRUE_FALSE = [
     image:
       'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/f5/84/a1/photo1jpg.jpg?w=600&h=400&s=1',
     id: '7',
-    active: true,
+    active: false,
     topic: 'Local Cuisine of Bad Steben',
     statements: [
       {
@@ -356,7 +356,7 @@ export const STEBEN_TRUE_FALSE = [
     image:
       'https://d2exd72xrrp1s7.cloudfront.net/www/guide/2491/1DSqTG?width=3840&crop=false&q=80',
     id: '8',
-    active: true,
+    active: false,
     topic: 'Nature and Walks',
     statements: [
       {
@@ -406,7 +406,7 @@ export const STEBEN_TRUE_FALSE = [
     image:
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvjqtXMhDxzQRmiuOujDtSrR0RrQrXDRkiEg&s',
     id: '9',
-    active: true,
+    active: false,
     topic: 'Arts and Culture',
     statements: [
       {
@@ -459,7 +459,7 @@ export const STEBEN_TRUE_FALSE = [
     image:
       'https://www.akademienunion.de/fileadmin/_processed_/0/c/csm_BAdW_Fahnen_2019_BAdW_S._Obermeier_2d38e82343.jpg',
     id: '10',
-    active: true,
+    active: false,
     topic: 'Education and Science',
     statements: [
       {
