@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Alert, Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import LayoutImage from '../components/Layout/LayoutImage';
+import LinearGradient from 'react-native-linear-gradient';
 import CustomImagePicker from '../components/Interface/CustomImagePicker';
+
+const { width, height } = Dimensions.get('window');
 
 const ProfileScreen = () => {
   const [name, setName] = useState('');
@@ -52,53 +54,54 @@ const ProfileScreen = () => {
     setIsProfileCreated(false);
   };
 
-  if (isProfileCreated) {
-    return (
-      <LayoutImage blur={50}>
-        <View style={styles.container}>
-          <Text style={styles.title}>Your Profile</Text>
-          <Image source={{ uri: image.uri }} style={styles.imagePreview} />
-          <Text style={styles.nameText}>{name}</Text>
-          <TouchableOpacity style={styles.editButton} onPress={editProfile}>
-            <Text style={styles.editButtonText}>Edit Profile</Text>
-          </TouchableOpacity>
-        </View>
-      </LayoutImage>
-    );
-  }
+  const renderProfileCreation = () => (
+    <View style={styles.formContainer}>
+      <Text style={styles.title}>Create Your Profile</Text>
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.input}
+          placeholder="Enter your name"
+          value={name}
+          onChangeText={setName}
+          placeholderTextColor="#999"
+        />
+      </View>
+      {!image && (
+        <CustomImagePicker
+          onImagePicked={handleImagePicked}
+          buttonText="Choose Profile Picture"
+          buttonStyle={styles.imagePickerButton}
+        />
+      )}
+      <TouchableOpacity style={styles.saveButton} onPress={saveProfile}>
+        <Text style={styles.saveButtonText}>Save Profile</Text>
+      </TouchableOpacity>
+    </View>
+  );
+
+  const renderProfileView = () => (
+    <View style={styles.profileContainer}>
+      <Text style={styles.nameText}>{name}</Text>
+      <TouchableOpacity style={styles.editButton} onPress={editProfile}>
+        <Text style={styles.editButtonText}>Edit Profile</Text>
+      </TouchableOpacity>
+    </View>
+  );
 
   return (
-    <LayoutImage blur={50}>
-      <View style={styles.container}>
-        <Text style={styles.title}>Create Your Profile</Text>
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            placeholder="Enter your name"
-            value={name}
-            onChangeText={setName}
-            placeholderTextColor="#999"
-          />
-        </View>
+    <View style={styles.container}>
+      <LinearGradient
+        colors={['#4c669f', '#3b5998', '#192f6a']}
+        style={styles.gradientContainer}
+      >
         {image ? (
-          <View style={styles.imagePreviewContainer}>
-            <Image source={{ uri: image.uri }} style={styles.imagePreview} />
-            <TouchableOpacity onPress={() => setImage(null)} style={styles.removeImageButton}>
-              <Text style={styles.removeImageText}>Remove</Text>
-            </TouchableOpacity>
-          </View>
+          <Image source={{ uri: image.uri }} style={styles.imagePreview} />
         ) : (
-          <CustomImagePicker
-            onImagePicked={handleImagePicked}
-            buttonText="Choose Profile Picture"
-            buttonStyle={styles.imagePickerButton}
-          />
+          <View style={styles.placeholderImage} />
         )}
-        <TouchableOpacity style={styles.registerButton} onPress={saveProfile}>
-          <Text style={styles.registerButtonText}>Save Profile</Text>
-        </TouchableOpacity>
-      </View>
-    </LayoutImage>
+      </LinearGradient>
+      {isProfileCreated ? renderProfileView() : renderProfileCreation()}
+    </View>
   );
 };
 
@@ -107,28 +110,58 @@ export default ProfileScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+  },
+  gradientContainer: {
+    height: height * 0.6,
     justifyContent: 'center',
+    alignItems: 'center',
+  },
+  imagePreview: {
+    width: width * 0.8,
+    height: width * 0.8,
+    borderRadius: width * 0.4,
+    borderWidth: 5,
+    borderColor: 'white',
+  },
+  placeholderImage: {
+    width: width * 0.8,
+    height: width * 0.8,
+    borderRadius: width * 0.4,
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
+    borderWidth: 5,
+    borderColor: 'white',
+  },
+  formContainer: {
+    flex: 1,
     padding: 20,
+    justifyContent: 'center',
+  },
+  profileContainer: {
+    flex: 1,
+    padding: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   title: {
     fontSize: 28,
     fontWeight: 'bold',
-    color: '#fff',
+    color: '#333',
     marginBottom: 30,
-    textShadowColor: 'rgba(0, 0, 0, 0.75)',
-    textShadowOffset: { width: -1, height: 1 },
-    textShadowRadius: 10,
   },
   inputContainer: {
-    width: '100%',
     marginBottom: 20,
   },
   input: {
-    backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    backgroundColor: 'white',
     borderRadius: 10,
     padding: 15,
     fontSize: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
   },
   imagePickerButton: {
     backgroundColor: '#3498db',
@@ -136,44 +169,25 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     borderRadius: 25,
     marginBottom: 20,
+    alignSelf: 'center',
   },
-  imagePreviewContainer: {
-    alignItems: 'center',
-    marginBottom: 20,
-  },
-  imagePreview: {
-    width: 150,
-    height: 150,
-    borderRadius: 75,
-    marginBottom: 10,
-  },
-  removeImageButton: {
-    backgroundColor: '#e74c3c',
-    paddingVertical: 8,
-    paddingHorizontal: 15,
-    borderRadius: 20,
-  },
-  removeImageText: {
-    color: '#fff',
-    fontSize: 14,
-  },
-  registerButton: {
+  saveButton: {
     backgroundColor: '#2ecc71',
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 25,
+    alignSelf: 'center',
   },
-  registerButtonText: {
+  saveButtonText: {
     color: '#fff',
     fontSize: 18,
     fontWeight: 'bold',
   },
   nameText: {
-    fontSize: 24,
+    fontSize: 32,
     fontWeight: 'bold',
-    color: '#fff',
-    marginTop: 20,
-    marginBottom: 30,
+    color: '#333',
+    marginBottom: 20,
   },
   editButton: {
     backgroundColor: '#3498db',
