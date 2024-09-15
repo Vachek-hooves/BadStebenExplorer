@@ -6,7 +6,7 @@ const IconTabCity = ({focused}) => {
     <View
       style={{
         borderRadius: 16,
-        backgroundColor: focused ? COLOR.blue + 90 : 'transparent',
+        backgroundColor: focused ? COLOR.white + 90 : 'transparent',
       }}>
       <Image
         style={{width: 100, height: 100}}
