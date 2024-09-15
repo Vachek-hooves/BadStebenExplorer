@@ -9,9 +9,14 @@ import {
 } from 'react-native';
 import LayoutImage from '../components/Layout/LayoutImage';
 import {useAppContext} from '../store/context';
-import {useRoute, useNavigation,} from '@react-navigation/native';
+import {useRoute, useNavigation} from '@react-navigation/native';
 import {COLOR} from '../const/customColors';
-import {IconReturn} from '../components/icon';
+import {
+  IconCorrect,
+  IconReturn,
+  IconTabCity,
+  IconTotal,
+} from '../components/icon';
 import {Animated} from 'react-native';
 import {useRef} from 'react';
 const TFGameScreen = () => {
@@ -31,7 +36,7 @@ const TFGameScreen = () => {
   const trueButtonScale = useRef(new Animated.Value(1)).current;
   const falseButtonScale = useRef(new Animated.Value(1)).current;
 
-  const animateButton = (button) => {
+  const animateButton = button => {
     Animated.sequence([
       Animated.timing(button, {
         toValue: 0.75,
@@ -104,9 +109,14 @@ const TFGameScreen = () => {
         {!showResult ? (
           <>
             <View style={styles.currentQuestionContainer}>
-              <Text style={styles.progress}>
-                {currentQuestionIndex + 1} / {currentTopic.statements.length}
-              </Text>
+              <View style={{flexDirection: 'row'}}>
+                <Text style={styles.progress}>
+                  <IconCorrect /> {currentQuestionIndex + 1} /{' '}
+                </Text>
+                <Text style={styles.progress}>
+                  {currentTopic.statements.length} <IconTotal />
+                </Text>
+              </View>
               <Image source={{uri: currentTopic.image}} style={styles.image} />
               <Text style={styles.topic}>{currentTopic.topic}</Text>
               <Text style={styles.question}>{currentQuestion.statement}</Text>
@@ -206,6 +216,8 @@ const styles = StyleSheet.create({
     // backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 10,
     marginBottom: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   answeredQuestionsContainer: {
     padding: 20,
@@ -275,6 +287,8 @@ const styles = StyleSheet.create({
     color: COLOR.white,
     fontWeight: '900',
     textAlign: 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   resultContainer: {
     alignItems: 'center',
