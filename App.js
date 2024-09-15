@@ -8,6 +8,7 @@ import {
   IntroductionScreen,
   MeetupScreen,
   NewsPaperScreen,
+  QuizGameScreen,
   QuizLaunchScreen,
   TFGameScreen,
   TFLaunchScreen,
@@ -32,7 +33,7 @@ const TabNav = () => (
         backgroundColor: 'transparent',
         borderRadius: 16,
         position: 'absolute',
-        marginHorizontal: 10,
+        // marginHorizontal: 5,
         bottom: 5,
         shadowOpacity: 0, // Remove shadow on iOS
         borderTopWidth: 0,
@@ -79,6 +80,7 @@ function App() {
             component={CityDeatailsScreen}
           />
           <Stack.Screen name="TFGameScreen" component={TFGameScreen} />
+          <Stack.Screen name="QuizGameScreen" component={QuizGameScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppProvider>

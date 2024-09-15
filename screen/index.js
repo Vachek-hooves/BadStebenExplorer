@@ -7,6 +7,7 @@ import MeetupScreen from './MeetupScreen';
 import NewsPaperScreen from './NewsPaperScreen';
 import CityDeatailsScreen from './CityDeatailsScreen';
 import TFGameScreen from './TFGameScreen';
+import QuizGameScreen from './QuizGameScreen';
 
 export {
   WelcomeScreen,
@@ -18,4 +19,5 @@ export {
   CityHistoryScreen,
   CityDeatailsScreen,
   TFGameScreen,
+  QuizGameScreen,
 };
