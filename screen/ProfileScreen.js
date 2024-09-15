@@ -1,10 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, Alert, Dimensions } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  TouchableOpacity,
+  Image,
+  Alert,
+  Dimensions,
+} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import LinearGradient from 'react-native-linear-gradient';
 import CustomImagePicker from '../components/Interface/CustomImagePicker';
+import {IconReturn} from '../components/icon';
 
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 
 const ProfileScreen = () => {
   const [name, setName] = useState('');
@@ -29,13 +39,16 @@ const ProfileScreen = () => {
     }
   };
 
-  const handleImagePicked = (imageData) => {
+  const handleImagePicked = imageData => {
     setImage(imageData);
   };
 
   const saveProfile = async () => {
     if (!name.trim() || !image) {
-      Alert.alert('Error', 'Please enter your name and choose a profile picture.');
+      Alert.alert(
+        'Error',
+        'Please enter your name and choose a profile picture.',
+      );
       return;
     }
 
@@ -68,8 +81,10 @@ const ProfileScreen = () => {
       </View>
       {image ? (
         <View style={styles.imagePreviewContainer}>
-          <Image source={{ uri: image.uri }} style={styles.imagePreview} />
-          <TouchableOpacity onPress={() => setImage(null)} style={styles.removeImageButton}>
+          <Image source={{uri: image.uri}} style={styles.imagePreview} />
+          <TouchableOpacity
+            onPress={() => setImage(null)}
+            style={styles.removeImageButton}>
             <Text style={styles.removeImageText}>Remove</Text>
           </TouchableOpacity>
         </View>
@@ -88,7 +103,7 @@ const ProfileScreen = () => {
 
   const renderProfileView = () => (
     <View style={styles.profileContainer}>
-      <Image source={{ uri: image.uri }} style={styles.profileImage} />
+      <Image source={{uri: image.uri}} style={styles.profileImage} />
       <Text style={styles.nameText}>{name}</Text>
       <TouchableOpacity style={styles.editButton} onPress={editProfile}>
         <Text style={styles.editButtonText}>Edit Profile</Text>
@@ -101,9 +116,11 @@ const ProfileScreen = () => {
       colors={['#D7CCC8', '#A1887F', '#795548']}
       start={{x: 0, y: 0}}
       end={{x: 1, y: 1}}
-      style={styles.container}
-    >
+      style={styles.container}>
       {isProfileCreated ? renderProfileView() : renderProfileCreation()}
+      <View style={{position: 'absolute', bottom: 50, right: 30}}>
+        <IconReturn />
+      </View>
     </LinearGradient>
   );
 };
@@ -129,7 +146,7 @@ const styles = StyleSheet.create({
     color: '#EFEBE9',
     marginBottom: 30,
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
-    textShadowOffset: { width: 1, height: 1 },
+    textShadowOffset: {width: 1, height: 1},
     textShadowRadius: 3,
   },
   inputContainer: {
@@ -142,7 +159,7 @@ const styles = StyleSheet.create({
     padding: 15,
     fontSize: 16,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 3,
@@ -202,7 +219,7 @@ const styles = StyleSheet.create({
     color: '#EFEBE9',
     marginBottom: 20,
     textShadowColor: 'rgba(0, 0, 0, 0.3)',
-    textShadowOffset: { width: 1, height: 1 },
+    textShadowOffset: {width: 1, height: 1},
     textShadowRadius: 3,
   },
   editButton: {
