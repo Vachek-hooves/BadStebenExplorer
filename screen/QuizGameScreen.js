@@ -1,77 +1,67 @@
-import React, {useState, useEffect} from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  Animated,
-  Easing,
-} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Animated } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import LayoutImage from '../components/Layout/LayoutImage';
 import LinearGradient from 'react-native-linear-gradient';
 
-const QuizGameScreen = ({route}) => {
-  const {quiz} = route.params;
+const QuizGameScreen = ({ route }) => {
+  const { quiz } = route.params;
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
+  const [feedback, setFeedback] = useState(null);
+  const [feedbackOpacity] = useState(new Animated.Value(0));
   const navigation = useNavigation();
-  const [fadeAnim] = useState(new Animated.Value(0));
-  const [scaleAnim] = useState(new Animated.Value(0.5));
 
-  useEffect(() => {
-    Animated.parallel([
-      Animated.timing(fadeAnim, {
-        toValue: 1,
-        duration: 1000,
-        useNativeDriver: true,
-      }),
-      Animated.spring(scaleAnim, {
-        toValue: 1,
-        friction: 4,
-        useNativeDriver: true,
-      }),
-    ]).start();
-  }, [currentQuestionIndex]);
-
-  const handleAnswer = selectedAnswer => {
+  const handleAnswer = (selectedAnswer) => {
     const currentQuestion = quiz.questions[currentQuestionIndex];
-    if (selectedAnswer === currentQuestion.answer) {
+    const isCorrect = selectedAnswer === currentQuestion.answer;
+
+    if (isCorrect) {
       setScore(score + 1);
+      setFeedback('Correct!');
+    } else {
+      setFeedback('Wrong. The correct answer is: ' + currentQuestion.answer);
     }
 
-    if (currentQuestionIndex < quiz.questions.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    } else {
-      setShowResult(true);
-    }
+    Animated.timing(feedbackOpacity, {
+      toValue: 1,
+      duration: 300,
+      useNativeDriver: true,
+    }).start();
+
+    setTimeout(() => {
+      Animated.timing(feedbackOpacity, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: true,
+      }).start(() => {
+        setFeedback(null);
+        if (currentQuestionIndex < quiz.questions.length - 1) {
+          setCurrentQuestionIndex(currentQuestionIndex + 1);
+        } else {
+          setShowResult(true);
+        }
+      });
+    }, 2000);
   };
 
   const restartQuiz = () => {
     setCurrentQuestionIndex(0);
     setScore(0);
     setShowResult(false);
+    setFeedback(null);
+    feedbackOpacity.setValue(0);
   };
 
   const navigateToHome = () => {
-    navigation.navigate('QuizScreen');
+    navigation.navigate('QuizLaunchScreen');
   };
 
-  const ProgressBar = ({progress}) => {
+  const ProgressBar = ({ progress }) => {
     return (
       <View style={styles.progressBarContainer}>
-        <Animated.View
-          style={[
-            styles.progressBar,
-            {
-              width: progress.interpolate({
-                inputRange: [0, quiz.questions.length],
-                outputRange: ['0%', '100%'],
-              }),
-            },
-          ]}
-        />
+        <View style={[styles.progressBar, { width: `${progress}%` }]} />
       </View>
     );
   };
@@ -79,55 +69,53 @@ const QuizGameScreen = ({route}) => {
   if (showResult) {
     return (
       <LayoutImage blur={40}>
-        <LinearGradient
-          colors={['rgba(0,0,0,0.8)', 'transparent']}
-          style={styles.resultContainer}>
+        <View style={styles.container}>
           <Text style={styles.resultText}>Quiz Completed!</Text>
-          <Text style={styles.resultText}>
-            Your Score: {score}/{quiz.questions.length}
-          </Text>
-          {/* <FontAwesome5
-            name="trophy"
-            size={50}
-            color="gold"
-            style={styles.icon}
-          /> */}
+          <Text style={styles.resultText}>Your Score: {score}/{quiz.questions.length}</Text>
           <TouchableOpacity style={styles.button} onPress={restartQuiz}>
             <Text style={styles.buttonText}>Restart Quiz</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.button} onPress={navigateToHome}>
             <Text style={styles.buttonText}>Back to Home</Text>
           </TouchableOpacity>
-        </LinearGradient>
+        </View>
       </LayoutImage>
     );
   }
 
   const currentQuestion = quiz.questions[currentQuestionIndex];
+  const progress = ((currentQuestionIndex + 1) / quiz.questions.length) * 100;
 
   return (
     <LayoutImage blur={40}>
       <View style={styles.container}>
-        <ProgressBar progress={new Animated.Value(currentQuestionIndex + 1)} />
-        <Animated.View
+        <ProgressBar progress={progress} />
+        <Text style={styles.questionText}>{currentQuestion.question}</Text>
+        {currentQuestion.options.map((option, index) => (
+          <TouchableOpacity
+            key={index}
+            style={styles.optionButton}
+            onPress={() => handleAnswer(option)}
+            disabled={feedback !== null}
+          >
+            <LinearGradient
+              colors={['#4c669f', '#3b5998', '#192f6a']}
+              style={styles.optionGradient}
+            >
+              <Text style={styles.optionText}>{option}</Text>
+            </LinearGradient>
+          </TouchableOpacity>
+        ))}
+        <Animated.View 
           style={[
-            styles.questionContainer,
-            {opacity: fadeAnim, transform: [{scale: scaleAnim}]},
-          ]}>
-          <Text style={styles.topic}>{quiz.topic}</Text>
-          <Text style={styles.questionText}>{currentQuestion.question}</Text>
-          {currentQuestion.options.map((option, index) => (
-            <TouchableOpacity
-              key={index}
-              style={styles.optionButton}
-              onPress={() => handleAnswer(option)}>
-              <LinearGradient
-                colors={['#4c669f', '#3b5998', '#192f6a']}
-                style={styles.optionGradient}>
-                <Text style={styles.optionText}>{option}</Text>
-              </LinearGradient>
-            </TouchableOpacity>
-          ))}
+            styles.feedbackContainer, 
+            { 
+              opacity: feedbackOpacity,
+              backgroundColor: feedback && feedback.includes('Correct') ? '#4CAF50' : '#f44336' 
+            }
+          ]}
+        >
+          <Text style={styles.feedbackText}>{feedback}</Text>
         </Animated.View>
         <Text style={styles.progressText}>
           Question {currentQuestionIndex + 1} of {quiz.questions.length}
@@ -143,18 +131,16 @@ const styles = StyleSheet.create({
     padding: 20,
     justifyContent: 'center',
   },
-  questionContainer: {
+  progressBarContainer: {
+    height: 10,
     backgroundColor: 'rgba(255,255,255,0.1)',
-    borderRadius: 15,
-    padding: 20,
+    borderRadius: 5,
     marginBottom: 20,
   },
-  topic: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    color: 'white',
-    marginBottom: 20,
-    textAlign: 'center',
+  progressBar: {
+    height: '100%',
+    backgroundColor: '#4c669f',
+    borderRadius: 5,
   },
   questionText: {
     fontSize: 18,
@@ -182,12 +168,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
     textAlign: 'center',
   },
-  resultContainer: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-  },
   resultText: {
     fontSize: 24,
     color: 'white',
@@ -195,30 +175,27 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   button: {
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
     padding: 15,
-    borderRadius: 25,
+    borderRadius: 8,
     marginBottom: 10,
-    width: '80%',
   },
   buttonText: {
     fontSize: 16,
     color: 'white',
     textAlign: 'center',
   },
-  progressBarContainer: {
-    height: 10,
-    backgroundColor: 'rgba(255,255,255,0.1)',
-    borderRadius: 5,
-    marginBottom: 20,
+  feedbackContainer: {
+    padding: 15,
+    borderRadius: 8,
+    marginVertical: 10,
+    minHeight: 50,
+    justifyContent: 'center',
   },
-  progressBar: {
-    height: '100%',
-    backgroundColor: '#4c669f',
-    borderRadius: 5,
-  },
-  icon: {
-    marginBottom: 20,
+  feedbackText: {
+    fontSize: 16,
+    color: 'white',
+    textAlign: 'center',
   },
 });
 
