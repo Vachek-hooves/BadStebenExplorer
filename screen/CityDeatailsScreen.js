@@ -1,12 +1,14 @@
 import {StyleSheet, Text, View, ScrollView} from 'react-native';
 import LayoutImage from '../components/Layout/LayoutImage';
 import {IconReturn} from '../components/icon';
+import {COLOR} from '../const/customColors';
 
 const CityDeatailsScreen = ({route}) => {
   const {section} = route.params;
   return (
     <LayoutImage>
       <ScrollView
+        showsVerticalScrollIndicator={false}
         style={styles.container}
         contentContainerStyle={{borderRadius: 12, overflow: 'hidden'}}>
         <Text style={styles.title}>{section.title}</Text>
@@ -30,10 +32,10 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   title: {
-    fontSize: 24,
+    fontSize: 34,
     fontWeight: 'bold',
-    color: '#333',
-    marginBottom: 16,
+    color: COLOR.white,
+    marginBottom: 24,
   },
   contentItem: {
     marginBottom: 16,
