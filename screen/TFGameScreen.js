@@ -14,6 +14,8 @@ const TFGameScreen = () => {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [showResult, setShowResult] = useState(false);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [isCorrect, setIsCorrect] = useState(null);
 
   useEffect(() => {
     const selectedTopic = trueFalseData.find(topic => topic.id === topicId);
@@ -22,15 +24,23 @@ const TFGameScreen = () => {
 
   const handleAnswer = (isTrue) => {
     const currentQuestion = currentTopic.statements[currentQuestionIndex];
-    if (currentQuestion.isTrue === isTrue) {
+    const correct = currentQuestion.isTrue === isTrue;
+    setSelectedAnswer(isTrue);
+    setIsCorrect(correct);
+
+    if (correct) {
       setScore(score + 1);
     }
 
-    if (currentQuestionIndex < currentTopic.statements.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    } else {
-      setShowResult(true);
-    }
+    setTimeout(() => {
+      if (currentQuestionIndex < currentTopic.statements.length - 1) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        setSelectedAnswer(null);
+        setIsCorrect(null);
+      } else {
+        setShowResult(true);
+      }
+    }, 1000);
   };
 
   if (!currentTopic) return null;
@@ -47,14 +57,24 @@ const TFGameScreen = () => {
             <Text style={styles.question}>{currentQuestion.statement}</Text>
             <View style={styles.buttonContainer}>
               <TouchableOpacity
-                style={[styles.button, styles.trueButton]}
+                style={[
+                  styles.button,
+                  styles.trueButton,
+                  selectedAnswer === true && (isCorrect ? styles.correctAnswer : styles.wrongAnswer)
+                ]}
                 onPress={() => handleAnswer(true)}
+                disabled={selectedAnswer !== null}
               >
                 <Text style={styles.buttonText}>True</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={[styles.button, styles.falseButton]}
+                style={[
+                  styles.button,
+                  styles.falseButton,
+                  selectedAnswer === false && (isCorrect ? styles.correctAnswer : styles.wrongAnswer)
+                ]}
                 onPress={() => handleAnswer(false)}
+                disabled={selectedAnswer !== null}
               >
                 <Text style={styles.buttonText}>False</Text>
               </TouchableOpacity>
@@ -113,6 +133,8 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     width: '40%',
+    borderWidth: 2,
+    borderColor: COLOR.white,
   },
   trueButton: {
     backgroundColor: COLOR.green,
@@ -143,5 +165,15 @@ const styles = StyleSheet.create({
   scoreText: {
     fontSize: 24,
     color: COLOR.white,
+  },
+  correctAnswer: {
+    backgroundColor: COLOR.green,
+    borderColor: COLOR.white,
+    borderWidth: 4,
+  },
+  wrongAnswer: {
+    backgroundColor: COLOR.red,
+    borderColor: COLOR.white,
+    borderWidth: 4,
   },
 });
