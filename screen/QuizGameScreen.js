@@ -133,6 +133,17 @@ const QuizGameScreen = ({route}) => {
     <LayoutImage blur={40}>
       <View style={styles.container}>
         <ProgressBar progress={progress} />
+        <View style={styles.progressTextContainer}>
+          <LinearGradient
+            colors={['rgba(76, 102, 159, 0.7)', 'rgba(25, 47, 106, 0.7)']}
+            start={{x: 0, y: 0}}
+            end={{x: 1, y: 0}}
+            style={styles.progressTextGradient}>
+            <Text style={styles.progressText}>
+              Question {currentQuestionIndex + 1} of {quiz.questions.length}
+            </Text>
+          </LinearGradient>
+        </View>
         <Text style={styles.questionText}>{currentQuestion.question}</Text>
         {currentQuestion.options.map((option, index) => (
           <Animated.View
@@ -173,9 +184,6 @@ const QuizGameScreen = ({route}) => {
           ]}>
           <Text style={styles.feedbackText}>{feedback}</Text>
         </Animated.View>
-        <Text style={styles.progressText}>
-          Question {currentQuestionIndex + 1} of {quiz.questions.length}
-        </Text>
       </View>
     </LayoutImage>
   );
@@ -185,22 +193,40 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    // justifyContent: 'center',
-    marginTop: 80,
+    marginTop: 40, // Adjusted to accommodate the progress text at the top
   },
   progressBarContainer: {
     height: 10,
     backgroundColor: 'rgba(255,255,255,0.1)',
     borderRadius: 5,
-    marginBottom: 20,
+    marginBottom: 10, // Reduced margin to bring progress text closer
   },
   progressBar: {
     height: '100%',
     backgroundColor: '#4c669f',
     borderRadius: 5,
   },
+  progressTextContainer: {
+    marginBottom: 20, // Added margin to separate from the question
+  },
+  progressTextGradient: {
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.3)',
+  },
+  progressText: {
+    fontSize: 14,
+    color: 'white',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    textShadowColor: 'rgba(0, 0, 0, 0.75)',
+    textShadowOffset: {width: -1, height: 1},
+    textShadowRadius: 10,
+  },
   questionText: {
-    fontSize:30,
+    fontSize: 30,
     color: 'white',
     marginBottom: 20,
     textAlign: 'center',
@@ -217,12 +243,6 @@ const styles = StyleSheet.create({
   optionText: {
     fontSize: 22,
     color: 'white',
-    textAlign: 'center',
-  },
-  progressText: {
-    fontSize: 14,
-    color: 'white',
-    marginTop: 20,
     textAlign: 'center',
   },
   resultText: {
