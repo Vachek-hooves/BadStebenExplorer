@@ -1,14 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  Dimensions,
+} from 'react-native';
 import LayoutImage from '../components/Layout/LayoutImage';
-import { useAppContext } from '../store/context';
-import { useRoute, } from '@react-navigation/native';
-import { COLOR } from '../const/customColors';
+import {useAppContext} from '../store/context';
+import {useRoute, useNavigation} from '@react-navigation/native';
+import {COLOR} from '../const/customColors';
 
-const TFGameScreen = ({navigation}) => {
-  const { trueFalseData } = useAppContext();
+const {height} = Dimensions.get('screen');
+
+const TFGameScreen = () => {
+  const {trueFalseData} = useAppContext();
   const route = useRoute();
-  const { topicId } = route.params;
+  const navigation = useNavigation();
+  const {topicId} = route.params;
 
   const [currentTopic, setCurrentTopic] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -16,13 +27,14 @@ const TFGameScreen = ({navigation}) => {
   const [showResult, setShowResult] = useState(false);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [isCorrect, setIsCorrect] = useState(null);
+  const [answeredQuestions, setAnsweredQuestions] = useState([]);
 
   useEffect(() => {
     const selectedTopic = trueFalseData.find(topic => topic.id === topicId);
     setCurrentTopic(selectedTopic);
   }, [topicId, trueFalseData]);
 
-  const handleAnswer = (isTrue) => {
+  const handleAnswer = isTrue => {
     const currentQuestion = currentTopic.statements[currentQuestionIndex];
     const correct = currentQuestion.isTrue === isTrue;
     setSelectedAnswer(isTrue);
@@ -30,6 +42,7 @@ const TFGameScreen = ({navigation}) => {
 
     if (correct) {
       setScore(score + 1);
+      setAnsweredQuestions([...answeredQuestions, currentQuestion]);
     }
 
     setTimeout(() => {
@@ -49,10 +62,11 @@ const TFGameScreen = ({navigation}) => {
     setShowResult(false);
     setSelectedAnswer(null);
     setIsCorrect(null);
+    setAnsweredQuestions([]);
   };
 
   const goToLaunchScreen = () => {
-    navigation.navigate('TFScreen');
+    navigation.navigate('TFLaunchScreen');
   };
 
   if (!currentTopic) return null;
@@ -61,48 +75,71 @@ const TFGameScreen = ({navigation}) => {
 
   return (
     <LayoutImage blur={40}>
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         {!showResult ? (
           <>
-            <Image source={{ uri: currentTopic.image }} style={styles.image} />
-            <Text style={styles.topic}>{currentTopic.topic}</Text>
-            <Text style={styles.question}>{currentQuestion.statement}</Text>
-            <View style={styles.buttonContainer}>
-              <TouchableOpacity
-                style={[
-                  styles.button,
-                  styles.trueButton,
-                  selectedAnswer !== null && (currentQuestion.isTrue ? styles.correctAnswer : styles.wrongAnswer)
-                ]}
-                onPress={() => handleAnswer(true)}
-                disabled={selectedAnswer !== null}
-              >
-                <Text style={styles.buttonText}>True</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[
-                  styles.button,
-                  styles.falseButton,
-                  selectedAnswer !== null && (!currentQuestion.isTrue ? styles.correctAnswer : styles.wrongAnswer)
-                ]}
-                onPress={() => handleAnswer(false)}
-                disabled={selectedAnswer !== null}
-              >
-                <Text style={styles.buttonText}>False</Text>
-              </TouchableOpacity>
+            <View style={styles.currentQuestionContainer}>
+              <Image source={{uri: currentTopic.image}} style={styles.image} />
+              <Text style={styles.topic}>{currentTopic.topic}</Text>
+              <Text style={styles.question}>{currentQuestion.statement}</Text>
+              <View style={styles.buttonContainer}>
+                <TouchableOpacity
+                  style={[
+                    styles.button,
+                    styles.trueButton,
+                    selectedAnswer !== null &&
+                      (currentQuestion.isTrue
+                        ? styles.correctAnswer
+                        : styles.wrongAnswer),
+                  ]}
+                  onPress={() => handleAnswer(true)}
+                  disabled={selectedAnswer !== null}>
+                  <Text style={styles.buttonText}>True</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={[
+                    styles.button,
+                    styles.falseButton,
+                    selectedAnswer !== null &&
+                      (!currentQuestion.isTrue
+                        ? styles.correctAnswer
+                        : styles.wrongAnswer),
+                  ]}
+                  onPress={() => handleAnswer(false)}
+                  disabled={selectedAnswer !== null}>
+                  <Text style={styles.buttonText}>False</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.feedbackContainer}>
+                {selectedAnswer !== null ? (
+                  <Text
+                    style={[
+                      styles.feedbackText,
+                      isCorrect ? styles.correctText : styles.incorrectText,
+                    ]}>
+                    {isCorrect ? 'Correct!' : 'Incorrect!'} The statement is{' '}
+                    {currentQuestion.isTrue ? 'True' : 'False'}.
+                  </Text>
+                ) : (
+                  <Text style={styles.placeholderText}>{'\u00A0'}</Text>
+                )}
+              </View>
+              <Text style={styles.progress}>
+                {currentQuestionIndex + 1} / {currentTopic.statements.length}
+              </Text>
             </View>
-            <View style={styles.feedbackContainer}>
-              {selectedAnswer !== null ? (
-                <Text style={[styles.feedbackText, isCorrect ? styles.correctText : styles.incorrectText]}>
-                  {isCorrect ? 'Correct!' : 'Incorrect!'} The statement is {currentQuestion.isTrue ? 'True' : 'False'}.
+            {answeredQuestions.length > 0 && (
+              <View style={styles.answeredQuestionsContainer}>
+                <Text style={styles.answeredQuestionsTitle}>
+                  Correctly Answered Questions:
                 </Text>
-              ) : (
-                <Text style={styles.placeholderText}>{'\u00A0'}</Text>
-              )}
-            </View>
-            <Text style={styles.progress}>
-              {currentQuestionIndex + 1} / {currentTopic.statements.length}
-            </Text>
+                {answeredQuestions.map((question, index) => (
+                  <Text key={index} style={styles.answeredQuestion}>
+                    {question.statement}
+                  </Text>
+                ))}
+              </View>
+            )}
           </>
         ) : (
           <View style={styles.resultContainer}>
@@ -111,16 +148,20 @@ const TFGameScreen = ({navigation}) => {
               Your score: {score} / {currentTopic.statements.length}
             </Text>
             <View style={styles.endGameButtonContainer}>
-              <TouchableOpacity style={styles.endGameButton} onPress={restartLevel}>
+              <TouchableOpacity
+                style={styles.endGameButton}
+                onPress={restartLevel}>
                 <Text style={styles.endGameButtonText}>Restart Level</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.endGameButton} onPress={goToLaunchScreen}>
+              <TouchableOpacity
+                style={styles.endGameButton}
+                onPress={goToLaunchScreen}>
                 <Text style={styles.endGameButtonText}>Back to Levels</Text>
               </TouchableOpacity>
             </View>
           </View>
         )}
-      </View>
+      </ScrollView>
     </LayoutImage>
   );
 };
@@ -129,10 +170,33 @@ export default TFGameScreen;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    borderRadius: 16,
+    // height: height,
+  },
+  currentQuestionContainer: {
     padding: 20,
-    justifyContent: 'center',
+    // backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: 10,
+    marginBottom: 20,
+  },
+  answeredQuestionsContainer: {
+    padding: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: 10,
     alignItems: 'center',
+  },
+  answeredQuestionsTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: COLOR.white,
+    marginBottom: 10,
+  },
+  answeredQuestion: {
+    fontSize: 16,
+    color: COLOR.white,
+    marginBottom: 5,
   },
   image: {
     width: '100%',
@@ -178,12 +242,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   progress: {
-    marginTop: 10, // Reduced from 20 to compensate for feedbackContainer
+    marginTop: 10,
     fontSize: 16,
     color: COLOR.white,
   },
   resultContainer: {
     alignItems: 'center',
+    padding: 20,
   },
   resultText: {
     fontSize: 28,
@@ -206,7 +271,7 @@ const styles = StyleSheet.create({
     borderWidth: 4,
   },
   feedbackContainer: {
-    height: 60, // Adjust this value based on your needs
+    height: 60,
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 20,
