@@ -1,8 +1,16 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {StyleSheet, Text, View, TouchableOpacity, Animated} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Animated,
+  ScrollView,
+} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import LayoutImage from '../components/Layout/LayoutImage';
 import LinearGradient from 'react-native-linear-gradient';
+import {IconReturn} from '../components/icon';
 // import Icon from 'react-native-vector-icons/FontAwesome5';
 
 const QuizGameScreen = ({route}) => {
@@ -177,7 +185,7 @@ const QuizGameScreen = ({route}) => {
 
   return (
     <LayoutImage blur={40}>
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <ProgressBar progress={progress} />
         <View style={styles.progressTextContainer}>
           <LinearGradient
@@ -232,21 +240,25 @@ const QuizGameScreen = ({route}) => {
           ]}>
           <Text style={styles.feedbackText}>{feedback}</Text>
         </Animated.View>
-      </View>
+        <IconReturn />
+      </ScrollView>
     </LayoutImage>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     padding: 20,
     marginTop: 40,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    borderRadius: 12,
+    height: '100%',
   },
   progressBarContainer: {
     height: 25,
     backgroundColor: 'rgba(255,255,255,0.1)',
-    borderRadius: 5,
+    borderRadius: 12,
     marginBottom: 20,
   },
   progressBar: {
@@ -276,7 +288,7 @@ const styles = StyleSheet.create({
   questionContainer: {
     height: 180,
     alignContent: 'center',
-    alignItems:'center'
+    alignItems: 'center',
   },
   questionText: {
     fontSize: 30,
@@ -313,10 +325,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   resultContainer: {
-    flex: 1,
+    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 20,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    height: '100%',
   },
   resultCard: {
     width: '100%',
