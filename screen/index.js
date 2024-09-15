@@ -5,6 +5,7 @@ import QuizLaunchScreen from './QuizLaunchScreen';
 import CityHistoryScreen from './CityHistoryScreen';
 import MeetupScreen from './MeetupScreen';
 import NewsPaperScreen from './NewsPaperScreen';
+import CityDeatailsScreen from './CityDeatailsScreen';
 
 export {
   WelcomeScreen,
@@ -14,4 +15,5 @@ export {
   NewsPaperScreen,
   MeetupScreen,
   CityHistoryScreen,
+  CityDeatailsScreen,
 };

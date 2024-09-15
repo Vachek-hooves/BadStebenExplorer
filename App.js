@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {AppProvider} from './store/context';
 import {
+  CityDeatailsScreen,
   CityHistoryScreen,
   IntroductionScreen,
   MeetupScreen,
@@ -72,6 +73,10 @@ function App() {
             component={CityHistoryScreen}
           />
           <Stack.Screen name="MeetupScreen" component={MeetupScreen} />
+          <Stack.Screen
+            name="CityDetailsScreen"
+            component={CityDeatailsScreen}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </AppProvider>
