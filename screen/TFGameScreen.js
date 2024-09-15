@@ -60,7 +60,7 @@ const TFGameScreen = () => {
                 style={[
                   styles.button,
                   styles.trueButton,
-                  selectedAnswer === true && (isCorrect ? styles.correctAnswer : styles.wrongAnswer)
+                  selectedAnswer !== null && (currentQuestion.isTrue ? styles.correctAnswer : styles.wrongAnswer)
                 ]}
                 onPress={() => handleAnswer(true)}
                 disabled={selectedAnswer !== null}
@@ -71,7 +71,7 @@ const TFGameScreen = () => {
                 style={[
                   styles.button,
                   styles.falseButton,
-                  selectedAnswer === false && (isCorrect ? styles.correctAnswer : styles.wrongAnswer)
+                  selectedAnswer !== null && (!currentQuestion.isTrue ? styles.correctAnswer : styles.wrongAnswer)
                 ]}
                 onPress={() => handleAnswer(false)}
                 disabled={selectedAnswer !== null}
@@ -81,7 +81,7 @@ const TFGameScreen = () => {
             </View>
             {selectedAnswer !== null && (
               <Text style={[styles.feedbackText, isCorrect ? styles.correctText : styles.incorrectText]}>
-                {isCorrect ? 'Correct!' : 'Incorrect!'}
+                {isCorrect ? 'Correct!' : 'Incorrect!'} The statement is {currentQuestion.isTrue ? 'True' : 'False'}.
               </Text>
             )}
             <Text style={styles.progress}>
@@ -185,6 +185,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginTop: 20,
+    textAlign: 'center',
   },
   correctText: {
     color: COLOR.green,
