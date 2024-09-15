@@ -9,6 +9,7 @@ import {
   MeetupScreen,
   NewsPaperScreen,
   QuizLaunchScreen,
+  TFGameScreen,
   TFLaunchScreen,
   WelcomeScreen,
 } from './screen';
@@ -77,6 +78,7 @@ function App() {
             name="CityDetailsScreen"
             component={CityDeatailsScreen}
           />
+          <Stack.Screen name="TFGameScreen" component={TFGameScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppProvider>
