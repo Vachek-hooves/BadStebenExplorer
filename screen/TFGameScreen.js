@@ -24,19 +24,23 @@ const TFGameScreen = () => {
 
   const handleAnswer = (isTrue) => {
     const currentQuestion = currentTopic.statements[currentQuestionIndex];
-    if (currentQuestion.isTrue === isTrue) {
+    const correct = currentQuestion.isTrue === isTrue;
+    setSelectedAnswer(isTrue);
+    setIsCorrect(correct);
+
+    if (correct) {
       setScore(score + 1);
-      setIsCorrect(true);
-    } else {
-      setIsCorrect(false);
     }
 
-    setSelectedAnswer(isTrue);
-    if (currentQuestionIndex < currentTopic.statements.length - 1) {
-      setCurrentQuestionIndex(currentQuestionIndex + 1);
-    } else {
-      setShowResult(true);
-    }
+    setTimeout(() => {
+      if (currentQuestionIndex < currentTopic.statements.length - 1) {
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        setSelectedAnswer(null);
+        setIsCorrect(null);
+      } else {
+        setShowResult(true);
+      }
+    }, 2000);
   };
 
   if (!currentTopic) return null;
@@ -138,6 +142,8 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     width: '40%',
+    borderWidth: 2,
+    borderColor: COLOR.white,
   },
   trueButton: {
     backgroundColor: COLOR.green,
@@ -168,6 +174,16 @@ const styles = StyleSheet.create({
   scoreText: {
     fontSize: 24,
     color: COLOR.white,
+  },
+  correctAnswer: {
+    backgroundColor: COLOR.green,
+    borderColor: COLOR.white,
+    borderWidth: 4,
+  },
+  wrongAnswer: {
+    backgroundColor: COLOR.red,
+    borderColor: COLOR.white,
+    borderWidth: 4,
   },
   feedbackContainer: {
     height: 60, // Adjust this value based on your needs
