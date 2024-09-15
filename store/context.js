@@ -1,4 +1,10 @@
-import {useState, useContext, createContext, useEffect} from 'react';
+import {
+  useState,
+  useContext,
+  createContext,
+  useEffect,
+  useCallback,
+} from 'react';
 import {STEBEN_QUIZ, STEBEN_TRUE_FALSE} from '../data/stabenData';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -9,6 +15,7 @@ export const AppContext = createContext({
   addMeetup: () => {},
   deleteMeetup: () => {},
   updateMeetup: () => {},
+  updateCompletedQuestions: () => {},
 });
 
 export const AppProvider = ({children}) => {
@@ -83,6 +90,60 @@ export const AppProvider = ({children}) => {
     }
   };
 
+  const updateCompletedQuestions = useCallback(
+    async (topicId, correctAnswers) => {
+      try {
+        const updatedData = trueFalseData.map(topic => {
+          if (topic.id === topicId) {
+            const newCompleted = (topic.completedQuestions || 0) + 1;
+            const newCorrectAnswers =
+              (topic.correctAnswers || 0) + correctAnswers;
+            return {
+              ...topic,
+              completedQuestions: newCompleted,
+              correctAnswers: newCorrectAnswers,
+            };
+          }
+          return topic;
+        });
+
+        // Update active status for each level
+        const finalData = updatedData.map((topic, index) => {
+          if (
+            index === 0 ||
+            (index > 0 && updatedData[index - 1].correctAnswers >= 6)
+          ) {
+            return {...topic, active: true};
+          }
+          return {...topic, active: false};
+        });
+
+        await AsyncStorage.setItem('trueFalseData', JSON.stringify(finalData));
+        setTrueFalseData(finalData);
+      } catch (error) {
+        console.error('Error updating completed questions:', error);
+      }
+    },
+    [trueFalseData],
+  );
+
+  const updateNextLevelStatus = async (currentTopicId, score, totalQuestions) => {
+    try {
+      if (score >= 6) {
+        const updatedTrueFalseData = trueFalseData.map((topic, index, array) => {
+          if (topic.id === currentTopicId && index < array.length - 1) {
+            array[index + 1].active = true;
+          }
+          return topic;
+        });
+        await AsyncStorage.setItem('trueFalseData', JSON.stringify(updatedTrueFalseData));
+        setTrueFalseData(updatedTrueFalseData);
+      }
+    } catch (error) {
+      console.error('Error updating next level status:', error);
+    }
+  };
+
   const value = {
     quizData,
     trueFalseData,
@@ -90,6 +151,8 @@ export const AppProvider = ({children}) => {
     addMeetup,
     deleteMeetup,
     updateMeetup,
+    updateCompletedQuestions,
+    updateNextLevelStatus,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

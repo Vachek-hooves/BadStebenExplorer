@@ -14,7 +14,7 @@ import {COLOR} from '../const/customColors';
 import {IconReturn} from '../components/icon';
 
 const TFGameScreen = () => {
-  const {trueFalseData} = useAppContext();
+  const {trueFalseData, updateNextLevelStatus} = useAppContext();
   const route = useRoute();
   const navigation = useNavigation();
   const {topicId} = route.params;
@@ -67,6 +67,9 @@ const TFGameScreen = () => {
   };
 
   const goToLaunchScreen = () => {
+    if (showResult) {
+      updateNextLevelStatus(topicId, score, currentTopic.statements.length);
+    }
     navigation.navigate('TFScreen');
   };
 
