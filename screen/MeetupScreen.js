@@ -1,12 +1,9 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+import {StyleSheet, Text, View} from 'react-native';
+import React from 'react';
+import LayoutImage from '../components/Layout/LayoutImage';
 
 const MeetupScreen = () => {
-  return (
-    <View>
-      <Text>MeetupScreen</Text>
-    </View>
-  );
+  return <LayoutImage blur={10}></LayoutImage>;
 };
 
 export default MeetupScreen;

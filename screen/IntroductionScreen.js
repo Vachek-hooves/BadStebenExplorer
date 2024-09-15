@@ -10,10 +10,10 @@ const IntroductionScreen = ({navigation}) => {
         title={'City History'}
         onPress={() => navigation.navigate('CityHistoryScreen')}
       />
-      <CustomButton
+      {/* <CustomButton
         title={'News Paper'}
         onPress={() => navigation.navigate('NewsPaperScreen')}
-      />
+      /> */}
       <CustomButton
         title={'Meetup'}
         onPress={() => navigation.navigate('MeetupScreen')}
