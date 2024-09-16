@@ -518,7 +518,8 @@ export const STEBEN_QUIZ = [
     id: '1',
     active: true,
     topic: 'History of Bad Steben',
-    image: 'https://lh3.googleusercontent.com/ci/AL18g_QSeG_5chgN0A5F9shpOjoc--y5qWUgFzZhfF8A7csEKkU9Z9aU_QbAZKM0NPaH5rNj4DhtHA=s1200',
+    image:
+      'https://lh3.googleusercontent.com/ci/AL18g_QSeG_5chgN0A5F9shpOjoc--y5qWUgFzZhfF8A7csEKkU9Z9aU_QbAZKM0NPaH5rNj4DhtHA=s1200',
     questions: [
       {
         question: 'In which year was Bad Steben founded?',
@@ -581,7 +582,8 @@ export const STEBEN_QUIZ = [
     id: '2',
     active: true,
     topic: 'Thermal Springs of Bad Steben',
-    image: 'https://www.bad-steben.de/wp-content/uploads/2016/09/Akutelles_Therme_01.jpg',
+    image:
+      'https://www.bad-steben.de/wp-content/uploads/2016/09/Akutelles_Therme_01.jpg',
     questions: [
       {
         question: 'Which mineral in the water aids relaxation?',
@@ -645,9 +647,10 @@ export const STEBEN_QUIZ = [
       text: "Bad Steben is not only a picturesque city with a rich history but also a place where many notable personalities have lived or visited. One such individual was the famous composer Carl Maria von Weber, who often spent his summer vacations here. His visits inspired him to create several works related to the nature and culture of the region.Another notable personality was the writer Gustave Flaubert, who during his travels in Germany stayed in Bad Steben. His time in the city influenced his works, and elements of local culture can be found in his writings.Additionally, many other cultural and artistic figures have spent time in Bad Steben, highlighting the city's significance as a cultural center.",
     },
     id: '3',
-    active: true,
+    active: false,
     topic: 'Rose Garden of Bad Steben',
-    image: 'https://mein.toubiz.de/api/v1/media/ca325adc-f049-4822-80a7-fba27fa41ac9/view',
+    image:
+      'https://mein.toubiz.de/api/v1/media/ca325adc-f049-4822-80a7-fba27fa41ac9/view',
     questions: [
       {
         question: 'When was the Rose Garden established?',
@@ -707,7 +710,7 @@ export const STEBEN_QUIZ = [
         "Gastronomic Routes and Restaurants in Bad Steben', text: 'Bad Steben is renowned for its gastronomic traditions and the variety of restaurants offering unique local dishes. One of the most popular dishes is the traditional strudel, which is served in most local restaurants. The 'Resort Cuisine' restaurant is an excellent place for those who want to enjoy traditional Bad Steben dishes. Here, you can taste not only strudel but also other German delicacies such as stewed meat and potato dishes.The gastronomic route in Bad Steben includes visiting several restaurants and cafes where you can try local specialties. This route not only allows you to enjoy delicious food but also to learn more about the region's culinary traditions.",
     },
     id: '4',
-    active: true,
+    active: false,
     topic: 'Kurpark (Resort Park)',
     image: 'https://www.bad-steben.de/wp-content/uploads/2016/09/imp_07.jpg',
     questions: [
@@ -770,9 +773,10 @@ export const STEBEN_QUIZ = [
       text: 'Bad Steben is actively working to improve environmental conditions and achieve sustainable development. In recent years, the city has implemented several initiatives aimed at protecting the environment and reducing its ecological footprint. One of the key initiatives is the project to improve water quality in the thermal springs. The city is investing in modern purification and filtration systems to maintain water purity and enhance its quality for visitors. Another important initiative is the carbon emissions reduction program. The city is actively developing public transportation and implementing energy-saving technologies in new buildings.  Bad Steben also actively supports local environmental organizations and holds events to raise awareness about the importance of environmental protection.',
     },
     id: '5',
-    active: true,
+    active: false,
     topic: 'Heimatmuseum (Local History Museum)',
-    image: 'https://api.tmb.pixelpoint.biz/api/asset/111632/thumbnail/858/570.jpg',
+    image:
+      'https://api.tmb.pixelpoint.biz/api/asset/111632/thumbnail/858/570.jpg',
     questions: [
       {
         question: 'When was the museum founded?',
@@ -840,7 +844,7 @@ export const STEBEN_QUIZ = [
       text: 'Bad Steben offers numerous opportunities for active recreation and sports events. The city is surrounded by picturesque landscapes, creating excellent conditions for various sports activities.One of the most popular activities is hiking and trekking. The surrounding areas of Bad Steben feature numerous tourist trails that allow you to enjoy nature and fresh air.Golf is also a popular sport in the city. The local golf club offers excellent conditions for playing on green courses and hosts tournaments and competitions for enthusiasts.In the winter season, Bad Steben becomes a popular destination for skiing and snowboarding enthusiasts. The city provides excellent ski slopes and facilities for winter activities.',
     },
     id: '6',
-    active: true,
+    active: false,
     topic: 'Architecture of Bad Steben',
     image: 'https://img2.oastatic.com/img2/55538523/max/variant.jpg',
     questions: [
@@ -917,9 +921,10 @@ export const STEBEN_QUIZ = [
       text: 'The areas surrounding Bad Steben are renowned for their cultural events and festivals, which attract tourists and locals alike. One of the most famous events is the Rose Festival, held every summer.This festival is marked by vibrant flowers and lively music, drawing many visitors. Here, you can enjoy beautiful floral displays, participate in workshops, and simply spend time outdoors.Additionally, the surrounding areas host gastronomic festivals where you can sample local delicacies and beverages. These events facilitate cultural exchange and help preserve regional traditions. During the winter season, festive markets and Christmas events are also held, creating a special atmosphere and attracting tourists.',
     },
     id: '7',
-    active: true,
+    active: false,
     topic: 'Local Cuisine of Bad Steben',
-    image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/f5/84/a1/photo1jpg.jpg?w=600&h=400&s=1',
+    image:
+      'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/f5/84/a1/photo1jpg.jpg?w=600&h=400&s=1',
     questions: [
       {
         question: 'What traditional dish is popular in Bad Steben?',
@@ -979,9 +984,10 @@ export const STEBEN_QUIZ = [
       text: "Local traditions and holidays in Bad Steben reflect the city's rich culture and history. One of the most well-known holidays is the traditional Christmas market, which attracts many visitors with its bright lights and festive atmosphere. Another significant event is the City Day celebration, which is celebrated with great fanfare. This festival features various cultural activities, concerts, and exhibitions that showcase the city's cultural heritage. Other local holidays include the Craft Fair, where you can see the work of local artisans and participate in workshops on traditional crafts.",
     },
     id: '8',
-    active: true,
+    active: false,
     topic: 'Nature and Walks',
-    image: 'https://d2exd72xrrp1s7.cloudfront.net/www/guide/2491/1DSqTG?width=3840&crop=false&q=80',
+    image:
+      'https://d2exd72xrrp1s7.cloudfront.net/www/guide/2491/1DSqTG?width=3840&crop=false&q=80',
     questions: [
       {
         question: 'Which park in Bad Steben is popular for walks?',
@@ -1049,9 +1055,10 @@ export const STEBEN_QUIZ = [
       text: "The areas surrounding Bad Steben offer many interesting tourist routes and excursions. One of the most popular routes is a tour through the scenic valleys and forests surrounding the city. Another interesting route includes visiting historical landmarks and cultural attractions in the region. This tour allows you to explore old castles, church buildings, and other historical sites.  Additionally, there are excursions that include visits to local vineyards and wine tasting. These tours provide a deeper understanding of the region's culture and traditions.",
     },
     id: '9',
-    active: true,
+    active: false,
     topic: 'Cultural Events',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvjqtXMhDxzQRmiuOujDtSrR0RrQrXDRkiEg&s',
+    image:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvjqtXMhDxzQRmiuOujDtSrR0RrQrXDRkiEg&s',
     questions: [
       {
         question: 'What is the main cultural event held in Bad Steben?',
@@ -1128,9 +1135,10 @@ export const STEBEN_QUIZ = [
       text: "The Museum of History and Culture in Bad Steben is a major attraction, offering a range of exhibits and activities that highlight the region's historical and cultural heritage.  The most visited section of the museum is the historical exhibit, which provides insights into the local history through artifacts and documents. This exhibit is particularly popular among visitors interested in learning about the past of Bad Steben.The museum also hosts various types of exhibitions, including historical and cultural displays. These exhibitions often feature artifacts, documents, and interactive elements that engage visitors and provide educational experiences. Regular events at the museum include guided tours and lectures, which help deepen visitors' understanding of the exhibits. The museum covers a historical period from the Middle Ages to modern times, providing a comprehensive view of the region's history. Special events, such as historical celebrations and reconstructions, attract the largest number of visitors. These events offer an immersive experience into the past and highlight the museum's role in preserving and presenting local history.",
     },
     id: '10',
-    active: true,
+    active: false,
     topic: 'Museum of History and Culture',
-    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR80rVfG8N57ESXbQitvMHNNBEiDRif0ImBMVFcWPMlpeCMKm1oOan-HxigI_gp-iUUBJQ&usqp=CAU',
+    image:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR80rVfG8N57ESXbQitvMHNNBEiDRif0ImBMVFcWPMlpeCMKm1oOan-HxigI_gp-iUUBJQ&usqp=CAU',
     questions: [
       {
         question: 'Which section of the museum is the most visited?',
