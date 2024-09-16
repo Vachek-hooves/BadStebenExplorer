@@ -518,7 +518,7 @@ export const STEBEN_QUIZ = [
     id: '1',
     active: true,
     topic: 'History of Bad Steben',
-    image: '',
+    image: 'https://lh3.googleusercontent.com/ci/AL18g_QSeG_5chgN0A5F9shpOjoc--y5qWUgFzZhfF8A7csEKkU9Z9aU_QbAZKM0NPaH5rNj4DhtHA=s1200',
     questions: [
       {
         question: 'In which year was Bad Steben founded?',
@@ -581,7 +581,7 @@ export const STEBEN_QUIZ = [
     id: '2',
     active: true,
     topic: 'Thermal Springs of Bad Steben',
-    image: '',
+    image: 'https://www.bad-steben.de/wp-content/uploads/2016/09/Akutelles_Therme_01.jpg',
     questions: [
       {
         question: 'Which mineral in the water aids relaxation?',
@@ -647,7 +647,7 @@ export const STEBEN_QUIZ = [
     id: '3',
     active: true,
     topic: 'Rose Garden of Bad Steben',
-    image: '',
+    image: 'https://mein.toubiz.de/api/v1/media/ca325adc-f049-4822-80a7-fba27fa41ac9/view',
     questions: [
       {
         question: 'When was the Rose Garden established?',
@@ -709,7 +709,7 @@ export const STEBEN_QUIZ = [
     id: '4',
     active: true,
     topic: 'Kurpark (Resort Park)',
-    image: '',
+    image: 'https://www.bad-steben.de/wp-content/uploads/2016/09/imp_07.jpg',
     questions: [
       {
         question: 'What is the purpose of Kurpark?',
@@ -772,7 +772,7 @@ export const STEBEN_QUIZ = [
     id: '5',
     active: true,
     topic: 'Heimatmuseum (Local History Museum)',
-    image: '',
+    image: 'https://api.tmb.pixelpoint.biz/api/asset/111632/thumbnail/858/570.jpg',
     questions: [
       {
         question: 'When was the museum founded?',
@@ -842,7 +842,7 @@ export const STEBEN_QUIZ = [
     id: '6',
     active: true,
     topic: 'Architecture of Bad Steben',
-    image: '',
+    image: 'https://img2.oastatic.com/img2/55538523/max/variant.jpg',
     questions: [
       {
         question: 'What architectural style predominates in the city?',
@@ -919,7 +919,7 @@ export const STEBEN_QUIZ = [
     id: '7',
     active: true,
     topic: 'Local Cuisine of Bad Steben',
-    image: '',
+    image: 'https://dynamic-media-cdn.tripadvisor.com/media/photo-o/14/f5/84/a1/photo1jpg.jpg?w=600&h=400&s=1',
     questions: [
       {
         question: 'What traditional dish is popular in Bad Steben?',
@@ -981,7 +981,7 @@ export const STEBEN_QUIZ = [
     id: '8',
     active: true,
     topic: 'Nature and Walks',
-    image: '',
+    image: 'https://d2exd72xrrp1s7.cloudfront.net/www/guide/2491/1DSqTG?width=3840&crop=false&q=80',
     questions: [
       {
         question: 'Which park in Bad Steben is popular for walks?',
@@ -1051,7 +1051,7 @@ export const STEBEN_QUIZ = [
     id: '9',
     active: true,
     topic: 'Cultural Events',
-    image: '',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvjqtXMhDxzQRmiuOujDtSrR0RrQrXDRkiEg&s',
     questions: [
       {
         question: 'What is the main cultural event held in Bad Steben?',
@@ -1130,7 +1130,7 @@ export const STEBEN_QUIZ = [
     id: '10',
     active: true,
     topic: 'Museum of History and Culture',
-    image: '',
+    image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR80rVfG8N57ESXbQitvMHNNBEiDRif0ImBMVFcWPMlpeCMKm1oOan-HxigI_gp-iUUBJQ&usqp=CAU',
     questions: [
       {
         question: 'Which section of the museum is the most visited?',
