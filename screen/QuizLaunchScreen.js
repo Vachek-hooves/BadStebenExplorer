@@ -7,9 +7,10 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+// import {useNavigation} from '@react-navigation/native';
 import LayoutImage from '../components/Layout/LayoutImage';
 import {STEBEN_QUIZ} from '../data/stabenData'; // Import the quiz data
+import {useAppContext} from '../store/context';
 
 const QuizCard = ({topic, image, active, onPress}) => {
   console.log(image);
@@ -26,8 +27,9 @@ const QuizCard = ({topic, image, active, onPress}) => {
   );
 };
 
-const QuizLaunchScreen = () => {
-  const navigation = useNavigation();
+const QuizLaunchScreen = ({navigation}) => {
+  // const navigation = useNavigation();
+  const {quizData} = useAppContext();
 
   const handleQuizPress = quiz => {
     navigation.navigate('QuizGameScreen', {quiz});
@@ -38,7 +40,7 @@ const QuizLaunchScreen = () => {
       <View style={styles.container}>
         <Text style={styles.title}>Choose a Quiz</Text>
         <FlatList
-          data={STEBEN_QUIZ}
+          data={quizData}
           renderItem={({item}) => (
             <QuizCard
               topic={item.topic}
