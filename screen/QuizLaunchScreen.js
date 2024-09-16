@@ -13,13 +13,18 @@ import {STEBEN_QUIZ} from '../data/stabenData'; // Import the quiz data
 import {useAppContext} from '../store/context';
 
 const QuizCard = ({topic, image, active, onPress}) => {
-  console.log(image);
   return (
     <TouchableOpacity
       style={[styles.card, !active && styles.inactiveCard]}
       onPress={onPress}
       disabled={!active}>
-      <Image source={{uri: image}} style={styles.cardImage} />
+      <Image 
+        source={{uri: image}} 
+        style={[
+          styles.cardImage, 
+          !active && styles.inactiveCardImage
+        ]} 
+      />
       <Text style={[styles.cardText, !active && styles.inactiveCardText]}>
         {topic}
       </Text>
@@ -94,6 +99,9 @@ const styles = StyleSheet.create({
     height: 100,
     marginBottom: 8,
     borderRadius: 12,
+  },
+  inactiveCardImage: {
+    opacity: 0.3,
   },
   cardText: {
     fontSize: 16,
