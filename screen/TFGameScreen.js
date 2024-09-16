@@ -198,8 +198,10 @@ const TFGameScreen = () => {
             </View>
           </View>
         )}
-        <IconReturn />
       </ScrollView>
+      <View style={{position: 'absolute', bottom: 10, right: 0}}>
+        <IconReturn />
+      </View>
     </LayoutImage>
   );
 };
@@ -210,7 +212,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'rgba(0, 0, 0, 0.8)',
-    borderRadius:10
+    borderRadius: 10,
   },
   currentQuestionContainer: {
     padding: 20,
@@ -221,21 +223,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   answeredQuestionsContainer: {
-    padding: 20,
+    padding: 5,
     backgroundColor: 'rgba(255, 255, 255, 0.1)',
     borderRadius: 10,
-    alignItems: 'center',
+    // alignItems: 'center',
   },
   answeredQuestionsTitle: {
     fontSize: 18,
     fontWeight: 'bold',
     color: COLOR.white,
     marginBottom: 10,
+    textAlign: 'center',
   },
   answeredQuestion: {
     fontSize: 16,
     color: COLOR.white,
     marginBottom: 5,
+    textAlign:'center'
   },
   image: {
     width: '100%',
