@@ -153,6 +153,26 @@ export const AppProvider = ({children}) => {
     }
   };
 
+  const unlockNextLevel = useCallback(async (currentQuizId, score) => {
+    try {
+      if (score >= 8) {
+        const updatedQuizData = quizData.map((quiz, index, array) => {
+          if (quiz.id === currentQuizId && index < array.length - 1) {
+            array[index + 1].active = true;
+          }
+          return quiz;
+        });
+        await AsyncStorage.setItem('quizData', JSON.stringify(updatedQuizData));
+        setQuizData(updatedQuizData);
+        return true; // Return true if the next level was unlocked
+      }
+      return false; // Return false if the score was not high enough
+    } catch (error) {
+      console.error('Error unlocking next level:', error);
+      return false;
+    }
+  }, [quizData]);
+
   const value = {
     quizData,
     trueFalseData,
@@ -162,6 +182,7 @@ export const AppProvider = ({children}) => {
     updateMeetup,
     updateCompletedQuestions,
     updateNextLevelStatus,
+    unlockNextLevel,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

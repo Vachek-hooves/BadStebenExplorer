@@ -12,6 +12,7 @@ import LayoutImage from '../components/Layout/LayoutImage';
 import LinearGradient from 'react-native-linear-gradient';
 import {IconReturn} from '../components/icon';
 // import Icon from 'react-native-vector-icons/FontAwesome5';
+import {useAppContext} from '../store/context';
 
 const QuizGameScreen = ({route}) => {
   const {quiz} = route.params;
@@ -21,6 +22,8 @@ const QuizGameScreen = ({route}) => {
   const [feedback, setFeedback] = useState(null);
   const [feedbackOpacity] = useState(new Animated.Value(0));
   const navigation = useNavigation();
+  const {unlockNextLevel} = useAppContext(); // Add this line
+  const [nextLevelUnlocked, setNextLevelUnlocked] = useState(false);
   const optionAnimations = useRef(
     quiz.questions[0].options.map(() => new Animated.Value(0)),
   ).current;
@@ -35,6 +38,9 @@ const QuizGameScreen = ({route}) => {
 
   useEffect(() => {
     if (showResult) {
+      unlockNextLevel(quiz.id, score).then(unlocked => {
+        setNextLevelUnlocked(unlocked);
+      });
       Animated.timing(resultAnimation, {
         toValue: 1,
         duration: 1000,
@@ -118,6 +124,12 @@ const QuizGameScreen = ({route}) => {
   const navigateToHome = () => {
     navigation.navigate('QuizScreen');
   };
+  const navigateToNextLevel = () => {
+    // This function should navigate to the next level
+    // You'll need to implement the logic to find the next quiz
+    // For now, we'll just go back to the QuizLaunchScreen
+    navigation.navigate('QuizScreen');
+  };
 
   const ProgressBar = ({progress}) => {
     return (
@@ -168,11 +180,24 @@ const QuizGameScreen = ({route}) => {
                 onPress={restartQuiz}>
                 <Text style={styles.resultButtonText}>Restart Quiz</Text>
               </TouchableOpacity>
-              <TouchableOpacity
+              {/* <TouchableOpacity
                 style={styles.resultButton}
                 onPress={navigateToHome}>
                 <Text style={styles.resultButtonText}>Back to Home</Text>
-              </TouchableOpacity>
+              </TouchableOpacity> */}
+              {nextLevelUnlocked ? (
+                <TouchableOpacity
+                  style={styles.resultButton}
+                  onPress={navigateToNextLevel}>
+                  <Text style={styles.resultButtonText}>Unlock Next Level</Text>
+                </TouchableOpacity>
+              ) : (
+                <TouchableOpacity
+                  style={styles.resultButton}
+                  onPress={navigateToHome}>
+                  <Text style={styles.resultButtonText}>Back to Home</Text>
+                </TouchableOpacity>
+              )}
             </LinearGradient>
           </Animated.View>
         </View>
