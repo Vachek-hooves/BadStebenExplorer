@@ -199,9 +199,9 @@ const TFGameScreen = () => {
           </View>
         )}
       </ScrollView>
-      <View style={{position: 'absolute', bottom: 10, right: 0}}>
+      {/* <View style={{position: 'absolute', bottom: 10, right: 0}}>
         <IconReturn />
-      </View>
+      </View> */}
     </LayoutImage>
   );
 };

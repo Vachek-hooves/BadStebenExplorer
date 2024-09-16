@@ -9,11 +9,13 @@ import {
   ScrollView,
   Modal,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 import LayoutImage from '../components/Layout/LayoutImage';
 import {useAppContext} from '../store/context';
 import {IconReturn} from '../components/icon';
 import {CustomImagePicker} from '../components/Interface';
+const {height} = Dimensions.get('screen');
 
 const MeetupScreen = () => {
   const {meetups, addMeetup, deleteMeetup, updateMeetup} = useAppContext();
@@ -115,7 +117,7 @@ const MeetupScreen = () => {
         animationType="slide"
         transparent={true}>
         <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
+          <ScrollView style={styles.modalContent}>
             <Text style={styles.modalTitle}>Edit Meetup</Text>
             <TextInput
               style={styles.input}
@@ -155,7 +157,8 @@ const MeetupScreen = () => {
                 setSelectedImage(null);
               }}
             />
-          </View>
+            <View style={{height: 50}}></View>
+          </ScrollView>
         </View>
       </Modal>
 
@@ -165,7 +168,7 @@ const MeetupScreen = () => {
         animationType="slide"
         transparent={true}>
         <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
+          <ScrollView style={styles.modalContent}>
             <Text style={styles.modalTitle}>Add New Meetup</Text>
             <TextInput
               style={styles.input}
@@ -212,7 +215,8 @@ const MeetupScreen = () => {
                 setSelectedImage(null);
               }}
             /> */}
-          </View>
+            <View style={{height: 40}}></View>
+          </ScrollView>
         </View>
       </Modal>
 
@@ -222,7 +226,7 @@ const MeetupScreen = () => {
         animationType="slide"
         transparent={true}>
         <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
+          <ScrollView style={styles.modalContent}>
             {selectedMeetup && (
               <>
                 <Text style={styles.modalTitle}>{selectedMeetup.name}</Text>
@@ -272,7 +276,7 @@ const MeetupScreen = () => {
                 /> */}
               </>
             )}
-          </View>
+          </ScrollView>
         </View>
       </Modal>
       <IconReturn />
@@ -371,6 +375,7 @@ const styles = StyleSheet.create({
   imagePickerButton: {
     backgroundColor: '#4CAF50',
     marginBottom: 10,
+    alignItems: 'center',
   },
   previewImage: {
     width: '100%',

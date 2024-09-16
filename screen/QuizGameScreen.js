@@ -210,7 +210,7 @@ const QuizGameScreen = ({route}) => {
 
   return (
     <LayoutImage blur={40}>
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <ProgressBar progress={progress} />
         <View style={styles.progressTextContainer}>
           <LinearGradient

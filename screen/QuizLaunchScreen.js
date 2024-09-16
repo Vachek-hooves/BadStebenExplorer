@@ -18,12 +18,9 @@ const QuizCard = ({topic, image, active, onPress}) => {
       style={[styles.card, !active && styles.inactiveCard]}
       onPress={onPress}
       disabled={!active}>
-      <Image 
-        source={{uri: image}} 
-        style={[
-          styles.cardImage, 
-          !active && styles.inactiveCardImage
-        ]} 
+      <Image
+        source={{uri: image}}
+        style={[styles.cardImage, !active && styles.inactiveCardImage]}
       />
       <Text style={[styles.cardText, !active && styles.inactiveCardText]}>
         {topic}
@@ -57,6 +54,7 @@ const QuizLaunchScreen = ({navigation}) => {
           keyExtractor={item => item.id}
           numColumns={2}
           contentContainerStyle={styles.listContainer}
+          showsVerticalScrollIndicator={false}
         />
       </View>
       <View style={{height: 100}}></View>

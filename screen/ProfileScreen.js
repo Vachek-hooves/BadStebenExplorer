@@ -15,6 +15,8 @@ import CustomImagePicker from '../components/Interface/CustomImagePicker';
 import {IconReturn} from '../components/icon';
 
 const {width, height} = Dimensions.get('window');
+console.log(height);
+const SCREEN_HEIGHT = height;
 
 const ProfileScreen = () => {
   const [name, setName] = useState('');
@@ -118,7 +120,12 @@ const ProfileScreen = () => {
       end={{x: 1, y: 1}}
       style={styles.container}>
       {isProfileCreated ? renderProfileView() : renderProfileCreation()}
-      <View style={{position: 'absolute', bottom: 50, right: 30}}>
+      <View
+        style={{
+          position: 'absolute',
+          bottom: SCREEN_HEIGHT > 690 ? 50 : 0,
+          right: 30,
+        }}>
         <IconReturn />
       </View>
     </LinearGradient>
