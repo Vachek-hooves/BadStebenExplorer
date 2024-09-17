@@ -362,7 +362,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   addButton: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#FFA41B',
     padding: 15,
     borderRadius: 10,
     alignItems: 'center',
@@ -370,8 +370,8 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   addButtonText: {
-    color: 'white',
-    fontSize: 16,
+    color: 'black',
+    fontSize: 18,
     fontWeight: 'bold',
   },
   imagePickerButton: {
