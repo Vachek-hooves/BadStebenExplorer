@@ -126,7 +126,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   selectedCard: {
-    borderColor: '#007AFF',
+    borderColor: '#FFA41B',
     borderWidth: 2,
   },
   cardBackground: {
@@ -154,14 +154,14 @@ const styles = StyleSheet.create({
     color: '#666',
   },
   startButton: {
-    backgroundColor: '#007AFF',
+    backgroundColor: '#FFA41B',
     borderRadius: 5,
     padding: 10,
     marginTop: 10,
     alignSelf: 'flex-end',
   },
   startButtonText: {
-    color: 'white',
+    color: 'black',
     fontWeight: 'bold',
     fontSize: 18,
   },
