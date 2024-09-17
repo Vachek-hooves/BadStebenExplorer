@@ -160,7 +160,8 @@ const QuizGameScreen = ({route}) => {
               },
             ]}>
             <LinearGradient
-              colors={['rgba(76, 102, 159, 0.9)', 'rgba(25, 47, 106, 0.9)']}
+              // colors={['rgba(76, 102, 159, 0.9)', 'rgba(25, 47, 106, 0.9)']}
+              colors={['rgba(255, 87, 51, 0.9)', 'rgba(255, 195, 0, 0.9)']}
               style={styles.resultGradient}>
               {/* <Icon name="trophy" size={50} color="gold" style={styles.resultIcon} /> */}
               <Text style={styles.resultTitle}>Quiz Completed!</Text>
@@ -214,7 +215,7 @@ const QuizGameScreen = ({route}) => {
         <ProgressBar progress={progress} />
         <View style={styles.progressTextContainer}>
           <LinearGradient
-            colors={['rgba(76, 102, 159, 0.7)', 'rgba(25, 47, 106, 0.8)']}
+            colors={['rgba(255, 87, 51, 0.7)', 'rgba(255, 195, 0, 0.8)']}
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}
             style={styles.progressTextGradient}>
@@ -245,7 +246,7 @@ const QuizGameScreen = ({route}) => {
               onPress={() => handleAnswer(option, index)}
               disabled={feedback !== null}>
               <LinearGradient
-                colors={['#4c669f', '#3b5998', '#192f6a']}
+                colors={['#FF5733', '#FFA41B', '#FF8C00']}
                 style={styles.optionGradient}>
                 <Text style={styles.optionText}>{option}</Text>
               </LinearGradient>
@@ -288,7 +289,7 @@ const styles = StyleSheet.create({
   },
   progressBar: {
     height: '100%',
-    backgroundColor: '#4c679f',
+    backgroundColor: '#FF5733',
     borderRadius: 12,
   },
   progressTextContainer: {
